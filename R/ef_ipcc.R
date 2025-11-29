@@ -1,6 +1,6 @@
-#' Emissions factors from  Intergovernmental Panel on Climate Change (IPCC)
+#' Inventory structure
 #'
-#' @param nfr String: nomenclature for reporting
+#' @param nfr nomenclature for reporting, one or many
 #' @param fuel String for type of fuel.
 #' @param pol String for pollutant.
 #' @param returnfdb logical return directly db
@@ -9,35 +9,33 @@
 #' @keywords  emission factors
 #' @export
 #' @examples {
-#' ef_ipcc(fuel = "Natural Gas", pol = "CH4")
+#' ef_emep(tier = 1, fuel = "Natural gas", pol = "PM2.5")
 #' }
+
 ef_ipcc <- function(
-  nfr = "1.A.1",
+  nfr = "1.A.1.a",
   fuel,
   pol,
   returnfdb = FALSE
 ) {
-  ipcc <- data.table::setDT(sysdata$ipcc)
-
+  eea <- data.table::setDT(sysdata$ipcc)
+  #eea <- eea[grepl("1.A.1", NFR)]
   if (returnfdb) {
-    return(ipcc)
+    return(eea)
   }
   # nfr ####
   if (length(nfr) > 1) {
     stop("One nfr at a time please")
   }
 
-  nfrs <- ipcc[, unique(NFR)]
-  nfrs <- nfrs[order(nfrs)]
-
+  NFR <- Pollutant <- NULL
+  nfrs <- eea[, unique(NFR)]
   if (!nfr %in% nfrs) {
-    stop(cat("only these nfr  allowed: ", nfrs, sep = "\n"))
+    stop(cat("only these nfr  allowed: ", nfrs, sep = " "))
   }
-  NFR <- NULL
-  ef <- ipcc[NFR == nfr]
+  ef <- eea[NFR == nfr]
 
   # fuel ####
-
   Fuel_2006 <- NULL
   fuelssx <- ef[, unique(Fuel_2006)]
 
@@ -51,13 +49,11 @@ ef_ipcc <- function(
 
   fuels <- ef[, unique(Fuel_2006)]
   if (!fuel %in% fuels) {
-    stop(cat("only these fuels  allowed: ", fuels, sep = "\n"))
+    stop(cat("only these fuels  allowed: ", fuels, sep = " "))
   }
   ef <- ef[Fuel_2006 == fuel]
 
   # pol ####
-  Pollutant <- NULL
-
   pols <- ef[, unique(Pollutant)]
 
   if (missing(pol)) {

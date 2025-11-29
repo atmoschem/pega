@@ -50,3 +50,11 @@ ef_emep(tier = 1, fuel = "Natural gas", pol = "PM2.5")
 ```{r read2, eval = T}
 ef_ipcc(fuel = "Natural Gas", pol = "CH4")
 ```
+
+###  Create directories 
+
+
+```{r read3, eval = T}
+inventory(path = tempdir())
+```
+

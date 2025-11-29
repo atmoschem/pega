@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">pega</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.7.0</span>
       </span>
     </div>
 
@@ -91,7 +91,7 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/atmoschem/pega" class="external-link">pega</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-datatable.com" class="external-link">data.table</a></span><span class="op">)</span></span>
 <span><span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html" class="external-link">packageVersion</a></span><span class="op">(</span><span class="st">"pega"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="do">## [1] '0.6.0'</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="do">## [1] '0.7.0'</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="emission-factors">Emission factors<a class="anchor" aria-label="anchor" href="#emission-factors"></a>
@@ -117,174 +117,172 @@
 </h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/ef_ipcc.html">ef_ipcc</a></span><span class="op">(</span>fuel <span class="op">=</span> <span class="st">"Natural Gas"</span>, pol <span class="op">=</span> <span class="st">"CH4"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="do">##      EF_ID</span></span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="do">##     &lt;char&gt;</span></span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="do">##  1:  17190</span></span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="do">##  2:  18401</span></span>
-<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="do">##  3:  18402</span></span>
-<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="do">##  4:  18403</span></span>
-<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="do">##  5: 117696</span></span>
-<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="do">##  6: 120947</span></span>
-<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="do">##  7: 120948</span></span>
-<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="do">##  8: 120951</span></span>
-<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="do">##  9: 120952</span></span>
-<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="do">## 10: 120955</span></span>
-<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="do">##                                                                                                                                                                            IPCC_1996_SourceSink_Category</span></span>
-<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="do">##                                                                                                                                                                                                   &lt;char&gt;</span></span>
-<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="do">##  1:                                                                                                                                                                            1A1 - Energy Industries\n</span></span>
-<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="do">##  2: 1A1 - Energy Industries\n1A1a - Public Electricity and Heat Production\n1A1a1 - Public Electricity Generation\n1A1a2 - Public Combined Heat and Power Generation (CHP)\n1A1a3 - Public Heat Plants\n</span></span>
-<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a><span class="do">##  3: 1A1 - Energy Industries\n1A1a - Public Electricity and Heat Production\n1A1a1 - Public Electricity Generation\n1A1a2 - Public Combined Heat and Power Generation (CHP)\n1A1a3 - Public Heat Plants\n</span></span>
-<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a><span class="do">##  4: 1A1 - Energy Industries\n1A1a - Public Electricity and Heat Production\n1A1a1 - Public Electricity Generation\n1A1a2 - Public Combined Heat and Power Generation (CHP)\n1A1a3 - Public Heat Plants\n</span></span>
-<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a><span class="do">##  5:                                                                                                                                                                            1A1 - Energy Industries\n</span></span>
-<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a><span class="do">##  6:                                                                                                                    1A1 - Energy Industries\n1A2 - Manufacturing Industries and Construction (ISIC)\n</span></span>
-<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a><span class="do">##  7:                                                                                                                    1A1 - Energy Industries\n1A2 - Manufacturing Industries and Construction (ISIC)\n</span></span>
-<span id="cb8-22"><a href="#cb8-22" tabindex="-1"></a><span class="do">##  8:                                                                                                                    1A1 - Energy Industries\n1A2 - Manufacturing Industries and Construction (ISIC)\n</span></span>
-<span id="cb8-23"><a href="#cb8-23" tabindex="-1"></a><span class="do">##  9:                                                                                                                    1A1 - Energy Industries\n1A2 - Manufacturing Industries and Construction (ISIC)\n</span></span>
-<span id="cb8-24"><a href="#cb8-24" tabindex="-1"></a><span class="do">## 10:                                                                                                                    1A1 - Energy Industries\n1A2 - Manufacturing Industries and Construction (ISIC)\n</span></span>
-<span id="cb8-25"><a href="#cb8-25" tabindex="-1"></a><span class="do">##                                                                                                                                                                                  IPCC_2006_SourceSink_Category</span></span>
-<span id="cb8-26"><a href="#cb8-26" tabindex="-1"></a><span class="do">##                                                                                                                                                                                                         &lt;char&gt;</span></span>
-<span id="cb8-27"><a href="#cb8-27" tabindex="-1"></a><span class="do">##  1:                                                                                                                                                                                1.A.1 - Energy Industries\n</span></span>
-<span id="cb8-28"><a href="#cb8-28" tabindex="-1"></a><span class="do">##  2: 1.A.1 - Energy Industries\n1.A.1.a - Main Activity Electricity and Heat Production\n1.A.1.a.i - Electricity Generation\n1.A.1.a.ii - Combined Heat and Power Generation (CHP)\n1.A.1.a.iii - Heat Plants\n</span></span>
-<span id="cb8-29"><a href="#cb8-29" tabindex="-1"></a><span class="do">##  3: 1.A.1 - Energy Industries\n1.A.1.a - Main Activity Electricity and Heat Production\n1.A.1.a.i - Electricity Generation\n1.A.1.a.ii - Combined Heat and Power Generation (CHP)\n1.A.1.a.iii - Heat Plants\n</span></span>
-<span id="cb8-30"><a href="#cb8-30" tabindex="-1"></a><span class="do">##  4: 1.A.1 - Energy Industries\n1.A.1.a - Main Activity Electricity and Heat Production\n1.A.1.a.i - Electricity Generation\n1.A.1.a.ii - Combined Heat and Power Generation (CHP)\n1.A.1.a.iii - Heat Plants\n</span></span>
-<span id="cb8-31"><a href="#cb8-31" tabindex="-1"></a><span class="do">##  5:                                                                                                                                                                                1.A.1 - Energy Industries\n</span></span>
-<span id="cb8-32"><a href="#cb8-32" tabindex="-1"></a><span class="do">##  6:                                                                                                                             1.A.1 - Energy Industries\n1.A.2 - Manufacturing Industries and Construction\n</span></span>
-<span id="cb8-33"><a href="#cb8-33" tabindex="-1"></a><span class="do">##  7:                                                                                                                             1.A.1 - Energy Industries\n1.A.2 - Manufacturing Industries and Construction\n</span></span>
-<span id="cb8-34"><a href="#cb8-34" tabindex="-1"></a><span class="do">##  8:                                                                                                                             1.A.1 - Energy Industries\n1.A.2 - Manufacturing Industries and Construction\n</span></span>
-<span id="cb8-35"><a href="#cb8-35" tabindex="-1"></a><span class="do">##  9:                                                                                                                             1.A.1 - Energy Industries\n1.A.2 - Manufacturing Industries and Construction\n</span></span>
-<span id="cb8-36"><a href="#cb8-36" tabindex="-1"></a><span class="do">## 10:                                                                                                                             1.A.1 - Energy Industries\n1.A.2 - Manufacturing Industries and Construction\n</span></span>
-<span id="cb8-37"><a href="#cb8-37" tabindex="-1"></a><span class="do">##           Gas   Fuel_1996   Fuel_2006 C_pool     Type_of_parameter</span></span>
-<span id="cb8-38"><a href="#cb8-38" tabindex="-1"></a><span class="do">##        &lt;char&gt;      &lt;char&gt;      &lt;char&gt; &lt;lgcl&gt;                &lt;char&gt;</span></span>
-<span id="cb8-39"><a href="#cb8-39" tabindex="-1"></a><span class="do">##  1: METHANE\n Natural Gas Natural Gas     NA     1996 IPCC default</span></span>
-<span id="cb8-40"><a href="#cb8-40" tabindex="-1"></a><span class="do">##  2: METHANE\n Natural Gas Natural Gas     NA     1996 IPCC default</span></span>
-<span id="cb8-41"><a href="#cb8-41" tabindex="-1"></a><span class="do">##  3: METHANE\n Natural Gas Natural Gas     NA     1996 IPCC default</span></span>
-<span id="cb8-42"><a href="#cb8-42" tabindex="-1"></a><span class="do">##  4: METHANE\n Natural Gas Natural Gas     NA     1996 IPCC default</span></span>
-<span id="cb8-43"><a href="#cb8-43" tabindex="-1"></a><span class="do">##  5: METHANE\n Natural Gas Natural Gas     NA     2006 IPCC default</span></span>
-<span id="cb8-44"><a href="#cb8-44" tabindex="-1"></a><span class="do">##  6: METHANE\n Natural Gas Natural Gas     NA Other (e.g. compiled)</span></span>
-<span id="cb8-45"><a href="#cb8-45" tabindex="-1"></a><span class="do">##  7: METHANE\n Natural Gas Natural Gas     NA Other (e.g. compiled)</span></span>
-<span id="cb8-46"><a href="#cb8-46" tabindex="-1"></a><span class="do">##  8: METHANE\n Natural Gas Natural Gas     NA Other (e.g. compiled)</span></span>
-<span id="cb8-47"><a href="#cb8-47" tabindex="-1"></a><span class="do">##  9: METHANE\n Natural Gas Natural Gas     NA Other (e.g. compiled)</span></span>
-<span id="cb8-48"><a href="#cb8-48" tabindex="-1"></a><span class="do">## 10: METHANE\n Natural Gas Natural Gas     NA Other (e.g. compiled)</span></span>
-<span id="cb8-49"><a href="#cb8-49" tabindex="-1"></a><span class="do">##                                                                        Description</span></span>
-<span id="cb8-50"><a href="#cb8-50" tabindex="-1"></a><span class="do">##                                                                             &lt;char&gt;</span></span>
-<span id="cb8-51"><a href="#cb8-51" tabindex="-1"></a><span class="do">##  1:                                     CH4 Default (Uncontrolled) emisson factors</span></span>
-<span id="cb8-52"><a href="#cb8-52" tabindex="-1"></a><span class="do">##  2:                          Emission factors for utility boiler source perfomance</span></span>
-<span id="cb8-53"><a href="#cb8-53" tabindex="-1"></a><span class="do">##  3:                          Emission factors for utility boiler source perfomance</span></span>
-<span id="cb8-54"><a href="#cb8-54" tabindex="-1"></a><span class="do">##  4:                          Emission factors for utility boiler source perfomance</span></span>
-<span id="cb8-55"><a href="#cb8-55" tabindex="-1"></a><span class="do">##  5: CH4 Emission Factor for Stationary Combustion (kg/TJ on a net calorific basis)</span></span>
-<span id="cb8-56"><a href="#cb8-56" tabindex="-1"></a><span class="do">##  6:                                      Emission Factor for Stationary Combustion</span></span>
-<span id="cb8-57"><a href="#cb8-57" tabindex="-1"></a><span class="do">##  7:                                      Emission Factor for Stationary Combustion</span></span>
-<span id="cb8-58"><a href="#cb8-58" tabindex="-1"></a><span class="do">##  8:                                      Emission Factor for Stationary Combustion</span></span>
-<span id="cb8-59"><a href="#cb8-59" tabindex="-1"></a><span class="do">##  9:                                      Emission Factor for Stationary Combustion</span></span>
-<span id="cb8-60"><a href="#cb8-60" tabindex="-1"></a><span class="do">## 10:                                      Emission Factor for Stationary Combustion</span></span>
-<span id="cb8-61"><a href="#cb8-61" tabindex="-1"></a><span class="do">##                            TechnologiesPractices</span></span>
-<span id="cb8-62"><a href="#cb8-62" tabindex="-1"></a><span class="do">##                                           &lt;char&gt;</span></span>
-<span id="cb8-63"><a href="#cb8-63" tabindex="-1"></a><span class="do">##  1:                                         &lt;NA&gt;</span></span>
-<span id="cb8-64"><a href="#cb8-64" tabindex="-1"></a><span class="do">##  2:                                      Boilers</span></span>
-<span id="cb8-65"><a href="#cb8-65" tabindex="-1"></a><span class="do">##  3:             Large Gas-Fired Gas Turbines&gt;3MW</span></span>
-<span id="cb8-66"><a href="#cb8-66" tabindex="-1"></a><span class="do">##  4:                      Large Dual-Fuel Engines</span></span>
-<span id="cb8-67"><a href="#cb8-67" tabindex="-1"></a><span class="do">##  5:                                         &lt;NA&gt;</span></span>
-<span id="cb8-68"><a href="#cb8-68" tabindex="-1"></a><span class="do">##  6:                             Gas fired boiler</span></span>
-<span id="cb8-69"><a href="#cb8-69" tabindex="-1"></a><span class="do">##  7:                             Gas fired boiler</span></span>
-<span id="cb8-70"><a href="#cb8-70" tabindex="-1"></a><span class="do">##  8: Gas turbine plant/Combined cycle power plant</span></span>
-<span id="cb8-71"><a href="#cb8-71" tabindex="-1"></a><span class="do">##  9: Gas turbine plant/Combined cycle power plant</span></span>
-<span id="cb8-72"><a href="#cb8-72" tabindex="-1"></a><span class="do">## 10:                        Otto or diesel engine</span></span>
-<span id="cb8-73"><a href="#cb8-73" tabindex="-1"></a><span class="do">##                                                                                                                                                        ParametersConditions</span></span>
-<span id="cb8-74"><a href="#cb8-74" tabindex="-1"></a><span class="do">##                                                                                                                                                                      &lt;char&gt;</span></span>
-<span id="cb8-75"><a href="#cb8-75" tabindex="-1"></a><span class="do">##  1:                                                                                                                                                                    &lt;NA&gt;</span></span>
-<span id="cb8-76"><a href="#cb8-76" tabindex="-1"></a><span class="do">##  2:                                                                                                                                                                    &lt;NA&gt;</span></span>
-<span id="cb8-77"><a href="#cb8-77" tabindex="-1"></a><span class="do">##  3:                                                                                                                                                                    &lt;NA&gt;</span></span>
-<span id="cb8-78"><a href="#cb8-78" tabindex="-1"></a><span class="do">##  4:                                                                                                                                                                    &lt;NA&gt;</span></span>
-<span id="cb8-79"><a href="#cb8-79" tabindex="-1"></a><span class="do">##  5:                                                                                                                                                                    &lt;NA&gt;</span></span>
-<span id="cb8-80"><a href="#cb8-80" tabindex="-1"></a><span class="do">##  6: Co-firing when gas is the main fuel (greater than 80% gas) and (50%-80% gas). In Finland, co-firing of different types of fuels is very common in, e.g. fluidized beds.</span></span>
-<span id="cb8-81"><a href="#cb8-81" tabindex="-1"></a><span class="do">##  7: Co-firing when gas is the main fuel (greater than 80% gas) and (50%-80% gas). In Finland, co-firing of different types of fuels is very common in, e.g. fluidized beds.</span></span>
-<span id="cb8-82"><a href="#cb8-82" tabindex="-1"></a><span class="do">##  8:                                                                                                                                                                    &lt;NA&gt;</span></span>
-<span id="cb8-83"><a href="#cb8-83" tabindex="-1"></a><span class="do">##  9:                                                                                                                                                                    &lt;NA&gt;</span></span>
-<span id="cb8-84"><a href="#cb8-84" tabindex="-1"></a><span class="do">## 10:                                                                                                                                                                    &lt;NA&gt;</span></span>
-<span id="cb8-85"><a href="#cb8-85" tabindex="-1"></a><span class="do">##     RegionRegional_Conditions AbatementControl_Technologies</span></span>
-<span id="cb8-86"><a href="#cb8-86" tabindex="-1"></a><span class="do">##                        &lt;char&gt;                        &lt;char&gt;</span></span>
-<span id="cb8-87"><a href="#cb8-87" tabindex="-1"></a><span class="do">##  1:                      &lt;NA&gt;                          &lt;NA&gt;</span></span>
-<span id="cb8-88"><a href="#cb8-88" tabindex="-1"></a><span class="do">##  2:                      &lt;NA&gt;                          &lt;NA&gt;</span></span>
-<span id="cb8-89"><a href="#cb8-89" tabindex="-1"></a><span class="do">##  3:                      &lt;NA&gt;                          &lt;NA&gt;</span></span>
-<span id="cb8-90"><a href="#cb8-90" tabindex="-1"></a><span class="do">##  4:                      &lt;NA&gt;                          &lt;NA&gt;</span></span>
-<span id="cb8-91"><a href="#cb8-91" tabindex="-1"></a><span class="do">##  5:                      &lt;NA&gt;                          &lt;NA&gt;</span></span>
-<span id="cb8-92"><a href="#cb8-92" tabindex="-1"></a><span class="do">##  6:                   Finland                          &lt;NA&gt;</span></span>
-<span id="cb8-93"><a href="#cb8-93" tabindex="-1"></a><span class="do">##  7:                   Finland                          &lt;NA&gt;</span></span>
-<span id="cb8-94"><a href="#cb8-94" tabindex="-1"></a><span class="do">##  8:                   Finland                          &lt;NA&gt;</span></span>
-<span id="cb8-95"><a href="#cb8-95" tabindex="-1"></a><span class="do">##  9:                   Finland                          &lt;NA&gt;</span></span>
-<span id="cb8-96"><a href="#cb8-96" tabindex="-1"></a><span class="do">## 10:                   Finland                          &lt;NA&gt;</span></span>
-<span id="cb8-97"><a href="#cb8-97" tabindex="-1"></a><span class="do">##                Other_properties  Value   Unit</span></span>
-<span id="cb8-98"><a href="#cb8-98" tabindex="-1"></a><span class="do">##                          &lt;char&gt; &lt;char&gt; &lt;char&gt;</span></span>
-<span id="cb8-99"><a href="#cb8-99" tabindex="-1"></a><span class="do">##  1:                        &lt;NA&gt;      1  KG/TJ</span></span>
-<span id="cb8-100"><a href="#cb8-100" tabindex="-1"></a><span class="do">##  2:                        &lt;NA&gt;    0.1  KG/TJ</span></span>
-<span id="cb8-101"><a href="#cb8-101" tabindex="-1"></a><span class="do">##  3:                        &lt;NA&gt;      6  KG/TJ</span></span>
-<span id="cb8-102"><a href="#cb8-102" tabindex="-1"></a><span class="do">##  4:                        &lt;NA&gt;    240  KG/TJ</span></span>
-<span id="cb8-103"><a href="#cb8-103" tabindex="-1"></a><span class="do">##  5:                        &lt;NA&gt;      1  kg/TJ</span></span>
-<span id="cb8-104"><a href="#cb8-104" tabindex="-1"></a><span class="do">##  6: Capacity greater than  1 MW      1  kg/TJ</span></span>
-<span id="cb8-105"><a href="#cb8-105" tabindex="-1"></a><span class="do">##  7: Capacity smaller than  1 MW      5  kg/TJ</span></span>
-<span id="cb8-106"><a href="#cb8-106" tabindex="-1"></a><span class="do">##  8: Capacity smaller than  5 MW      3  kg/TJ</span></span>
-<span id="cb8-107"><a href="#cb8-107" tabindex="-1"></a><span class="do">##  9: Capacity greater than  5 MW      1  kg/TJ</span></span>
-<span id="cb8-108"><a href="#cb8-108" tabindex="-1"></a><span class="do">## 10:               not specified    240  kg/TJ</span></span>
-<span id="cb8-109"><a href="#cb8-109" tabindex="-1"></a><span class="do">##                                                                                                                                                                                                                                                   Equation</span></span>
-<span id="cb8-110"><a href="#cb8-110" tabindex="-1"></a><span class="do">##                                                                                                                                                                                                                                                     &lt;char&gt;</span></span>
-<span id="cb8-111"><a href="#cb8-111" tabindex="-1"></a><span class="do">##  1:                                                                                                                                                                                                                                                   &lt;NA&gt;</span></span>
-<span id="cb8-112"><a href="#cb8-112" tabindex="-1"></a><span class="do">##  2:                                                                                                                                                                                                                                                   &lt;NA&gt;</span></span>
-<span id="cb8-113"><a href="#cb8-113" tabindex="-1"></a><span class="do">##  3:                                                                                                                                                                                                                                                   &lt;NA&gt;</span></span>
-<span id="cb8-114"><a href="#cb8-114" tabindex="-1"></a><span class="do">##  4:                                                                                                                                                                                                                                                   &lt;NA&gt;</span></span>
-<span id="cb8-115"><a href="#cb8-115" tabindex="-1"></a><span class="do">##  5:                                                                                                                                                           Equation 2.1 in Volume 2 of the 2006 IPCC Guidelines for National Greenhouse Gas Inventories</span></span>
-<span id="cb8-116"><a href="#cb8-116" tabindex="-1"></a><span class="do">##  6: Emissions of installation  = sum (Fuel [TJ] * EFTechnology [t/TJ]), where Fuel = each fuel batch of installation in TJ,  (Technology) is a combination of installation type+combustion technique, fuel capacity and main fuel. (Bottom-up calculation)</span></span>
-<span id="cb8-117"><a href="#cb8-117" tabindex="-1"></a><span class="do">##  7: Emissions of installation  = sum (Fuel [TJ] * EFTechnology [t/TJ]), where Fuel = each fuel batch of installation in TJ,  (Technology) is a combination of installation type+combustion technique, fuel capacity and main fuel. (Bottom-up calculation)</span></span>
-<span id="cb8-118"><a href="#cb8-118" tabindex="-1"></a><span class="do">##  8: Emissions of installation  = sum (Fuel [TJ] * EFTechnology [t/TJ]), where Fuel = each fuel batch of installation in TJ,  (Technology) is a combination of installation type+combustion technique, fuel capacity and main fuel. (Bottom-up calculation)</span></span>
-<span id="cb8-119"><a href="#cb8-119" tabindex="-1"></a><span class="do">##  9: Emissions of installation  = sum (Fuel [TJ] * EFTechnology [t/TJ]), where Fuel = each fuel batch of installation in TJ,  (Technology) is a combination of installation type+combustion technique, fuel capacity and main fuel. (Bottom-up calculation)</span></span>
-<span id="cb8-120"><a href="#cb8-120" tabindex="-1"></a><span class="do">## 10: Emissions of installation  = sum (Fuel [TJ] * EFTechnology [t/TJ]), where Fuel = each fuel batch of installation in TJ,  (Technology) is a combination of installation type+combustion technique, fuel capacity and main fuel. (Bottom-up calculation)</span></span>
-<span id="cb8-121"><a href="#cb8-121" tabindex="-1"></a><span class="do">##                                                                                                        IPCC_Worksheet</span></span>
-<span id="cb8-122"><a href="#cb8-122" tabindex="-1"></a><span class="do">##                                                                                                                &lt;char&gt;</span></span>
-<span id="cb8-123"><a href="#cb8-123" tabindex="-1"></a><span class="do">##  1:                                                                                          Worksheet 1-3; Sheet 1-3</span></span>
-<span id="cb8-124"><a href="#cb8-124" tabindex="-1"></a><span class="do">##  2:                                                                                                    Not Applicable</span></span>
-<span id="cb8-125"><a href="#cb8-125" tabindex="-1"></a><span class="do">##  3:                                                                                                    Not Applicable</span></span>
-<span id="cb8-126"><a href="#cb8-126" tabindex="-1"></a><span class="do">##  4:                                                                                                    Not Applicable</span></span>
-<span id="cb8-127"><a href="#cb8-127" tabindex="-1"></a><span class="do">##  5: 1A, Sheet 3 of 4 (page A1.8) in Annex 1 of Volume 2, 2006 IPCC Guidelines for National Greenhouse Gas Inventories</span></span>
-<span id="cb8-128"><a href="#cb8-128" tabindex="-1"></a><span class="do">##  6:                                                                                                              &lt;NA&gt;</span></span>
-<span id="cb8-129"><a href="#cb8-129" tabindex="-1"></a><span class="do">##  7:                                                                                                              &lt;NA&gt;</span></span>
-<span id="cb8-130"><a href="#cb8-130" tabindex="-1"></a><span class="do">##  8:                                                                                                              &lt;NA&gt;</span></span>
-<span id="cb8-131"><a href="#cb8-131" tabindex="-1"></a><span class="do">##  9:                                                                                                              &lt;NA&gt;</span></span>
-<span id="cb8-132"><a href="#cb8-132" tabindex="-1"></a><span class="do">## 10:                                                                                                              &lt;NA&gt;</span></span>
-<span id="cb8-133"><a href="#cb8-133" tabindex="-1"></a><span class="do">##                                                                                                                                                                                                                                                                                                                   Technical_Reference</span></span>
-<span id="cb8-134"><a href="#cb8-134" tabindex="-1"></a><span class="do">##                                                                                                                                                                                                                                                                                                                                &lt;char&gt;</span></span>
-<span id="cb8-135"><a href="#cb8-135" tabindex="-1"></a><span class="do">##  1: These CH4 default emission factors are based on CORINAIR90 database, the CORINAIR1994 default emissionf actors, EDGAR Version 2.0 database, National Communications to the UNFCCC,Berdowski, et al(1993 ),Radian Corporation (1990) and USEPA(1995). Additional research is needed to improve the quality of the emission factors</span></span>
-<span id="cb8-136"><a href="#cb8-136" tabindex="-1"></a><span class="do">##  2:                                                                                                                                                                                                                 US EPA (1995) Compilation of Air Pollutant Emission Factors. Vol 1 Stationary Point and Area Sources, 5th Edition</span></span>
-<span id="cb8-137"><a href="#cb8-137" tabindex="-1"></a><span class="do">##  3:                                                                                                                                                                                                                 US EPA (1995) Compilation of Air Pollutant Emission Factors. Vol 1 Stationary Point and Area Sources, 5th Edition</span></span>
-<span id="cb8-138"><a href="#cb8-138" tabindex="-1"></a><span class="do">##  4:                                                                                                                                                                                                                 US EPA (1995) Compilation of Air Pollutant Emission Factors. Vol 1 Stationary Point and Area Sources, 5th Edition</span></span>
-<span id="cb8-139"><a href="#cb8-139" tabindex="-1"></a><span class="do">##  5:                                                                                                                                                            Expert judgement by the authors of Chapter 2, Volume 2 of the 2006 IPCC Guidelines. For details, see Section 2.3.2.1, Chapter 2, Volume 2 of the 2006 IPCC Guidelines.</span></span>
-<span id="cb8-140"><a href="#cb8-140" tabindex="-1"></a><span class="do">##  6:                                                        Finnish NIR 2008. Expert estimates by Statistics Finland based mainly on the VTT studies (Tsupari et. al., 2005, Tsupari et. al., 2006 and Tsupari et al., 2007); http://www.vtt.fi/inf/pdf/tiedotteet/2005/T2321.pdf http://www.vtt.fi/inf/pdf/workingpapers/2006/W43.pdf</span></span>
-<span id="cb8-141"><a href="#cb8-141" tabindex="-1"></a><span class="do">##  7:                                                        Finnish NIR 2008. Expert estimates by Statistics Finland based mainly on the VTT studies (Tsupari et. al., 2005, Tsupari et. al., 2006 and Tsupari et al., 2007); http://www.vtt.fi/inf/pdf/tiedotteet/2005/T2321.pdf http://www.vtt.fi/inf/pdf/workingpapers/2006/W43.pdf</span></span>
-<span id="cb8-142"><a href="#cb8-142" tabindex="-1"></a><span class="do">##  8:                                                        Finnish NIR 2008. Expert estimates by Statistics Finland based mainly on the VTT studies (Tsupari et. al., 2005, Tsupari et. al., 2006 and Tsupari et al., 2007); http://www.vtt.fi/inf/pdf/tiedotteet/2005/T2321.pdf http://www.vtt.fi/inf/pdf/workingpapers/2006/W43.pdf</span></span>
-<span id="cb8-143"><a href="#cb8-143" tabindex="-1"></a><span class="do">##  9:                                                        Finnish NIR 2008. Expert estimates by Statistics Finland based mainly on the VTT studies (Tsupari et. al., 2005, Tsupari et. al., 2006 and Tsupari et al., 2007); http://www.vtt.fi/inf/pdf/tiedotteet/2005/T2321.pdf http://www.vtt.fi/inf/pdf/workingpapers/2006/W43.pdf</span></span>
-<span id="cb8-144"><a href="#cb8-144" tabindex="-1"></a><span class="do">## 10:                                                        Finnish NIR 2008. Expert estimates by Statistics Finland based mainly on the VTT studies (Tsupari et. al., 2005, Tsupari et. al., 2006 and Tsupari et al., 2007); http://www.vtt.fi/inf/pdf/tiedotteet/2005/T2321.pdf http://www.vtt.fi/inf/pdf/workingpapers/2006/W43.pdf</span></span>
-<span id="cb8-145"><a href="#cb8-145" tabindex="-1"></a><span class="do">##                                                                                                              Source_of_data</span></span>
-<span id="cb8-146"><a href="#cb8-146" tabindex="-1"></a><span class="do">##                                                                                                                      &lt;char&gt;</span></span>
-<span id="cb8-147"><a href="#cb8-147" tabindex="-1"></a><span class="do">##  1:   Revised 1996 IPCC Guidelines for National Greenhouse Gas Inventories (Table 1-7 on Page 1.35 of the Reference Manual)</span></span>
-<span id="cb8-148"><a href="#cb8-148" tabindex="-1"></a><span class="do">##  2: Revised 1996 IPCC Guidelines for National Greenhouse Gas Inventories ( Table 1-15 on Page 1.53) of the Reference Manual</span></span>
-<span id="cb8-149"><a href="#cb8-149" tabindex="-1"></a><span class="do">##  3: Revised 1996 IPCC Guidelines for National Greenhouse Gas Inventories ( Table 1-15 on Page 1.53) of the Reference Manual</span></span>
-<span id="cb8-150"><a href="#cb8-150" tabindex="-1"></a><span class="do">##  4: Revised 1996 IPCC Guidelines for National Greenhouse Gas Inventories ( Table 1-15 on Page 1.53) of the Reference Manual</span></span>
-<span id="cb8-151"><a href="#cb8-151" tabindex="-1"></a><span class="do">##  5:                               2006 IPCC Guidelines for National Greenhouse Gas Inventories, Volume 2: Energy, Table 2.2</span></span>
-<span id="cb8-152"><a href="#cb8-152" tabindex="-1"></a><span class="do">##  6:                                                                                     National Inventory Report (Annex I)</span></span>
-<span id="cb8-153"><a href="#cb8-153" tabindex="-1"></a><span class="do">##  7:                                                                                     National Inventory Report (Annex I)</span></span>
-<span id="cb8-154"><a href="#cb8-154" tabindex="-1"></a><span class="do">##  8:                                                                                     National Inventory Report (Annex I)</span></span>
-<span id="cb8-155"><a href="#cb8-155" tabindex="-1"></a><span class="do">##  9:                                                                                     National Inventory Report (Annex I)</span></span>
-<span id="cb8-156"><a href="#cb8-156" tabindex="-1"></a><span class="do">## 10:                                                                                     National Inventory Report (Annex I)</span></span>
-<span id="cb8-157"><a href="#cb8-157" tabindex="-1"></a><span class="do">##                              Data_provider           NF    NFR Pollutant</span></span>
-<span id="cb8-158"><a href="#cb8-158" tabindex="-1"></a><span class="do">##                                     &lt;char&gt;       &lt;char&gt; &lt;char&gt;    &lt;char&gt;</span></span>
-<span id="cb8-159"><a href="#cb8-159" tabindex="-1"></a><span class="do">##  1:                                   IPCC 1.A.1 - Ener  1.A.1       CH4</span></span>
-<span id="cb8-160"><a href="#cb8-160" tabindex="-1"></a><span class="do">##  2:                                   IPCC 1.A.1 - Ener  1.A.1       CH4</span></span>
-<span id="cb8-161"><a href="#cb8-161" tabindex="-1"></a><span class="do">##  3:                                   IPCC 1.A.1 - Ener  1.A.1       CH4</span></span>
-<span id="cb8-162"><a href="#cb8-162" tabindex="-1"></a><span class="do">##  4:                                   IPCC 1.A.1 - Ener  1.A.1       CH4</span></span>
-<span id="cb8-163"><a href="#cb8-163" tabindex="-1"></a><span class="do">##  5:                                   IPCC 1.A.1 - Ener  1.A.1       CH4</span></span>
-<span id="cb8-164"><a href="#cb8-164" tabindex="-1"></a><span class="do">##  6: Finnish Environment Institute, Finland 1.A.1 - Ener  1.A.1       CH4</span></span>
-<span id="cb8-165"><a href="#cb8-165" tabindex="-1"></a><span class="do">##  7: Finnish Environment Institute, Finland 1.A.1 - Ener  1.A.1       CH4</span></span>
-<span id="cb8-166"><a href="#cb8-166" tabindex="-1"></a><span class="do">##  8: Finnish Environment Institute, Finland 1.A.1 - Ener  1.A.1       CH4</span></span>
-<span id="cb8-167"><a href="#cb8-167" tabindex="-1"></a><span class="do">##  9: Finnish Environment Institute, Finland 1.A.1 - Ener  1.A.1       CH4</span></span>
-<span id="cb8-168"><a href="#cb8-168" tabindex="-1"></a><span class="do">## 10: Finnish Environment Institute, Finland 1.A.1 - Ener  1.A.1       CH4</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="do">##     EF_ID                   IPCC_1996_SourceSink_Category</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="do">##    &lt;char&gt;                                          &lt;char&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="do">## 1: 122122 1A1a - Public Electricity and Heat Production\n</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="do">## 2: 122123 1A1a - Public Electricity and Heat Production\n</span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="do">## 3: 122135 1A1a - Public Electricity and Heat Production\n</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="do">##                                IPCC_2006_SourceSink_Category       Gas</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="do">##                                                       &lt;char&gt;    &lt;char&gt;</span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="do">## 1: 1.A.1.a - Main Activity Electricity and Heat Production\n METHANE\n</span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="do">## 2: 1.A.1.a - Main Activity Electricity and Heat Production\n METHANE\n</span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="do">## 3: 1.A.1.a - Main Activity Electricity and Heat Production\n METHANE\n</span></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="do">##      Fuel_1996   Fuel_2006 C_pool     Type_of_parameter</span></span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="do">##         &lt;char&gt;      &lt;char&gt; &lt;lgcl&gt;                &lt;char&gt;</span></span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="do">## 1: Natural Gas Natural Gas     NA Other (e.g. compiled)</span></span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="do">## 2: Natural Gas Natural Gas     NA               Modeled</span></span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="do">## 3: Natural Gas Natural Gas     NA Other (e.g. compiled)</span></span>
+<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="do">##                                   Description TechnologiesPractices</span></span>
+<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a><span class="do">##                                        &lt;char&gt;                &lt;char&gt;</span></span>
+<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a><span class="do">## 1: CH4 EF for natural gas engines less 25 MWw              CHP&lt;25MW</span></span>
+<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a><span class="do">## 2: CH4 EF for natural gas turbines less 25 MW              CHP&lt;25MW</span></span>
+<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a><span class="do">## 3:                     CH4 EF for natural gas                  &lt;NA&gt;</span></span>
+<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a><span class="do">##    ParametersConditions RegionRegional_Conditions</span></span>
+<span id="cb8-22"><a href="#cb8-22" tabindex="-1"></a><span class="do">##                  &lt;char&gt;                    &lt;char&gt;</span></span>
+<span id="cb8-23"><a href="#cb8-23" tabindex="-1"></a><span class="do">## 1:                 &lt;NA&gt;                   Denmark</span></span>
+<span id="cb8-24"><a href="#cb8-24" tabindex="-1"></a><span class="do">## 2:                 &lt;NA&gt;                   Denmark</span></span>
+<span id="cb8-25"><a href="#cb8-25" tabindex="-1"></a><span class="do">## 3:                 &lt;NA&gt;                   Germany</span></span>
+<span id="cb8-26"><a href="#cb8-26" tabindex="-1"></a><span class="do">##                                                                     AbatementControl_Technologies</span></span>
+<span id="cb8-27"><a href="#cb8-27" tabindex="-1"></a><span class="do">##                                                                                            &lt;char&gt;</span></span>
+<span id="cb8-28"><a href="#cb8-28" tabindex="-1"></a><span class="do">## 1:                      Engines equipped with oxidation catalysts for reducing the emission of CO</span></span>
+<span id="cb8-29"><a href="#cb8-29" tabindex="-1"></a><span class="do">## 2: Almost all the gas turbines are equipped with low-NOx burners. One plant is equipped with SCR.</span></span>
+<span id="cb8-30"><a href="#cb8-30" tabindex="-1"></a><span class="do">## 3:                                                                                           &lt;NA&gt;</span></span>
+<span id="cb8-31"><a href="#cb8-31" tabindex="-1"></a><span class="do">##    Other_properties  Value   Unit Equation IPCC_Worksheet Technical_Reference</span></span>
+<span id="cb8-32"><a href="#cb8-32" tabindex="-1"></a><span class="do">##              &lt;char&gt; &lt;char&gt; &lt;char&gt;   &lt;char&gt;         &lt;char&gt;              &lt;char&gt;</span></span>
+<span id="cb8-33"><a href="#cb8-33" tabindex="-1"></a><span class="do">## 1:             &lt;NA&gt;    481   g/GJ     &lt;NA&gt;           &lt;NA&gt;                &lt;NA&gt;</span></span>
+<span id="cb8-34"><a href="#cb8-34" tabindex="-1"></a><span class="do">## 2:             &lt;NA&gt;    1.7   g/GJ     &lt;NA&gt;           &lt;NA&gt;                &lt;NA&gt;</span></span>
+<span id="cb8-35"><a href="#cb8-35" tabindex="-1"></a><span class="do">## 3:             &lt;NA&gt;    309  kg/TJ     &lt;NA&gt;           &lt;NA&gt;                &lt;NA&gt;</span></span>
+<span id="cb8-36"><a href="#cb8-36" tabindex="-1"></a><span class="do">##                         Source_of_data            Data_provider           NF</span></span>
+<span id="cb8-37"><a href="#cb8-37" tabindex="-1"></a><span class="do">##                                 &lt;char&gt;                   &lt;char&gt;       &lt;char&gt;</span></span>
+<span id="cb8-38"><a href="#cb8-38" tabindex="-1"></a><span class="do">## 1:                               Other Pavel Shermanau, Belarus 1.A.1.a - Ma</span></span>
+<span id="cb8-39"><a href="#cb8-39" tabindex="-1"></a><span class="do">## 2:                               Other Pavel Shermanau, Belarus 1.A.1.a - Ma</span></span>
+<span id="cb8-40"><a href="#cb8-40" tabindex="-1"></a><span class="do">## 3: National Inventory Report (Annex I) Pavel Shermanau, Belarus 1.A.1.a - Ma</span></span>
+<span id="cb8-41"><a href="#cb8-41" tabindex="-1"></a><span class="do">##        NFR Pollutant</span></span>
+<span id="cb8-42"><a href="#cb8-42" tabindex="-1"></a><span class="do">##     &lt;char&gt;    &lt;char&gt;</span></span>
+<span id="cb8-43"><a href="#cb8-43" tabindex="-1"></a><span class="do">## 1: 1.A.1.a       CH4</span></span>
+<span id="cb8-44"><a href="#cb8-44" tabindex="-1"></a><span class="do">## 2: 1.A.1.a       CH4</span></span>
+<span id="cb8-45"><a href="#cb8-45" tabindex="-1"></a><span class="do">## 3: 1.A.1.a       CH4</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="create-directories">Create directories<a class="anchor" aria-label="anchor" href="#create-directories"></a>
+</h3>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/inventory.html">inventory</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="do">## Creating the folllowing directories, </span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.1.a</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.1.b</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.1.c</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.2.a</span></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.2.b</span></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.2.c</span></span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.2.d</span></span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.2.e</span></span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.2.g.vii</span></span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.2.g.viii</span></span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.3.a.i.(i)</span></span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.3.a.ii.(i)</span></span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.3.b.i</span></span>
+<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.3.b.ii</span></span>
+<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.3.b.iii</span></span>
+<span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.3.b.iv</span></span>
+<span id="cb10-18"><a href="#cb10-18" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.3.b.v</span></span>
+<span id="cb10-19"><a href="#cb10-19" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.3.b.vi</span></span>
+<span id="cb10-20"><a href="#cb10-20" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.3.b.vii</span></span>
+<span id="cb10-21"><a href="#cb10-21" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.3.c</span></span>
+<span id="cb10-22"><a href="#cb10-22" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.3.d.i</span></span>
+<span id="cb10-23"><a href="#cb10-23" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.3.d.ii</span></span>
+<span id="cb10-24"><a href="#cb10-24" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.4.a.i</span></span>
+<span id="cb10-25"><a href="#cb10-25" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.4.a.ii</span></span>
+<span id="cb10-26"><a href="#cb10-26" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.4.b.i</span></span>
+<span id="cb10-27"><a href="#cb10-27" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.4.b.ii</span></span>
+<span id="cb10-28"><a href="#cb10-28" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.4.c.i</span></span>
+<span id="cb10-29"><a href="#cb10-29" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.4.c.ii</span></span>
+<span id="cb10-30"><a href="#cb10-30" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.4.c.iii</span></span>
+<span id="cb10-31"><a href="#cb10-31" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.5.a</span></span>
+<span id="cb10-32"><a href="#cb10-32" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.5.b</span></span>
+<span id="cb10-33"><a href="#cb10-33" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.B.1.a</span></span>
+<span id="cb10-34"><a href="#cb10-34" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.B.1.b</span></span>
+<span id="cb10-35"><a href="#cb10-35" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.B.2.a.i</span></span>
+<span id="cb10-36"><a href="#cb10-36" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.B.2.a.iv</span></span>
+<span id="cb10-37"><a href="#cb10-37" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.B.2.a.v</span></span>
+<span id="cb10-38"><a href="#cb10-38" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.B.2.b</span></span>
+<span id="cb10-39"><a href="#cb10-39" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.B.2.c</span></span>
+<span id="cb10-40"><a href="#cb10-40" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.B.2.d</span></span>
+<span id="cb10-41"><a href="#cb10-41" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/11.B</span></span>
+<span id="cb10-42"><a href="#cb10-42" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.A.1</span></span>
+<span id="cb10-43"><a href="#cb10-43" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.A.2</span></span>
+<span id="cb10-44"><a href="#cb10-44" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.A.3</span></span>
+<span id="cb10-45"><a href="#cb10-45" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.A.5.a</span></span>
+<span id="cb10-46"><a href="#cb10-46" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.A.5.b</span></span>
+<span id="cb10-47"><a href="#cb10-47" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.A.5.c</span></span>
+<span id="cb10-48"><a href="#cb10-48" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.B</span></span>
+<span id="cb10-49"><a href="#cb10-49" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.B.1</span></span>
+<span id="cb10-50"><a href="#cb10-50" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.B.10.a</span></span>
+<span id="cb10-51"><a href="#cb10-51" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.B.2</span></span>
+<span id="cb10-52"><a href="#cb10-52" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.B.3</span></span>
+<span id="cb10-53"><a href="#cb10-53" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.B.5</span></span>
+<span id="cb10-54"><a href="#cb10-54" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.B.6</span></span>
+<span id="cb10-55"><a href="#cb10-55" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.B.7</span></span>
+<span id="cb10-56"><a href="#cb10-56" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.C.1</span></span>
+<span id="cb10-57"><a href="#cb10-57" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.C.2</span></span>
+<span id="cb10-58"><a href="#cb10-58" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.C.3</span></span>
+<span id="cb10-59"><a href="#cb10-59" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.C.5</span></span>
+<span id="cb10-60"><a href="#cb10-60" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.C.6</span></span>
+<span id="cb10-61"><a href="#cb10-61" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.C.7.a</span></span>
+<span id="cb10-62"><a href="#cb10-62" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.C.7.b</span></span>
+<span id="cb10-63"><a href="#cb10-63" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.C.7.c</span></span>
+<span id="cb10-64"><a href="#cb10-64" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.C.7.d</span></span>
+<span id="cb10-65"><a href="#cb10-65" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.D.3.a</span></span>
+<span id="cb10-66"><a href="#cb10-66" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.D.3.b</span></span>
+<span id="cb10-67"><a href="#cb10-67" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.D.3.c</span></span>
+<span id="cb10-68"><a href="#cb10-68" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.D.3.d</span></span>
+<span id="cb10-69"><a href="#cb10-69" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.D.3.e</span></span>
+<span id="cb10-70"><a href="#cb10-70" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.D.3.f</span></span>
+<span id="cb10-71"><a href="#cb10-71" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.D.3.g</span></span>
+<span id="cb10-72"><a href="#cb10-72" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.D.3.h</span></span>
+<span id="cb10-73"><a href="#cb10-73" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.D.3.i, 2.G</span></span>
+<span id="cb10-74"><a href="#cb10-74" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.G</span></span>
+<span id="cb10-75"><a href="#cb10-75" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.H.1</span></span>
+<span id="cb10-76"><a href="#cb10-76" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.H.2</span></span>
+<span id="cb10-77"><a href="#cb10-77" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.I</span></span>
+<span id="cb10-78"><a href="#cb10-78" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.K</span></span>
+<span id="cb10-79"><a href="#cb10-79" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.1</span></span>
+<span id="cb10-80"><a href="#cb10-80" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.1.a</span></span>
+<span id="cb10-81"><a href="#cb10-81" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.1.b</span></span>
+<span id="cb10-82"><a href="#cb10-82" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.2</span></span>
+<span id="cb10-83"><a href="#cb10-83" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.3</span></span>
+<span id="cb10-84"><a href="#cb10-84" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.4.a</span></span>
+<span id="cb10-85"><a href="#cb10-85" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.4.d</span></span>
+<span id="cb10-86"><a href="#cb10-86" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.4.e</span></span>
+<span id="cb10-87"><a href="#cb10-87" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.4.f</span></span>
+<span id="cb10-88"><a href="#cb10-88" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.4.g.i</span></span>
+<span id="cb10-89"><a href="#cb10-89" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.4.g.ii</span></span>
+<span id="cb10-90"><a href="#cb10-90" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.4.g.Ii</span></span>
+<span id="cb10-91"><a href="#cb10-91" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.4.g.iii</span></span>
+<span id="cb10-92"><a href="#cb10-92" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.4.g.iv</span></span>
+<span id="cb10-93"><a href="#cb10-93" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.4.h</span></span>
+<span id="cb10-94"><a href="#cb10-94" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.D.a.1</span></span>
+<span id="cb10-95"><a href="#cb10-95" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.D.a.2</span></span>
+<span id="cb10-96"><a href="#cb10-96" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.D.a.2.a</span></span>
+<span id="cb10-97"><a href="#cb10-97" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.D.a.2.b</span></span>
+<span id="cb10-98"><a href="#cb10-98" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.D.a.2.c</span></span>
+<span id="cb10-99"><a href="#cb10-99" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.D.a.3</span></span>
+<span id="cb10-100"><a href="#cb10-100" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.D.a.3.a</span></span>
+<span id="cb10-101"><a href="#cb10-101" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.D.a.4</span></span>
+<span id="cb10-102"><a href="#cb10-102" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.D.c</span></span>
+<span id="cb10-103"><a href="#cb10-103" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.D.e</span></span>
+<span id="cb10-104"><a href="#cb10-104" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/5.B.1</span></span>
+<span id="cb10-105"><a href="#cb10-105" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/5.B.2</span></span>
+<span id="cb10-106"><a href="#cb10-106" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/5.C.1.a</span></span>
+<span id="cb10-107"><a href="#cb10-107" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/5.C.1.b.i</span></span>
+<span id="cb10-108"><a href="#cb10-108" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/5.C.1.b.iii</span></span>
+<span id="cb10-109"><a href="#cb10-109" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/5.C.1.b.iv</span></span>
+<span id="cb10-110"><a href="#cb10-110" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/5.C.1.b.v</span></span>
+<span id="cb10-111"><a href="#cb10-111" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/5.C.2</span></span>
+<span id="cb10-112"><a href="#cb10-112" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/5.D</span></span>
+<span id="cb10-113"><a href="#cb10-113" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/5.D.1</span></span>
+<span id="cb10-114"><a href="#cb10-114" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/5.D.2</span></span>
+<span id="cb10-115"><a href="#cb10-115" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/5.E</span></span></code></pre></div>
 </div>
 </div>
 </div>

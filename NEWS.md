@@ -1,6 +1,11 @@
 NEWS
 ===========
 
+### pega 0.7.0 (date: 2025-11-29)
+
+- Added `inventory` function to create directories structure
+
+
 ### pega 0.6.0 (date: 2025-11-28)
 
 - Added ef_ipcc to return and get IPCC EF

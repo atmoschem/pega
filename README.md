@@ -25,7 +25,7 @@ library(data.table)
 utils::packageVersion("pega")
 ```
 
-    ## [1] '0.6.0'
+    ## [1] '0.7.0'
 
 ## Emission factors
 
@@ -52,171 +52,170 @@ ef_emep(tier = 1, fuel = "Natural gas", pol = "PM2.5")
 ef_ipcc(fuel = "Natural Gas", pol = "CH4")
 ```
 
-    ##      EF_ID
-    ##     <char>
-    ##  1:  17190
-    ##  2:  18401
-    ##  3:  18402
-    ##  4:  18403
-    ##  5: 117696
-    ##  6: 120947
-    ##  7: 120948
-    ##  8: 120951
-    ##  9: 120952
-    ## 10: 120955
-    ##                                                                                                                                                                            IPCC_1996_SourceSink_Category
-    ##                                                                                                                                                                                                   <char>
-    ##  1:                                                                                                                                                                            1A1 - Energy Industries\n
-    ##  2: 1A1 - Energy Industries\n1A1a - Public Electricity and Heat Production\n1A1a1 - Public Electricity Generation\n1A1a2 - Public Combined Heat and Power Generation (CHP)\n1A1a3 - Public Heat Plants\n
-    ##  3: 1A1 - Energy Industries\n1A1a - Public Electricity and Heat Production\n1A1a1 - Public Electricity Generation\n1A1a2 - Public Combined Heat and Power Generation (CHP)\n1A1a3 - Public Heat Plants\n
-    ##  4: 1A1 - Energy Industries\n1A1a - Public Electricity and Heat Production\n1A1a1 - Public Electricity Generation\n1A1a2 - Public Combined Heat and Power Generation (CHP)\n1A1a3 - Public Heat Plants\n
-    ##  5:                                                                                                                                                                            1A1 - Energy Industries\n
-    ##  6:                                                                                                                    1A1 - Energy Industries\n1A2 - Manufacturing Industries and Construction (ISIC)\n
-    ##  7:                                                                                                                    1A1 - Energy Industries\n1A2 - Manufacturing Industries and Construction (ISIC)\n
-    ##  8:                                                                                                                    1A1 - Energy Industries\n1A2 - Manufacturing Industries and Construction (ISIC)\n
-    ##  9:                                                                                                                    1A1 - Energy Industries\n1A2 - Manufacturing Industries and Construction (ISIC)\n
-    ## 10:                                                                                                                    1A1 - Energy Industries\n1A2 - Manufacturing Industries and Construction (ISIC)\n
-    ##                                                                                                                                                                                  IPCC_2006_SourceSink_Category
-    ##                                                                                                                                                                                                         <char>
-    ##  1:                                                                                                                                                                                1.A.1 - Energy Industries\n
-    ##  2: 1.A.1 - Energy Industries\n1.A.1.a - Main Activity Electricity and Heat Production\n1.A.1.a.i - Electricity Generation\n1.A.1.a.ii - Combined Heat and Power Generation (CHP)\n1.A.1.a.iii - Heat Plants\n
-    ##  3: 1.A.1 - Energy Industries\n1.A.1.a - Main Activity Electricity and Heat Production\n1.A.1.a.i - Electricity Generation\n1.A.1.a.ii - Combined Heat and Power Generation (CHP)\n1.A.1.a.iii - Heat Plants\n
-    ##  4: 1.A.1 - Energy Industries\n1.A.1.a - Main Activity Electricity and Heat Production\n1.A.1.a.i - Electricity Generation\n1.A.1.a.ii - Combined Heat and Power Generation (CHP)\n1.A.1.a.iii - Heat Plants\n
-    ##  5:                                                                                                                                                                                1.A.1 - Energy Industries\n
-    ##  6:                                                                                                                             1.A.1 - Energy Industries\n1.A.2 - Manufacturing Industries and Construction\n
-    ##  7:                                                                                                                             1.A.1 - Energy Industries\n1.A.2 - Manufacturing Industries and Construction\n
-    ##  8:                                                                                                                             1.A.1 - Energy Industries\n1.A.2 - Manufacturing Industries and Construction\n
-    ##  9:                                                                                                                             1.A.1 - Energy Industries\n1.A.2 - Manufacturing Industries and Construction\n
-    ## 10:                                                                                                                             1.A.1 - Energy Industries\n1.A.2 - Manufacturing Industries and Construction\n
-    ##           Gas   Fuel_1996   Fuel_2006 C_pool     Type_of_parameter
-    ##        <char>      <char>      <char> <lgcl>                <char>
-    ##  1: METHANE\n Natural Gas Natural Gas     NA     1996 IPCC default
-    ##  2: METHANE\n Natural Gas Natural Gas     NA     1996 IPCC default
-    ##  3: METHANE\n Natural Gas Natural Gas     NA     1996 IPCC default
-    ##  4: METHANE\n Natural Gas Natural Gas     NA     1996 IPCC default
-    ##  5: METHANE\n Natural Gas Natural Gas     NA     2006 IPCC default
-    ##  6: METHANE\n Natural Gas Natural Gas     NA Other (e.g. compiled)
-    ##  7: METHANE\n Natural Gas Natural Gas     NA Other (e.g. compiled)
-    ##  8: METHANE\n Natural Gas Natural Gas     NA Other (e.g. compiled)
-    ##  9: METHANE\n Natural Gas Natural Gas     NA Other (e.g. compiled)
-    ## 10: METHANE\n Natural Gas Natural Gas     NA Other (e.g. compiled)
-    ##                                                                        Description
-    ##                                                                             <char>
-    ##  1:                                     CH4 Default (Uncontrolled) emisson factors
-    ##  2:                          Emission factors for utility boiler source perfomance
-    ##  3:                          Emission factors for utility boiler source perfomance
-    ##  4:                          Emission factors for utility boiler source perfomance
-    ##  5: CH4 Emission Factor for Stationary Combustion (kg/TJ on a net calorific basis)
-    ##  6:                                      Emission Factor for Stationary Combustion
-    ##  7:                                      Emission Factor for Stationary Combustion
-    ##  8:                                      Emission Factor for Stationary Combustion
-    ##  9:                                      Emission Factor for Stationary Combustion
-    ## 10:                                      Emission Factor for Stationary Combustion
-    ##                            TechnologiesPractices
-    ##                                           <char>
-    ##  1:                                         <NA>
-    ##  2:                                      Boilers
-    ##  3:             Large Gas-Fired Gas Turbines>3MW
-    ##  4:                      Large Dual-Fuel Engines
-    ##  5:                                         <NA>
-    ##  6:                             Gas fired boiler
-    ##  7:                             Gas fired boiler
-    ##  8: Gas turbine plant/Combined cycle power plant
-    ##  9: Gas turbine plant/Combined cycle power plant
-    ## 10:                        Otto or diesel engine
-    ##                                                                                                                                                        ParametersConditions
-    ##                                                                                                                                                                      <char>
-    ##  1:                                                                                                                                                                    <NA>
-    ##  2:                                                                                                                                                                    <NA>
-    ##  3:                                                                                                                                                                    <NA>
-    ##  4:                                                                                                                                                                    <NA>
-    ##  5:                                                                                                                                                                    <NA>
-    ##  6: Co-firing when gas is the main fuel (greater than 80% gas) and (50%-80% gas). In Finland, co-firing of different types of fuels is very common in, e.g. fluidized beds.
-    ##  7: Co-firing when gas is the main fuel (greater than 80% gas) and (50%-80% gas). In Finland, co-firing of different types of fuels is very common in, e.g. fluidized beds.
-    ##  8:                                                                                                                                                                    <NA>
-    ##  9:                                                                                                                                                                    <NA>
-    ## 10:                                                                                                                                                                    <NA>
-    ##     RegionRegional_Conditions AbatementControl_Technologies
-    ##                        <char>                        <char>
-    ##  1:                      <NA>                          <NA>
-    ##  2:                      <NA>                          <NA>
-    ##  3:                      <NA>                          <NA>
-    ##  4:                      <NA>                          <NA>
-    ##  5:                      <NA>                          <NA>
-    ##  6:                   Finland                          <NA>
-    ##  7:                   Finland                          <NA>
-    ##  8:                   Finland                          <NA>
-    ##  9:                   Finland                          <NA>
-    ## 10:                   Finland                          <NA>
-    ##                Other_properties  Value   Unit
-    ##                          <char> <char> <char>
-    ##  1:                        <NA>      1  KG/TJ
-    ##  2:                        <NA>    0.1  KG/TJ
-    ##  3:                        <NA>      6  KG/TJ
-    ##  4:                        <NA>    240  KG/TJ
-    ##  5:                        <NA>      1  kg/TJ
-    ##  6: Capacity greater than  1 MW      1  kg/TJ
-    ##  7: Capacity smaller than  1 MW      5  kg/TJ
-    ##  8: Capacity smaller than  5 MW      3  kg/TJ
-    ##  9: Capacity greater than  5 MW      1  kg/TJ
-    ## 10:               not specified    240  kg/TJ
-    ##                                                                                                                                                                                                                                                   Equation
-    ##                                                                                                                                                                                                                                                     <char>
-    ##  1:                                                                                                                                                                                                                                                   <NA>
-    ##  2:                                                                                                                                                                                                                                                   <NA>
-    ##  3:                                                                                                                                                                                                                                                   <NA>
-    ##  4:                                                                                                                                                                                                                                                   <NA>
-    ##  5:                                                                                                                                                           Equation 2.1 in Volume 2 of the 2006 IPCC Guidelines for National Greenhouse Gas Inventories
-    ##  6: Emissions of installation  = sum (Fuel [TJ] * EFTechnology [t/TJ]), where Fuel = each fuel batch of installation in TJ,  (Technology) is a combination of installation type+combustion technique, fuel capacity and main fuel. (Bottom-up calculation)
-    ##  7: Emissions of installation  = sum (Fuel [TJ] * EFTechnology [t/TJ]), where Fuel = each fuel batch of installation in TJ,  (Technology) is a combination of installation type+combustion technique, fuel capacity and main fuel. (Bottom-up calculation)
-    ##  8: Emissions of installation  = sum (Fuel [TJ] * EFTechnology [t/TJ]), where Fuel = each fuel batch of installation in TJ,  (Technology) is a combination of installation type+combustion technique, fuel capacity and main fuel. (Bottom-up calculation)
-    ##  9: Emissions of installation  = sum (Fuel [TJ] * EFTechnology [t/TJ]), where Fuel = each fuel batch of installation in TJ,  (Technology) is a combination of installation type+combustion technique, fuel capacity and main fuel. (Bottom-up calculation)
-    ## 10: Emissions of installation  = sum (Fuel [TJ] * EFTechnology [t/TJ]), where Fuel = each fuel batch of installation in TJ,  (Technology) is a combination of installation type+combustion technique, fuel capacity and main fuel. (Bottom-up calculation)
-    ##                                                                                                        IPCC_Worksheet
-    ##                                                                                                                <char>
-    ##  1:                                                                                          Worksheet 1-3; Sheet 1-3
-    ##  2:                                                                                                    Not Applicable
-    ##  3:                                                                                                    Not Applicable
-    ##  4:                                                                                                    Not Applicable
-    ##  5: 1A, Sheet 3 of 4 (page A1.8) in Annex 1 of Volume 2, 2006 IPCC Guidelines for National Greenhouse Gas Inventories
-    ##  6:                                                                                                              <NA>
-    ##  7:                                                                                                              <NA>
-    ##  8:                                                                                                              <NA>
-    ##  9:                                                                                                              <NA>
-    ## 10:                                                                                                              <NA>
-    ##                                                                                                                                                                                                                                                                                                                   Technical_Reference
-    ##                                                                                                                                                                                                                                                                                                                                <char>
-    ##  1: These CH4 default emission factors are based on CORINAIR90 database, the CORINAIR1994 default emissionf actors, EDGAR Version 2.0 database, National Communications to the UNFCCC,Berdowski, et al(1993 ),Radian Corporation (1990) and USEPA(1995). Additional research is needed to improve the quality of the emission factors
-    ##  2:                                                                                                                                                                                                                 US EPA (1995) Compilation of Air Pollutant Emission Factors. Vol 1 Stationary Point and Area Sources, 5th Edition
-    ##  3:                                                                                                                                                                                                                 US EPA (1995) Compilation of Air Pollutant Emission Factors. Vol 1 Stationary Point and Area Sources, 5th Edition
-    ##  4:                                                                                                                                                                                                                 US EPA (1995) Compilation of Air Pollutant Emission Factors. Vol 1 Stationary Point and Area Sources, 5th Edition
-    ##  5:                                                                                                                                                            Expert judgement by the authors of Chapter 2, Volume 2 of the 2006 IPCC Guidelines. For details, see Section 2.3.2.1, Chapter 2, Volume 2 of the 2006 IPCC Guidelines.
-    ##  6:                                                        Finnish NIR 2008. Expert estimates by Statistics Finland based mainly on the VTT studies (Tsupari et. al., 2005, Tsupari et. al., 2006 and Tsupari et al., 2007); http://www.vtt.fi/inf/pdf/tiedotteet/2005/T2321.pdf http://www.vtt.fi/inf/pdf/workingpapers/2006/W43.pdf
-    ##  7:                                                        Finnish NIR 2008. Expert estimates by Statistics Finland based mainly on the VTT studies (Tsupari et. al., 2005, Tsupari et. al., 2006 and Tsupari et al., 2007); http://www.vtt.fi/inf/pdf/tiedotteet/2005/T2321.pdf http://www.vtt.fi/inf/pdf/workingpapers/2006/W43.pdf
-    ##  8:                                                        Finnish NIR 2008. Expert estimates by Statistics Finland based mainly on the VTT studies (Tsupari et. al., 2005, Tsupari et. al., 2006 and Tsupari et al., 2007); http://www.vtt.fi/inf/pdf/tiedotteet/2005/T2321.pdf http://www.vtt.fi/inf/pdf/workingpapers/2006/W43.pdf
-    ##  9:                                                        Finnish NIR 2008. Expert estimates by Statistics Finland based mainly on the VTT studies (Tsupari et. al., 2005, Tsupari et. al., 2006 and Tsupari et al., 2007); http://www.vtt.fi/inf/pdf/tiedotteet/2005/T2321.pdf http://www.vtt.fi/inf/pdf/workingpapers/2006/W43.pdf
-    ## 10:                                                        Finnish NIR 2008. Expert estimates by Statistics Finland based mainly on the VTT studies (Tsupari et. al., 2005, Tsupari et. al., 2006 and Tsupari et al., 2007); http://www.vtt.fi/inf/pdf/tiedotteet/2005/T2321.pdf http://www.vtt.fi/inf/pdf/workingpapers/2006/W43.pdf
-    ##                                                                                                              Source_of_data
-    ##                                                                                                                      <char>
-    ##  1:   Revised 1996 IPCC Guidelines for National Greenhouse Gas Inventories (Table 1-7 on Page 1.35 of the Reference Manual)
-    ##  2: Revised 1996 IPCC Guidelines for National Greenhouse Gas Inventories ( Table 1-15 on Page 1.53) of the Reference Manual
-    ##  3: Revised 1996 IPCC Guidelines for National Greenhouse Gas Inventories ( Table 1-15 on Page 1.53) of the Reference Manual
-    ##  4: Revised 1996 IPCC Guidelines for National Greenhouse Gas Inventories ( Table 1-15 on Page 1.53) of the Reference Manual
-    ##  5:                               2006 IPCC Guidelines for National Greenhouse Gas Inventories, Volume 2: Energy, Table 2.2
-    ##  6:                                                                                     National Inventory Report (Annex I)
-    ##  7:                                                                                     National Inventory Report (Annex I)
-    ##  8:                                                                                     National Inventory Report (Annex I)
-    ##  9:                                                                                     National Inventory Report (Annex I)
-    ## 10:                                                                                     National Inventory Report (Annex I)
-    ##                              Data_provider           NF    NFR Pollutant
-    ##                                     <char>       <char> <char>    <char>
-    ##  1:                                   IPCC 1.A.1 - Ener  1.A.1       CH4
-    ##  2:                                   IPCC 1.A.1 - Ener  1.A.1       CH4
-    ##  3:                                   IPCC 1.A.1 - Ener  1.A.1       CH4
-    ##  4:                                   IPCC 1.A.1 - Ener  1.A.1       CH4
-    ##  5:                                   IPCC 1.A.1 - Ener  1.A.1       CH4
-    ##  6: Finnish Environment Institute, Finland 1.A.1 - Ener  1.A.1       CH4
-    ##  7: Finnish Environment Institute, Finland 1.A.1 - Ener  1.A.1       CH4
-    ##  8: Finnish Environment Institute, Finland 1.A.1 - Ener  1.A.1       CH4
-    ##  9: Finnish Environment Institute, Finland 1.A.1 - Ener  1.A.1       CH4
-    ## 10: Finnish Environment Institute, Finland 1.A.1 - Ener  1.A.1       CH4
+    ##     EF_ID                   IPCC_1996_SourceSink_Category
+    ##    <char>                                          <char>
+    ## 1: 122122 1A1a - Public Electricity and Heat Production\n
+    ## 2: 122123 1A1a - Public Electricity and Heat Production\n
+    ## 3: 122135 1A1a - Public Electricity and Heat Production\n
+    ##                                IPCC_2006_SourceSink_Category       Gas
+    ##                                                       <char>    <char>
+    ## 1: 1.A.1.a - Main Activity Electricity and Heat Production\n METHANE\n
+    ## 2: 1.A.1.a - Main Activity Electricity and Heat Production\n METHANE\n
+    ## 3: 1.A.1.a - Main Activity Electricity and Heat Production\n METHANE\n
+    ##      Fuel_1996   Fuel_2006 C_pool     Type_of_parameter
+    ##         <char>      <char> <lgcl>                <char>
+    ## 1: Natural Gas Natural Gas     NA Other (e.g. compiled)
+    ## 2: Natural Gas Natural Gas     NA               Modeled
+    ## 3: Natural Gas Natural Gas     NA Other (e.g. compiled)
+    ##                                   Description TechnologiesPractices
+    ##                                        <char>                <char>
+    ## 1: CH4 EF for natural gas engines less 25 MWw              CHP<25MW
+    ## 2: CH4 EF for natural gas turbines less 25 MW              CHP<25MW
+    ## 3:                     CH4 EF for natural gas                  <NA>
+    ##    ParametersConditions RegionRegional_Conditions
+    ##                  <char>                    <char>
+    ## 1:                 <NA>                   Denmark
+    ## 2:                 <NA>                   Denmark
+    ## 3:                 <NA>                   Germany
+    ##                                                                     AbatementControl_Technologies
+    ##                                                                                            <char>
+    ## 1:                      Engines equipped with oxidation catalysts for reducing the emission of CO
+    ## 2: Almost all the gas turbines are equipped with low-NOx burners. One plant is equipped with SCR.
+    ## 3:                                                                                           <NA>
+    ##    Other_properties  Value   Unit Equation IPCC_Worksheet Technical_Reference
+    ##              <char> <char> <char>   <char>         <char>              <char>
+    ## 1:             <NA>    481   g/GJ     <NA>           <NA>                <NA>
+    ## 2:             <NA>    1.7   g/GJ     <NA>           <NA>                <NA>
+    ## 3:             <NA>    309  kg/TJ     <NA>           <NA>                <NA>
+    ##                         Source_of_data            Data_provider           NF
+    ##                                 <char>                   <char>       <char>
+    ## 1:                               Other Pavel Shermanau, Belarus 1.A.1.a - Ma
+    ## 2:                               Other Pavel Shermanau, Belarus 1.A.1.a - Ma
+    ## 3: National Inventory Report (Annex I) Pavel Shermanau, Belarus 1.A.1.a - Ma
+    ##        NFR Pollutant
+    ##     <char>    <char>
+    ## 1: 1.A.1.a       CH4
+    ## 2: 1.A.1.a       CH4
+    ## 3: 1.A.1.a       CH4
+
+### Create directories
+
+``` r
+inventory(path = tempdir())
+```
+
+    ## Creating the folllowing directories, 
+    ## /tmp/RtmpazPxjo/1.A.1.a
+    ## /tmp/RtmpazPxjo/1.A.1.b
+    ## /tmp/RtmpazPxjo/1.A.1.c
+    ## /tmp/RtmpazPxjo/1.A.2.a
+    ## /tmp/RtmpazPxjo/1.A.2.b
+    ## /tmp/RtmpazPxjo/1.A.2.c
+    ## /tmp/RtmpazPxjo/1.A.2.d
+    ## /tmp/RtmpazPxjo/1.A.2.e
+    ## /tmp/RtmpazPxjo/1.A.2.g.vii
+    ## /tmp/RtmpazPxjo/1.A.2.g.viii
+    ## /tmp/RtmpazPxjo/1.A.3.a.i.(i)
+    ## /tmp/RtmpazPxjo/1.A.3.a.ii.(i)
+    ## /tmp/RtmpazPxjo/1.A.3.b.i
+    ## /tmp/RtmpazPxjo/1.A.3.b.ii
+    ## /tmp/RtmpazPxjo/1.A.3.b.iii
+    ## /tmp/RtmpazPxjo/1.A.3.b.iv
+    ## /tmp/RtmpazPxjo/1.A.3.b.v
+    ## /tmp/RtmpazPxjo/1.A.3.b.vi
+    ## /tmp/RtmpazPxjo/1.A.3.b.vii
+    ## /tmp/RtmpazPxjo/1.A.3.c
+    ## /tmp/RtmpazPxjo/1.A.3.d.i
+    ## /tmp/RtmpazPxjo/1.A.3.d.ii
+    ## /tmp/RtmpazPxjo/1.A.4.a.i
+    ## /tmp/RtmpazPxjo/1.A.4.a.ii
+    ## /tmp/RtmpazPxjo/1.A.4.b.i
+    ## /tmp/RtmpazPxjo/1.A.4.b.ii
+    ## /tmp/RtmpazPxjo/1.A.4.c.i
+    ## /tmp/RtmpazPxjo/1.A.4.c.ii
+    ## /tmp/RtmpazPxjo/1.A.4.c.iii
+    ## /tmp/RtmpazPxjo/1.A.5.a
+    ## /tmp/RtmpazPxjo/1.A.5.b
+    ## /tmp/RtmpazPxjo/1.B.1.a
+    ## /tmp/RtmpazPxjo/1.B.1.b
+    ## /tmp/RtmpazPxjo/1.B.2.a.i
+    ## /tmp/RtmpazPxjo/1.B.2.a.iv
+    ## /tmp/RtmpazPxjo/1.B.2.a.v
+    ## /tmp/RtmpazPxjo/1.B.2.b
+    ## /tmp/RtmpazPxjo/1.B.2.c
+    ## /tmp/RtmpazPxjo/1.B.2.d
+    ## /tmp/RtmpazPxjo/11.B
+    ## /tmp/RtmpazPxjo/2.A.1
+    ## /tmp/RtmpazPxjo/2.A.2
+    ## /tmp/RtmpazPxjo/2.A.3
+    ## /tmp/RtmpazPxjo/2.A.5.a
+    ## /tmp/RtmpazPxjo/2.A.5.b
+    ## /tmp/RtmpazPxjo/2.A.5.c
+    ## /tmp/RtmpazPxjo/2.B
+    ## /tmp/RtmpazPxjo/2.B.1
+    ## /tmp/RtmpazPxjo/2.B.10.a
+    ## /tmp/RtmpazPxjo/2.B.2
+    ## /tmp/RtmpazPxjo/2.B.3
+    ## /tmp/RtmpazPxjo/2.B.5
+    ## /tmp/RtmpazPxjo/2.B.6
+    ## /tmp/RtmpazPxjo/2.B.7
+    ## /tmp/RtmpazPxjo/2.C.1
+    ## /tmp/RtmpazPxjo/2.C.2
+    ## /tmp/RtmpazPxjo/2.C.3
+    ## /tmp/RtmpazPxjo/2.C.5
+    ## /tmp/RtmpazPxjo/2.C.6
+    ## /tmp/RtmpazPxjo/2.C.7.a
+    ## /tmp/RtmpazPxjo/2.C.7.b
+    ## /tmp/RtmpazPxjo/2.C.7.c
+    ## /tmp/RtmpazPxjo/2.C.7.d
+    ## /tmp/RtmpazPxjo/2.D.3.a
+    ## /tmp/RtmpazPxjo/2.D.3.b
+    ## /tmp/RtmpazPxjo/2.D.3.c
+    ## /tmp/RtmpazPxjo/2.D.3.d
+    ## /tmp/RtmpazPxjo/2.D.3.e
+    ## /tmp/RtmpazPxjo/2.D.3.f
+    ## /tmp/RtmpazPxjo/2.D.3.g
+    ## /tmp/RtmpazPxjo/2.D.3.h
+    ## /tmp/RtmpazPxjo/2.D.3.i, 2.G
+    ## /tmp/RtmpazPxjo/2.G
+    ## /tmp/RtmpazPxjo/2.H.1
+    ## /tmp/RtmpazPxjo/2.H.2
+    ## /tmp/RtmpazPxjo/2.I
+    ## /tmp/RtmpazPxjo/2.K
+    ## /tmp/RtmpazPxjo/3.B.1
+    ## /tmp/RtmpazPxjo/3.B.1.a
+    ## /tmp/RtmpazPxjo/3.B.1.b
+    ## /tmp/RtmpazPxjo/3.B.2
+    ## /tmp/RtmpazPxjo/3.B.3
+    ## /tmp/RtmpazPxjo/3.B.4.a
+    ## /tmp/RtmpazPxjo/3.B.4.d
+    ## /tmp/RtmpazPxjo/3.B.4.e
+    ## /tmp/RtmpazPxjo/3.B.4.f
+    ## /tmp/RtmpazPxjo/3.B.4.g.i
+    ## /tmp/RtmpazPxjo/3.B.4.g.ii
+    ## /tmp/RtmpazPxjo/3.B.4.g.Ii
+    ## /tmp/RtmpazPxjo/3.B.4.g.iii
+    ## /tmp/RtmpazPxjo/3.B.4.g.iv
+    ## /tmp/RtmpazPxjo/3.B.4.h
+    ## /tmp/RtmpazPxjo/3.D.a.1
+    ## /tmp/RtmpazPxjo/3.D.a.2
+    ## /tmp/RtmpazPxjo/3.D.a.2.a
+    ## /tmp/RtmpazPxjo/3.D.a.2.b
+    ## /tmp/RtmpazPxjo/3.D.a.2.c
+    ## /tmp/RtmpazPxjo/3.D.a.3
+    ## /tmp/RtmpazPxjo/3.D.a.3.a
+    ## /tmp/RtmpazPxjo/3.D.a.4
+    ## /tmp/RtmpazPxjo/3.D.c
+    ## /tmp/RtmpazPxjo/3.D.e
+    ## /tmp/RtmpazPxjo/5.B.1
+    ## /tmp/RtmpazPxjo/5.B.2
+    ## /tmp/RtmpazPxjo/5.C.1.a
+    ## /tmp/RtmpazPxjo/5.C.1.b.i
+    ## /tmp/RtmpazPxjo/5.C.1.b.iii
+    ## /tmp/RtmpazPxjo/5.C.1.b.iv
+    ## /tmp/RtmpazPxjo/5.C.1.b.v
+    ## /tmp/RtmpazPxjo/5.C.2
+    ## /tmp/RtmpazPxjo/5.D
+    ## /tmp/RtmpazPxjo/5.D.1
+    ## /tmp/RtmpazPxjo/5.D.2
+    ## /tmp/RtmpazPxjo/5.E

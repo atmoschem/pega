@@ -2,12 +2,12 @@
 % Please edit documentation in R/ef_ipcc.R
 \name{ef_ipcc}
 \alias{ef_ipcc}
-\title{Emissions factors from  Intergovernmental Panel on Climate Change (IPCC)}
+\title{Inventory structure}
 \usage{
-ef_ipcc(nfr = "1.A.1", fuel, pol, returnfdb = FALSE)
+ef_ipcc(nfr = "1.A.1.a", fuel, pol, returnfdb = FALSE)
 }
 \arguments{
-\item{nfr}{String: nomenclature for reporting}
+\item{nfr}{nomenclature for reporting, one or many}
 
 \item{fuel}{String for type of fuel.}
 
@@ -19,11 +19,11 @@ ef_ipcc(nfr = "1.A.1", fuel, pol, returnfdb = FALSE)
 Return a data.table
 }
 \description{
-Emissions factors from  Intergovernmental Panel on Climate Change (IPCC)
+Inventory structure
 }
 \examples{
 {
-ef_ipcc(fuel = "Natural Gas", pol = "CH4")
+ef_emep(tier = 1, fuel = "Natural gas", pol = "PM2.5")
 }
 }
 \keyword{emission}
