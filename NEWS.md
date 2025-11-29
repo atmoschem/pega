@@ -1,6 +1,10 @@
 NEWS
 ===========
 
+### pega 0.6.0 (date: 2025-11-28)
+
+- Added ef_ipcc to return and get IPCC EF
+
 ### pega 0.5.0 (date: 2025-11-06)
 
 - Renamed pega: 

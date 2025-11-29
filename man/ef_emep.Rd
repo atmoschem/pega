@@ -27,7 +27,7 @@ Emissions factors from European European Environment Agency
 }
 \examples{
 {
-# ef_eea(category = "NAO SEI")
+ef_emep(tier = 1, fuel = "Natural gas", pol = "PM2.5")
 }
 }
 \keyword{emission}

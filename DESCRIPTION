@@ -1,8 +1,8 @@
 Package: pega
 Type: Package
 Title: Pollutants Emissions and Gaseous of the Atmosphere
-Version: 0.5.0
-Date: 2025-11-14
+Version: 0.6.0
+Date: 2025-11-28
 Authors@R: c( 
   person(given = "Sergio", family = "Ibarra-Espinosa",
          role = "aut",

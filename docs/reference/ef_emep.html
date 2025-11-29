@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pega</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.0</span>
       </span>
     </div>
 
@@ -92,9 +92,17 @@
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
-<span class="r-in"><span><span class="co"># ef_eea(category = "NAO SEI")</span></span></span>
+<span class="r-in"><span><span class="fu">ef_emep</span><span class="op">(</span>tier <span class="op">=</span> <span class="fl">1</span>, fuel <span class="op">=</span> <span class="st">"Natural gas"</span>, pol <span class="op">=</span> <span class="st">"PM2.5"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        NFR                                 Sector     Table</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;char&gt;                                 &lt;char&gt;    &lt;char&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1: 1.A.1.a Public electricity and heat production Table_3-4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                      Type Technology        Fuel Abatement Region Pollutant</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                    &lt;char&gt;     &lt;char&gt;      &lt;char&gt;    &lt;char&gt; &lt;char&gt;    &lt;char&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1: Tier 1 Emission Factor       &lt;NA&gt; Natural gas             &lt;NA&gt;     PM2.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Value   Unit CI_lower CI_upper                  Reference tiers</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;char&gt; &lt;char&gt;    &lt;num&gt;    &lt;num&gt;                     &lt;char&gt; &lt;num&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:   0.89   g/GJ    0.445     1.33 US EPA (1998), chapter 1.4     1</span>
 </code></pre></div>
     </div>
   </div>

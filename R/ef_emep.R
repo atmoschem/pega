@@ -12,7 +12,6 @@
 #' @export
 #' @examples {
 #' ef_emep(tier = 1, fuel = "Natural gas", pol = "PM2.5")
-#' # ef_eea(category = "NAO SEI")
 #' }
 ef_emep <- function(
   nfr = "1.A.1.a",
@@ -33,7 +32,7 @@ ef_emep <- function(
   }
 
   NFR <- tiers <- Fuel <- Abatement <- Pollutant <- NULL
-  nfrs <- eea[grepl("1.A", NFR), unique(NFR)]
+  nfrs <- eea[, unique(NFR)]
   if (!nfr %in% nfrs) {
     stop(cat("only these nfr  allowed: ", nfrs, sep = " "))
   }
