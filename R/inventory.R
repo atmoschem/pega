@@ -16,33 +16,35 @@ inventory <- function(path, ef = "emep", nfr = "all") {
   }
 
   if (!ef %in% c("emep", "ipcc")) {
-    stop(cat("ef can be 'emep' or 'ipcc'"))
+    stop("ef can be 'emep' or 'ipcc'")
   }
 
   if (ef == "emep") {
     ef <- "eea"
   }
-  efdb <- sysdata[[ef]]
+
+  # Ensure dataset is a data.table
+  efdb <- data.table::setDT(sysdata[[ef]])
 
   NFR <- NULL
   nfrs <- efdb[, unique(NFR)]
 
-  if (nfr == "all") {
+  if (identical(nfr, "all")) {
     nfr <- nfrs
   } else {
-    if (!nfr %in% nfrs) {
-      stop(cat("Only these nfr allowed: ", nfrs, sep = "\n"))
+    if (any(!nfr %in% nfrs)) {
+      stop("Only these nfr allowed: ", paste(nfrs, collapse = ", "))
     }
   }
 
   nfr <- nfr[order(nfr)]
 
   dirs <- paste0(path, "/", nfr)
-  cat("Creating the folllowing directories, ", dirs, sep = "\n")
+  message("Creating the following directories: \n", paste(dirs, collapse = "\n"))
 
   for (i in seq_along(dirs)) {
-    dir.create(dirs[i], recursive = T)
-    dir.create(paste(dirs[i], "/scripts"), recursive = T)
-    dir.create(paste(dirs[i], "/emi"), recursive = T)
+    if (!dir.exists(dirs[i])) dir.create(dirs[i], recursive = TRUE)
+    if (!dir.exists(paste0(dirs[i], "/scripts"))) dir.create(paste0(dirs[i], "/scripts"), recursive = TRUE)
+    if (!dir.exists(paste0(dirs[i], "/emi"))) dir.create(paste0(dirs[i], "/emi"), recursive = TRUE)
   }
 }

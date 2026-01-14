@@ -11,7 +11,7 @@
 #' @keywords  emission factors
 #' @export
 #' @examples {
-#' ef_emep(tier = 1, fuel = "Natural gas", pol = "PM2.5")
+#'   ef_emep(tier = 1, fuel = "Natural gas", pol = "PM2.5")
 #' }
 ef_emep <- function(
   nfr = "1.A.1.a",
@@ -22,7 +22,7 @@ ef_emep <- function(
   returnfdb = FALSE
 ) {
   eea <- data.table::setDT(sysdata$eea)
-  #eea <- eea[grepl("1.A.1", NFR)]
+  # eea <- eea[grepl("1.A.1", NFR)]
   if (returnfdb) {
     return(eea)
   }
@@ -34,7 +34,7 @@ ef_emep <- function(
   NFR <- tiers <- Fuel <- Abatement <- Pollutant <- NULL
   nfrs <- eea[, unique(NFR)]
   if (!nfr %in% nfrs) {
-    stop(cat("only these nfr  allowed: ", nfrs, sep = " "))
+    stop("only these nfr allowed: ", paste(nfrs, collapse = " "))
   }
   ef <- eea[NFR == nfr]
 
@@ -42,14 +42,14 @@ ef_emep <- function(
   tiersx <- ef[, unique(tiers)]
 
   if (missing(tier)) {
-    stop(cat("Select one of:", tiersx, sep = "\n"))
+    stop("Select one of:\n", paste(tiersx, collapse = "\n"))
   }
   if (length(tier) > 1) {
     stop("One tier at a time please")
   }
 
   if (!tier %in% tiersx) {
-    stop(cat("only these tiers  allowed: ", tiersx, sep = "\n"))
+    stop("only these tiers allowed: ", paste(tiersx, collapse = "\n"))
   }
   ef <- ef[tiers == tier]
 
@@ -58,7 +58,7 @@ ef_emep <- function(
   fuelssx <- ef[, unique(Fuel)]
 
   if (missing(fuel)) {
-    stop(cat("Select one of:", fuelssx, sep = "\n"))
+    stop("Select one of:\n", paste(fuelssx, collapse = "\n"))
   }
 
   if (length(fuel) > 1) {
@@ -67,7 +67,7 @@ ef_emep <- function(
 
   fuels <- ef[, unique(Fuel)]
   if (!fuel %in% fuels) {
-    stop(cat("only these fuels  allowed: ", fuels, sep = " "))
+    stop("only these fuels allowed: ", paste(fuels, collapse = " "))
   }
   ef <- ef[Fuel == fuel]
 
@@ -79,7 +79,7 @@ ef_emep <- function(
 
   abas <- ef[, unique(Abatement)]
   if (!abatement %in% abas) {
-    stop(cat("only these abatement  allowed: ", abas, sep = " "))
+    stop("only these abatement allowed: ", paste(abas, collapse = " "))
   }
   ef <- ef[Abatement == abatement]
 
@@ -88,11 +88,11 @@ ef_emep <- function(
   pols <- ef[, unique(Pollutant)]
 
   if (missing(pol)) {
-    stop(cat("Select one of:", pols, sep = "\n"))
+    stop("Select one of:\n", paste(pols, collapse = "\n"))
   }
 
   if (any(!pol %in% pols)) {
-    stop(cat("only these Pollutants  allowed: ", pols, sep = " "))
+    stop("only these Pollutants allowed: ", paste(pols, collapse = " "))
   }
   ef <- ef[Pollutant %in% pol]
   return(ef)

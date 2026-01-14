@@ -9,9 +9,8 @@
 #' @keywords  emission factors
 #' @export
 #' @examples {
-#' ef_emep(tier = 1, fuel = "Natural gas", pol = "PM2.5")
+#'   ef_emep(tier = 1, fuel = "Natural gas", pol = "PM2.5")
 #' }
-
 ef_ipcc <- function(
   nfr = "1.A.1.a",
   fuel,
@@ -19,7 +18,7 @@ ef_ipcc <- function(
   returnfdb = FALSE
 ) {
   eea <- data.table::setDT(sysdata$ipcc)
-  #eea <- eea[grepl("1.A.1", NFR)]
+  # eea <- eea[grepl("1.A.1", NFR)]
   if (returnfdb) {
     return(eea)
   }
@@ -31,7 +30,7 @@ ef_ipcc <- function(
   NFR <- Pollutant <- NULL
   nfrs <- eea[, unique(NFR)]
   if (!nfr %in% nfrs) {
-    stop(cat("only these nfr  allowed: ", nfrs, sep = " "))
+    stop("only these nfr allowed: ", paste(nfrs, collapse = " "))
   }
   ef <- eea[NFR == nfr]
 
@@ -40,7 +39,7 @@ ef_ipcc <- function(
   fuelssx <- ef[, unique(Fuel_2006)]
 
   if (missing(fuel)) {
-    stop(cat("Select one of:", fuelssx, sep = "\n"))
+    stop("Select one of:\n", paste(fuelssx, collapse = "\n"))
   }
 
   if (length(fuel) > 1) {
@@ -49,7 +48,7 @@ ef_ipcc <- function(
 
   fuels <- ef[, unique(Fuel_2006)]
   if (!fuel %in% fuels) {
-    stop(cat("only these fuels  allowed: ", fuels, sep = " "))
+    stop("only these fuels allowed: ", paste(fuels, collapse = " "))
   }
   ef <- ef[Fuel_2006 == fuel]
 
@@ -57,11 +56,11 @@ ef_ipcc <- function(
   pols <- ef[, unique(Pollutant)]
 
   if (missing(pol)) {
-    stop(cat("Select one of:", pols, sep = "\n"))
+    stop("Select one of:\n", paste(pols, collapse = "\n"))
   }
 
   if (any(!pol %in% pols)) {
-    stop(cat("only these Pollutants  allowed: ", pols, sep = " "))
+    stop("only these Pollutants allowed: ", paste(pols, collapse = " "))
   }
   ef <- ef[Pollutant %in% pol]
   return(ef)

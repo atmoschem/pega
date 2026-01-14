@@ -23,7 +23,7 @@ Inventory structure
 }
 \examples{
 {
-ef_emep(tier = 1, fuel = "Natural gas", pol = "PM2.5")
+  ef_emep(tier = 1, fuel = "Natural gas", pol = "PM2.5")
 }
 }
 \keyword{emission}
