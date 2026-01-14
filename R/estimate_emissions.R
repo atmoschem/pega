@@ -17,7 +17,7 @@ estimate_emissions <- function(activity_gwh, ef, efficiency = 0.35) {
         stop("efficiency must be between 0 and 1")
     }
 
-    Pollutant <- Unit <- emi_ton <- fuel_energy_gj <- emi_g <- Value <- conv_factor <- `:=` <- NULL
+    Pollutant <- Unit <- emi_ton <- fuel_energy_gj <- emi_g <- Value <- `:=` <- NULL
     activity_gwh_val <- activity_gwh # Avoid name conflict in dt
 
     # Copy EF to avoid modifying original
@@ -30,30 +30,25 @@ estimate_emissions <- function(activity_gwh, ef, efficiency = 0.35) {
     # Activity_GJ (Input Fuel) = Generation_GWh * 3600 / Efficiency
     activity_gj <- (activity_gwh_val * 3600) / efficiency
 
-    # Unit conversion factors to g/GJ
-    # We handle common energy-based units found in EMEP/IPCC
-    dt[, conv_factor := 1.0] # Default
-    dt[Unit == "mg/GJ", conv_factor := 1e-3]
-    dt[Unit == "µg/GJ", conv_factor := 1e-6]
-    dt[Unit == "ng/GJ", conv_factor := 1e-9]
-    dt[Unit == "t CO2/TJ", conv_factor := 1000]
-    dt[Unit == "kg/TJ", conv_factor := 1.0]
-
     # Calculate
     dt[, activity_gwh := activity_gwh_val]
     dt[, efficiency := efficiency]
     dt[, fuel_energy_gj := activity_gj]
 
-    # Value is numeric EF
-    dt[, emi_g := fuel_energy_gj * as.numeric(Value) * conv_factor]
+    # Value is already normalized to g/GJ or g/Mg in sysdata
+    # If Unit is energy-based (g/GJ), we use activity_gj
+    # If Unit is mass-based (g/Mg), we would need a different activity input,
+    # but for now we focus on energy-based generation.
+
+    dt[, emi_g := fuel_energy_gj * as.numeric(Value)]
     dt[, emi_ton := emi_g / 1e6]
 
-    # Identify records with non-energy units that were not converted
-    unsupported <- dt[!Unit %in% c("g/GJ", "mg/GJ", "µg/GJ", "ng/GJ", "t CO2/TJ", "kg/TJ", "g N2O/GJ", "g CH4/GJ") & conv_factor == 1.0]
-    if (nrow(unsupported) > 0) {
+    # Check for non-energy units
+    non_energy <- dt[!Unit %in% c("g/GJ", "gC/GJ")]
+    if (nrow(non_energy) > 0) {
         warning(
-            "Some records have unsupported units and were treated as g/GJ: ",
-            paste(unique(unsupported$Unit), collapse = ", ")
+            "Some records use non-energy units (e.g. g/Mg) but were calculated using energy activity: ",
+            paste(unique(non_energy$Unit), collapse = ", ")
         )
     }
 

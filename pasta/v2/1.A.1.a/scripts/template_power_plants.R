@@ -11,8 +11,8 @@ library(data.table)
 # Example: A power plant generated 150 GWh in a month (e.g. from ANEEL data)
 plant_name <- "ThermoPower-1"
 generation_gwh <- 150
-fuel_type_emep <- "Natural gas"
-fuel_type_ipcc <- "Natural Gas" # EMEP and IPCC use slightly different names
+fuel_type_emep <- "Gas oil"
+fuel_type_ipcc <- "Gas Oil"
 
 # 2. GET EMISSION FACTORS -------------------------------------------------
 
@@ -21,19 +21,20 @@ ef_pollutants <- ef_emep(
     nfr = "1.A.1.a",
     tier = 1,
     fuel = fuel_type_emep,
-    pol = c("CO", "NOx", "PM10", "PM2.5", "NMVOC")
+    pol = c("CO", "NOx", "PM10", "PM2.5", "SOx")
 )
 
 # B) IPCC Factors (Greenhouse Gases: CO2, CH4, N2O)
+# We use 1.A.1 (Energy Industries) as it contains broad factors for Gas Oil
 ef_ghg <- ef_ipcc(
-    nfr = "1.A.1.a",
+    nfr = "1.A.1",
     fuel = fuel_type_ipcc,
     pol = c("CO2", "CH4", "N2O")
 )
 
 # Filtering IPCC for Energy-based Emission Factors
-# This removes NCVs (MJ/m3) and other parameters
-valid_units <- c("g/GJ", "mg/GJ", "µg/GJ", "ng/GJ", "t CO2/TJ", "kg/TJ", "g N2O/GJ", "g CH4/GJ")
+# After normalization, most energy factors are in 'g/GJ'
+valid_units <- c("g/GJ", "gC/GJ")
 ef_ghg <- ef_ghg[Unit %in% valid_units]
 
 # 3. ESTIMATE EMISSIONS ---------------------------------------------------
