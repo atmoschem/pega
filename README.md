@@ -1,5 +1,5 @@
 
-# PEGA <img src="homem/figuras/logo2.jpg" align="right" width="220"/>
+# PEGA <img src="https://raw.githubusercontent.com/atmoschem/pega/main/man/figures/logo2.jpg" align="right" width="220"/>
 
 - Poluentes, Emissões e Gases de Atmosfera.
 - Pollutants Emissions and Gaseous of the Atmosphere.
