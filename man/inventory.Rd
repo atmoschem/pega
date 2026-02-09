@@ -4,12 +4,10 @@
 \alias{inventory}
 \title{start inventory structure}
 \usage{
-inventory(path, ef = "emep", nfr = "all")
+inventory(path, nfr = "all")
 }
 \arguments{
 \item{path}{Character, default .}
-
-\item{ef}{Character, default .}
 
 \item{nfr}{String, nomenclature for ereporting, default "all"}
 }

@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">pega</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.8.0</span>
       </span>
     </div>
 
@@ -81,208 +81,365 @@
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>Using git bash/powershell</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/atmoschem/pega</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="ex">R</span> CMD INSTALL pega</span></code></pre></div>
 <p>Using remotes R package</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"atmoschem/pega"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/atmoschem/pega" class="external-link">pega</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-datatable.com" class="external-link">data.table</a></span><span class="op">)</span></span>
 <span><span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html" class="external-link">packageVersion</a></span><span class="op">(</span><span class="st">"pega"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="do">## [1] '0.7.0'</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="do">## [1] '0.8.0'</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="emission-factors">Emission factors<a class="anchor" aria-label="anchor" href="#emission-factors"></a>
 </h2>
-<div class="section level3">
-<h3 id="emep">EMEP<a class="anchor" aria-label="anchor" href="#emep"></a>
-</h3>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/atmoschem/pega" class="external-link">pega</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/ef_emep.html">ef_emep</a></span><span class="op">(</span>tier <span class="op">=</span> <span class="fl">1</span>, fuel <span class="op">=</span> <span class="st">"Natural gas"</span>, pol <span class="op">=</span> <span class="st">"PM2.5"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="do">##        NFR                                 Sector     Table</span></span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="do">##     &lt;char&gt;                                 &lt;char&gt;    &lt;char&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="do">## 1: 1.A.1.a Public electricity and heat production Table_3-4</span></span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="do">##                      Type Technology        Fuel Abatement Region Pollutant</span></span>
-<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="do">##                    &lt;char&gt;     &lt;char&gt;      &lt;char&gt;    &lt;char&gt; &lt;char&gt;    &lt;char&gt;</span></span>
-<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="do">## 1: Tier 1 Emission Factor       &lt;NA&gt; Natural gas             &lt;NA&gt;     PM2.5</span></span>
-<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="do">##     Value   Unit CI_lower CI_upper                  Reference tiers</span></span>
-<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="do">##    &lt;char&gt; &lt;char&gt;    &lt;num&gt;    &lt;num&gt;                     &lt;char&gt; &lt;num&gt;</span></span>
-<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="do">## 1:   0.89   g/GJ    0.445     1.33 US EPA (1998), chapter 1.4     1</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="ipcc">IPCC<a class="anchor" aria-label="anchor" href="#ipcc"></a>
-</h3>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/ef_ipcc.html">ef_ipcc</a></span><span class="op">(</span>fuel <span class="op">=</span> <span class="st">"Natural Gas"</span>, pol <span class="op">=</span> <span class="st">"CH4"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="do">##     EF_ID                   IPCC_1996_SourceSink_Category</span></span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="do">##    &lt;char&gt;                                          &lt;char&gt;</span></span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="do">## 1: 122122 1A1a - Public Electricity and Heat Production\n</span></span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="do">## 2: 122123 1A1a - Public Electricity and Heat Production\n</span></span>
-<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="do">## 3: 122135 1A1a - Public Electricity and Heat Production\n</span></span>
-<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="do">##                                IPCC_2006_SourceSink_Category       Gas</span></span>
-<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="do">##                                                       &lt;char&gt;    &lt;char&gt;</span></span>
-<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="do">## 1: 1.A.1.a - Main Activity Electricity and Heat Production\n METHANE\n</span></span>
-<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="do">## 2: 1.A.1.a - Main Activity Electricity and Heat Production\n METHANE\n</span></span>
-<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="do">## 3: 1.A.1.a - Main Activity Electricity and Heat Production\n METHANE\n</span></span>
-<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="do">##      Fuel_1996   Fuel_2006 C_pool     Type_of_parameter</span></span>
-<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="do">##         &lt;char&gt;      &lt;char&gt; &lt;lgcl&gt;                &lt;char&gt;</span></span>
-<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="do">## 1: Natural Gas Natural Gas     NA Other (e.g. compiled)</span></span>
-<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="do">## 2: Natural Gas Natural Gas     NA               Modeled</span></span>
-<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="do">## 3: Natural Gas Natural Gas     NA Other (e.g. compiled)</span></span>
-<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="do">##                                   Description TechnologiesPractices</span></span>
-<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a><span class="do">##                                        &lt;char&gt;                &lt;char&gt;</span></span>
-<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a><span class="do">## 1: CH4 EF for natural gas engines less 25 MWw              CHP&lt;25MW</span></span>
-<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a><span class="do">## 2: CH4 EF for natural gas turbines less 25 MW              CHP&lt;25MW</span></span>
-<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a><span class="do">## 3:                     CH4 EF for natural gas                  &lt;NA&gt;</span></span>
-<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a><span class="do">##    ParametersConditions RegionRegional_Conditions</span></span>
-<span id="cb8-22"><a href="#cb8-22" tabindex="-1"></a><span class="do">##                  &lt;char&gt;                    &lt;char&gt;</span></span>
-<span id="cb8-23"><a href="#cb8-23" tabindex="-1"></a><span class="do">## 1:                 &lt;NA&gt;                   Denmark</span></span>
-<span id="cb8-24"><a href="#cb8-24" tabindex="-1"></a><span class="do">## 2:                 &lt;NA&gt;                   Denmark</span></span>
-<span id="cb8-25"><a href="#cb8-25" tabindex="-1"></a><span class="do">## 3:                 &lt;NA&gt;                   Germany</span></span>
-<span id="cb8-26"><a href="#cb8-26" tabindex="-1"></a><span class="do">##                                                                     AbatementControl_Technologies</span></span>
-<span id="cb8-27"><a href="#cb8-27" tabindex="-1"></a><span class="do">##                                                                                            &lt;char&gt;</span></span>
-<span id="cb8-28"><a href="#cb8-28" tabindex="-1"></a><span class="do">## 1:                      Engines equipped with oxidation catalysts for reducing the emission of CO</span></span>
-<span id="cb8-29"><a href="#cb8-29" tabindex="-1"></a><span class="do">## 2: Almost all the gas turbines are equipped with low-NOx burners. One plant is equipped with SCR.</span></span>
-<span id="cb8-30"><a href="#cb8-30" tabindex="-1"></a><span class="do">## 3:                                                                                           &lt;NA&gt;</span></span>
-<span id="cb8-31"><a href="#cb8-31" tabindex="-1"></a><span class="do">##    Other_properties  Value   Unit Equation IPCC_Worksheet Technical_Reference</span></span>
-<span id="cb8-32"><a href="#cb8-32" tabindex="-1"></a><span class="do">##              &lt;char&gt; &lt;char&gt; &lt;char&gt;   &lt;char&gt;         &lt;char&gt;              &lt;char&gt;</span></span>
-<span id="cb8-33"><a href="#cb8-33" tabindex="-1"></a><span class="do">## 1:             &lt;NA&gt;    481   g/GJ     &lt;NA&gt;           &lt;NA&gt;                &lt;NA&gt;</span></span>
-<span id="cb8-34"><a href="#cb8-34" tabindex="-1"></a><span class="do">## 2:             &lt;NA&gt;    1.7   g/GJ     &lt;NA&gt;           &lt;NA&gt;                &lt;NA&gt;</span></span>
-<span id="cb8-35"><a href="#cb8-35" tabindex="-1"></a><span class="do">## 3:             &lt;NA&gt;    309  kg/TJ     &lt;NA&gt;           &lt;NA&gt;                &lt;NA&gt;</span></span>
-<span id="cb8-36"><a href="#cb8-36" tabindex="-1"></a><span class="do">##                         Source_of_data            Data_provider           NF</span></span>
-<span id="cb8-37"><a href="#cb8-37" tabindex="-1"></a><span class="do">##                                 &lt;char&gt;                   &lt;char&gt;       &lt;char&gt;</span></span>
-<span id="cb8-38"><a href="#cb8-38" tabindex="-1"></a><span class="do">## 1:                               Other Pavel Shermanau, Belarus 1.A.1.a - Ma</span></span>
-<span id="cb8-39"><a href="#cb8-39" tabindex="-1"></a><span class="do">## 2:                               Other Pavel Shermanau, Belarus 1.A.1.a - Ma</span></span>
-<span id="cb8-40"><a href="#cb8-40" tabindex="-1"></a><span class="do">## 3: National Inventory Report (Annex I) Pavel Shermanau, Belarus 1.A.1.a - Ma</span></span>
-<span id="cb8-41"><a href="#cb8-41" tabindex="-1"></a><span class="do">##        NFR Pollutant</span></span>
-<span id="cb8-42"><a href="#cb8-42" tabindex="-1"></a><span class="do">##     &lt;char&gt;    &lt;char&gt;</span></span>
-<span id="cb8-43"><a href="#cb8-43" tabindex="-1"></a><span class="do">## 1: 1.A.1.a       CH4</span></span>
-<span id="cb8-44"><a href="#cb8-44" tabindex="-1"></a><span class="do">## 2: 1.A.1.a       CH4</span></span>
-<span id="cb8-45"><a href="#cb8-45" tabindex="-1"></a><span class="do">## 3: 1.A.1.a       CH4</span></span></code></pre></div>
-</div>
+<span><span class="fu"><a href="reference/ef.html">ef</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="do">##        Value   Unit source</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="do">##       &lt;char&gt; &lt;char&gt; &lt;char&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="do">##   1:   0.281   g/GJ   EMEP</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="do">##   2: 0.00076  mg/GJ   EMEP</span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="do">##   3:    0.12  mg/GJ   EMEP</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="do">##   4:     0.1  mg/GJ   EMEP</span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="do">##   5: 0.00025  mg/GJ   EMEP</span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="do">##  ---                      </span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="do">## 342:     1.6   g/GJ   IPCC</span></span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="do">## 343:     1.2   g/GJ   IPCC</span></span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="do">## 344:     1.1   g/GJ   IPCC</span></span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="do">## 345:    0.83   g/GJ   IPCC</span></span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="do">## 346:     309  kg/TJ   IPCC</span></span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="do">##                                                       category</span></span>
+<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="do">##                                                         &lt;char&gt;</span></span>
+<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="do">##   1:                    Public electricity and heat production</span></span>
+<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="do">##   2:                    Public electricity and heat production</span></span>
+<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a><span class="do">##   3:                    Public electricity and heat production</span></span>
+<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a><span class="do">##   4:                    Public electricity and heat production</span></span>
+<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a><span class="do">##   5:                    Public electricity and heat production</span></span>
+<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a><span class="do">##  ---                                                          </span></span>
+<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a><span class="do">## 342: 1.A.1.a - Main Activity Electricity and Heat Production\n</span></span>
+<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a><span class="do">## 343: 1.A.1.a - Main Activity Electricity and Heat Production\n</span></span>
+<span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a><span class="do">## 344: 1.A.1.a - Main Activity Electricity and Heat Production\n</span></span>
+<span id="cb5-25"><a href="#cb5-25" tabindex="-1"></a><span class="do">## 345: 1.A.1.a - Main Activity Electricity and Heat Production\n</span></span>
+<span id="cb5-26"><a href="#cb5-26" tabindex="-1"></a><span class="do">## 346: 1.A.1.a - Main Activity Electricity and Heat Production\n</span></span>
+<span id="cb5-27"><a href="#cb5-27" tabindex="-1"></a><span class="do">##                        type     tech     table    code  codetype</span></span>
+<span id="cb5-28"><a href="#cb5-28" tabindex="-1"></a><span class="do">##                      &lt;char&gt;   &lt;char&gt;    &lt;char&gt;  &lt;char&gt;    &lt;char&gt;</span></span>
+<span id="cb5-29"><a href="#cb5-29" tabindex="-1"></a><span class="do">##   1: Tier 1 Emission Factor     &lt;NA&gt; Table_3-4 1.A.1.a       NFR</span></span>
+<span id="cb5-30"><a href="#cb5-30" tabindex="-1"></a><span class="do">##   2: Tier 1 Emission Factor     &lt;NA&gt; Table_3-4 1.A.1.a       NFR</span></span>
+<span id="cb5-31"><a href="#cb5-31" tabindex="-1"></a><span class="do">##   3: Tier 1 Emission Factor     &lt;NA&gt; Table_3-4 1.A.1.a       NFR</span></span>
+<span id="cb5-32"><a href="#cb5-32" tabindex="-1"></a><span class="do">##   4: Tier 1 Emission Factor     &lt;NA&gt; Table_3-4 1.A.1.a       NFR</span></span>
+<span id="cb5-33"><a href="#cb5-33" tabindex="-1"></a><span class="do">##   5: Tier 1 Emission Factor     &lt;NA&gt; Table_3-4 1.A.1.a       NFR</span></span>
+<span id="cb5-34"><a href="#cb5-34" tabindex="-1"></a><span class="do">##  ---                                                            </span></span>
+<span id="cb5-35"><a href="#cb5-35" tabindex="-1"></a><span class="do">## 342:  Other (e.g. compiled) CHP&lt;25MW      &lt;NA&gt; 1.A.1.a IPCC 2006</span></span>
+<span id="cb5-36"><a href="#cb5-36" tabindex="-1"></a><span class="do">## 343:  Other (e.g. compiled) CHP&lt;25MW      &lt;NA&gt; 1.A.1.a IPCC 2006</span></span>
+<span id="cb5-37"><a href="#cb5-37" tabindex="-1"></a><span class="do">## 344:  Other (e.g. compiled) CHP&lt;25MW      &lt;NA&gt; 1.A.1.a IPCC 2006</span></span>
+<span id="cb5-38"><a href="#cb5-38" tabindex="-1"></a><span class="do">## 345:  Other (e.g. compiled) CHP&lt;25MW      &lt;NA&gt; 1.A.1.a IPCC 2006</span></span>
+<span id="cb5-39"><a href="#cb5-39" tabindex="-1"></a><span class="do">## 346:  Other (e.g. compiled)     &lt;NA&gt;      &lt;NA&gt; 1.A.1.a IPCC 2006</span></span>
+<span id="cb5-40"><a href="#cb5-40" tabindex="-1"></a><span class="do">##                                     fuel     tech2       ef   unit</span></span>
+<span id="cb5-41"><a href="#cb5-41" tabindex="-1"></a><span class="do">##                                   &lt;char&gt;    &lt;char&gt;    &lt;num&gt; &lt;char&gt;</span></span>
+<span id="cb5-42"><a href="#cb5-42" tabindex="-1"></a><span class="do">##   1:                         Natural gas US Region 2.81e-01   g/GJ</span></span>
+<span id="cb5-43"><a href="#cb5-43" tabindex="-1"></a><span class="do">##   2:                         Natural gas           7.60e-04  mg/GJ</span></span>
+<span id="cb5-44"><a href="#cb5-44" tabindex="-1"></a><span class="do">##   3:                         Natural gas           1.20e-01  mg/GJ</span></span>
+<span id="cb5-45"><a href="#cb5-45" tabindex="-1"></a><span class="do">##   4:                         Natural gas           1.00e-01  mg/GJ</span></span>
+<span id="cb5-46"><a href="#cb5-46" tabindex="-1"></a><span class="do">##   5:                         Natural gas           2.50e-04  mg/GJ</span></span>
+<span id="cb5-47"><a href="#cb5-47" tabindex="-1"></a><span class="do">##  ---                                                              </span></span>
+<span id="cb5-48"><a href="#cb5-48" tabindex="-1"></a><span class="do">## 342:                        Other Biogas      &lt;NA&gt; 1.60e+00   g/GJ</span></span>
+<span id="cb5-49"><a href="#cb5-49" tabindex="-1"></a><span class="do">## 343: Municipal Wastes (biomass fraction)      &lt;NA&gt; 1.20e+00   g/GJ</span></span>
+<span id="cb5-50"><a href="#cb5-50" tabindex="-1"></a><span class="do">## 344:         Other Primary Solid Biomass      &lt;NA&gt; 1.10e+00   g/GJ</span></span>
+<span id="cb5-51"><a href="#cb5-51" tabindex="-1"></a><span class="do">## 345:                     Wood/Wood Waste      &lt;NA&gt; 8.30e-01   g/GJ</span></span>
+<span id="cb5-52"><a href="#cb5-52" tabindex="-1"></a><span class="do">## 346:                         Natural Gas      &lt;NA&gt; 3.09e+02  kg/TJ</span></span>
+<span id="cb5-53"><a href="#cb5-53" tabindex="-1"></a><span class="do">##                           reference    pol  region     other</span></span>
+<span id="cb5-54"><a href="#cb5-54" tabindex="-1"></a><span class="do">##                              &lt;char&gt; &lt;char&gt;  &lt;char&gt;    &lt;char&gt;</span></span>
+<span id="cb5-55"><a href="#cb5-55" tabindex="-1"></a><span class="do">##   1:     US EPA (1998), chapter 1.4    SOx    &lt;NA&gt; US Region</span></span>
+<span id="cb5-56"><a href="#cb5-56" tabindex="-1"></a><span class="do">##   2:           Nielsen et al., 2012     Cr    &lt;NA&gt;          </span></span>
+<span id="cb5-57"><a href="#cb5-57" tabindex="-1"></a><span class="do">##   3: Nielsen et al., 2012; DBI 2014     As    &lt;NA&gt;          </span></span>
+<span id="cb5-58"><a href="#cb5-58" tabindex="-1"></a><span class="do">##   4:           Nielsen et al., 2010     Hg    &lt;NA&gt;          </span></span>
+<span id="cb5-59"><a href="#cb5-59" tabindex="-1"></a><span class="do">##   5:           Nielsen et al., 2012     Cd    &lt;NA&gt;          </span></span>
+<span id="cb5-60"><a href="#cb5-60" tabindex="-1"></a><span class="do">##  ---                                                        </span></span>
+<span id="cb5-61"><a href="#cb5-61" tabindex="-1"></a><span class="do">## 342:                           &lt;NA&gt;    N2O Denmark      &lt;NA&gt;</span></span>
+<span id="cb5-62"><a href="#cb5-62" tabindex="-1"></a><span class="do">## 343:                           &lt;NA&gt;    N2O Denmark      &lt;NA&gt;</span></span>
+<span id="cb5-63"><a href="#cb5-63" tabindex="-1"></a><span class="do">## 344:                           &lt;NA&gt;    N2O Denmark      &lt;NA&gt;</span></span>
+<span id="cb5-64"><a href="#cb5-64" tabindex="-1"></a><span class="do">## 345:                           &lt;NA&gt;    N2O Denmark      &lt;NA&gt;</span></span>
+<span id="cb5-65"><a href="#cb5-65" tabindex="-1"></a><span class="do">## 346:                           &lt;NA&gt;    CH4 Germany      &lt;NA&gt;</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="create-directories">Create directories<a class="anchor" aria-label="anchor" href="#create-directories"></a>
 </h3>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/inventory.html">inventory</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="do">## Creating the folllowing directories, </span></span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.1.a</span></span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.1.b</span></span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.1.c</span></span>
-<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.2.a</span></span>
-<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.2.b</span></span>
-<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.2.c</span></span>
-<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.2.d</span></span>
-<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.2.e</span></span>
-<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.2.g.vii</span></span>
-<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.2.g.viii</span></span>
-<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.3.a.i.(i)</span></span>
-<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.3.a.ii.(i)</span></span>
-<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.3.b.i</span></span>
-<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.3.b.ii</span></span>
-<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.3.b.iii</span></span>
-<span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.3.b.iv</span></span>
-<span id="cb10-18"><a href="#cb10-18" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.3.b.v</span></span>
-<span id="cb10-19"><a href="#cb10-19" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.3.b.vi</span></span>
-<span id="cb10-20"><a href="#cb10-20" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.3.b.vii</span></span>
-<span id="cb10-21"><a href="#cb10-21" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.3.c</span></span>
-<span id="cb10-22"><a href="#cb10-22" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.3.d.i</span></span>
-<span id="cb10-23"><a href="#cb10-23" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.3.d.ii</span></span>
-<span id="cb10-24"><a href="#cb10-24" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.4.a.i</span></span>
-<span id="cb10-25"><a href="#cb10-25" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.4.a.ii</span></span>
-<span id="cb10-26"><a href="#cb10-26" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.4.b.i</span></span>
-<span id="cb10-27"><a href="#cb10-27" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.4.b.ii</span></span>
-<span id="cb10-28"><a href="#cb10-28" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.4.c.i</span></span>
-<span id="cb10-29"><a href="#cb10-29" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.4.c.ii</span></span>
-<span id="cb10-30"><a href="#cb10-30" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.4.c.iii</span></span>
-<span id="cb10-31"><a href="#cb10-31" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.5.a</span></span>
-<span id="cb10-32"><a href="#cb10-32" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.A.5.b</span></span>
-<span id="cb10-33"><a href="#cb10-33" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.B.1.a</span></span>
-<span id="cb10-34"><a href="#cb10-34" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.B.1.b</span></span>
-<span id="cb10-35"><a href="#cb10-35" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.B.2.a.i</span></span>
-<span id="cb10-36"><a href="#cb10-36" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.B.2.a.iv</span></span>
-<span id="cb10-37"><a href="#cb10-37" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.B.2.a.v</span></span>
-<span id="cb10-38"><a href="#cb10-38" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.B.2.b</span></span>
-<span id="cb10-39"><a href="#cb10-39" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.B.2.c</span></span>
-<span id="cb10-40"><a href="#cb10-40" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/1.B.2.d</span></span>
-<span id="cb10-41"><a href="#cb10-41" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/11.B</span></span>
-<span id="cb10-42"><a href="#cb10-42" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.A.1</span></span>
-<span id="cb10-43"><a href="#cb10-43" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.A.2</span></span>
-<span id="cb10-44"><a href="#cb10-44" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.A.3</span></span>
-<span id="cb10-45"><a href="#cb10-45" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.A.5.a</span></span>
-<span id="cb10-46"><a href="#cb10-46" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.A.5.b</span></span>
-<span id="cb10-47"><a href="#cb10-47" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.A.5.c</span></span>
-<span id="cb10-48"><a href="#cb10-48" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.B</span></span>
-<span id="cb10-49"><a href="#cb10-49" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.B.1</span></span>
-<span id="cb10-50"><a href="#cb10-50" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.B.10.a</span></span>
-<span id="cb10-51"><a href="#cb10-51" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.B.2</span></span>
-<span id="cb10-52"><a href="#cb10-52" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.B.3</span></span>
-<span id="cb10-53"><a href="#cb10-53" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.B.5</span></span>
-<span id="cb10-54"><a href="#cb10-54" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.B.6</span></span>
-<span id="cb10-55"><a href="#cb10-55" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.B.7</span></span>
-<span id="cb10-56"><a href="#cb10-56" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.C.1</span></span>
-<span id="cb10-57"><a href="#cb10-57" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.C.2</span></span>
-<span id="cb10-58"><a href="#cb10-58" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.C.3</span></span>
-<span id="cb10-59"><a href="#cb10-59" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.C.5</span></span>
-<span id="cb10-60"><a href="#cb10-60" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.C.6</span></span>
-<span id="cb10-61"><a href="#cb10-61" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.C.7.a</span></span>
-<span id="cb10-62"><a href="#cb10-62" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.C.7.b</span></span>
-<span id="cb10-63"><a href="#cb10-63" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.C.7.c</span></span>
-<span id="cb10-64"><a href="#cb10-64" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.C.7.d</span></span>
-<span id="cb10-65"><a href="#cb10-65" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.D.3.a</span></span>
-<span id="cb10-66"><a href="#cb10-66" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.D.3.b</span></span>
-<span id="cb10-67"><a href="#cb10-67" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.D.3.c</span></span>
-<span id="cb10-68"><a href="#cb10-68" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.D.3.d</span></span>
-<span id="cb10-69"><a href="#cb10-69" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.D.3.e</span></span>
-<span id="cb10-70"><a href="#cb10-70" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.D.3.f</span></span>
-<span id="cb10-71"><a href="#cb10-71" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.D.3.g</span></span>
-<span id="cb10-72"><a href="#cb10-72" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.D.3.h</span></span>
-<span id="cb10-73"><a href="#cb10-73" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.D.3.i, 2.G</span></span>
-<span id="cb10-74"><a href="#cb10-74" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.G</span></span>
-<span id="cb10-75"><a href="#cb10-75" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.H.1</span></span>
-<span id="cb10-76"><a href="#cb10-76" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.H.2</span></span>
-<span id="cb10-77"><a href="#cb10-77" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.I</span></span>
-<span id="cb10-78"><a href="#cb10-78" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/2.K</span></span>
-<span id="cb10-79"><a href="#cb10-79" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.1</span></span>
-<span id="cb10-80"><a href="#cb10-80" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.1.a</span></span>
-<span id="cb10-81"><a href="#cb10-81" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.1.b</span></span>
-<span id="cb10-82"><a href="#cb10-82" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.2</span></span>
-<span id="cb10-83"><a href="#cb10-83" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.3</span></span>
-<span id="cb10-84"><a href="#cb10-84" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.4.a</span></span>
-<span id="cb10-85"><a href="#cb10-85" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.4.d</span></span>
-<span id="cb10-86"><a href="#cb10-86" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.4.e</span></span>
-<span id="cb10-87"><a href="#cb10-87" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.4.f</span></span>
-<span id="cb10-88"><a href="#cb10-88" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.4.g.i</span></span>
-<span id="cb10-89"><a href="#cb10-89" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.4.g.ii</span></span>
-<span id="cb10-90"><a href="#cb10-90" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.4.g.Ii</span></span>
-<span id="cb10-91"><a href="#cb10-91" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.4.g.iii</span></span>
-<span id="cb10-92"><a href="#cb10-92" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.4.g.iv</span></span>
-<span id="cb10-93"><a href="#cb10-93" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.B.4.h</span></span>
-<span id="cb10-94"><a href="#cb10-94" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.D.a.1</span></span>
-<span id="cb10-95"><a href="#cb10-95" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.D.a.2</span></span>
-<span id="cb10-96"><a href="#cb10-96" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.D.a.2.a</span></span>
-<span id="cb10-97"><a href="#cb10-97" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.D.a.2.b</span></span>
-<span id="cb10-98"><a href="#cb10-98" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.D.a.2.c</span></span>
-<span id="cb10-99"><a href="#cb10-99" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.D.a.3</span></span>
-<span id="cb10-100"><a href="#cb10-100" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.D.a.3.a</span></span>
-<span id="cb10-101"><a href="#cb10-101" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.D.a.4</span></span>
-<span id="cb10-102"><a href="#cb10-102" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.D.c</span></span>
-<span id="cb10-103"><a href="#cb10-103" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/3.D.e</span></span>
-<span id="cb10-104"><a href="#cb10-104" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/5.B.1</span></span>
-<span id="cb10-105"><a href="#cb10-105" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/5.B.2</span></span>
-<span id="cb10-106"><a href="#cb10-106" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/5.C.1.a</span></span>
-<span id="cb10-107"><a href="#cb10-107" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/5.C.1.b.i</span></span>
-<span id="cb10-108"><a href="#cb10-108" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/5.C.1.b.iii</span></span>
-<span id="cb10-109"><a href="#cb10-109" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/5.C.1.b.iv</span></span>
-<span id="cb10-110"><a href="#cb10-110" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/5.C.1.b.v</span></span>
-<span id="cb10-111"><a href="#cb10-111" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/5.C.2</span></span>
-<span id="cb10-112"><a href="#cb10-112" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/5.D</span></span>
-<span id="cb10-113"><a href="#cb10-113" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/5.D.1</span></span>
-<span id="cb10-114"><a href="#cb10-114" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/5.D.2</span></span>
-<span id="cb10-115"><a href="#cb10-115" tabindex="-1"></a><span class="do">## /tmp/RtmpazPxjo/5.E</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="do">## Creating the following directories: </span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.1</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.1.a</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.1.a.i</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.1.a.ii</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.1.a.iii</span></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.1.b</span></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.1.c</span></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.1.c.i</span></span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.1.c.ii</span></span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.2</span></span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.2.a</span></span>
+<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.2.b</span></span>
+<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.2.c</span></span>
+<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.2.d</span></span>
+<span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.2.e</span></span>
+<span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.2.f</span></span>
+<span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.2.g</span></span>
+<span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.2.g.vii</span></span>
+<span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.2.g.viii</span></span>
+<span id="cb7-23"><a href="#cb7-23" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.2.h</span></span>
+<span id="cb7-24"><a href="#cb7-24" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.2.j</span></span>
+<span id="cb7-25"><a href="#cb7-25" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.2.l</span></span>
+<span id="cb7-26"><a href="#cb7-26" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.3</span></span>
+<span id="cb7-27"><a href="#cb7-27" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.3.a</span></span>
+<span id="cb7-28"><a href="#cb7-28" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.3.a.i</span></span>
+<span id="cb7-29"><a href="#cb7-29" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.3.a.i.(i)</span></span>
+<span id="cb7-30"><a href="#cb7-30" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.3.a.ii</span></span>
+<span id="cb7-31"><a href="#cb7-31" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.3.a.ii.(i)</span></span>
+<span id="cb7-32"><a href="#cb7-32" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.3.b</span></span>
+<span id="cb7-33"><a href="#cb7-33" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.3.b.i</span></span>
+<span id="cb7-34"><a href="#cb7-34" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.3.b.i.1</span></span>
+<span id="cb7-35"><a href="#cb7-35" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.3.b.ii</span></span>
+<span id="cb7-36"><a href="#cb7-36" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.3.b.iii</span></span>
+<span id="cb7-37"><a href="#cb7-37" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.3.b.iv</span></span>
+<span id="cb7-38"><a href="#cb7-38" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.3.b.v</span></span>
+<span id="cb7-39"><a href="#cb7-39" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.3.b.vi</span></span>
+<span id="cb7-40"><a href="#cb7-40" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.3.b.vii</span></span>
+<span id="cb7-41"><a href="#cb7-41" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.3.c</span></span>
+<span id="cb7-42"><a href="#cb7-42" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.3.d</span></span>
+<span id="cb7-43"><a href="#cb7-43" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.3.d.i</span></span>
+<span id="cb7-44"><a href="#cb7-44" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.3.d.ii</span></span>
+<span id="cb7-45"><a href="#cb7-45" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.3.e.ii</span></span>
+<span id="cb7-46"><a href="#cb7-46" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.4</span></span>
+<span id="cb7-47"><a href="#cb7-47" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.4.a</span></span>
+<span id="cb7-48"><a href="#cb7-48" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.4.a.i</span></span>
+<span id="cb7-49"><a href="#cb7-49" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.4.a.ii</span></span>
+<span id="cb7-50"><a href="#cb7-50" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.4.b</span></span>
+<span id="cb7-51"><a href="#cb7-51" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.4.b.i</span></span>
+<span id="cb7-52"><a href="#cb7-52" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.4.b.ii</span></span>
+<span id="cb7-53"><a href="#cb7-53" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.4.c.i</span></span>
+<span id="cb7-54"><a href="#cb7-54" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.4.c.ii</span></span>
+<span id="cb7-55"><a href="#cb7-55" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.4.c.iii</span></span>
+<span id="cb7-56"><a href="#cb7-56" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.5.a</span></span>
+<span id="cb7-57"><a href="#cb7-57" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.A.5.b</span></span>
+<span id="cb7-58"><a href="#cb7-58" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.B.1.a</span></span>
+<span id="cb7-59"><a href="#cb7-59" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.B.1.a.i</span></span>
+<span id="cb7-60"><a href="#cb7-60" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.B.1.a.i.1</span></span>
+<span id="cb7-61"><a href="#cb7-61" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.B.1.a.i.2</span></span>
+<span id="cb7-62"><a href="#cb7-62" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.B.1.a.i.3</span></span>
+<span id="cb7-63"><a href="#cb7-63" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.B.1.a.ii</span></span>
+<span id="cb7-64"><a href="#cb7-64" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.B.1.a.ii.1</span></span>
+<span id="cb7-65"><a href="#cb7-65" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.B.1.a.ii.2</span></span>
+<span id="cb7-66"><a href="#cb7-66" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.B.1.b</span></span>
+<span id="cb7-67"><a href="#cb7-67" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.B.2</span></span>
+<span id="cb7-68"><a href="#cb7-68" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.B.2.a</span></span>
+<span id="cb7-69"><a href="#cb7-69" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.B.2.a.i</span></span>
+<span id="cb7-70"><a href="#cb7-70" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.B.2.a.ii</span></span>
+<span id="cb7-71"><a href="#cb7-71" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.B.2.a.iv</span></span>
+<span id="cb7-72"><a href="#cb7-72" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.B.2.a.v</span></span>
+<span id="cb7-73"><a href="#cb7-73" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.B.2.b</span></span>
+<span id="cb7-74"><a href="#cb7-74" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.B.2.b.i</span></span>
+<span id="cb7-75"><a href="#cb7-75" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.B.2.b.ii</span></span>
+<span id="cb7-76"><a href="#cb7-76" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.B.2.c</span></span>
+<span id="cb7-77"><a href="#cb7-77" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.B.2.d</span></span>
+<span id="cb7-78"><a href="#cb7-78" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/1.B.3</span></span>
+<span id="cb7-79"><a href="#cb7-79" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/11.B</span></span>
+<span id="cb7-80"><a href="#cb7-80" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.A</span></span>
+<span id="cb7-81"><a href="#cb7-81" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.A.1</span></span>
+<span id="cb7-82"><a href="#cb7-82" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.A.2</span></span>
+<span id="cb7-83"><a href="#cb7-83" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.A.3</span></span>
+<span id="cb7-84"><a href="#cb7-84" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.A.4</span></span>
+<span id="cb7-85"><a href="#cb7-85" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.A.4.a</span></span>
+<span id="cb7-86"><a href="#cb7-86" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.A.4.b</span></span>
+<span id="cb7-87"><a href="#cb7-87" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.A.4.c</span></span>
+<span id="cb7-88"><a href="#cb7-88" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.A.4.d</span></span>
+<span id="cb7-89"><a href="#cb7-89" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.A.5</span></span>
+<span id="cb7-90"><a href="#cb7-90" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.A.5.a</span></span>
+<span id="cb7-91"><a href="#cb7-91" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.A.5.b</span></span>
+<span id="cb7-92"><a href="#cb7-92" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.A.5.c</span></span>
+<span id="cb7-93"><a href="#cb7-93" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.B</span></span>
+<span id="cb7-94"><a href="#cb7-94" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.B.1</span></span>
+<span id="cb7-95"><a href="#cb7-95" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.B.10.a</span></span>
+<span id="cb7-96"><a href="#cb7-96" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.B.2</span></span>
+<span id="cb7-97"><a href="#cb7-97" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.B.3</span></span>
+<span id="cb7-98"><a href="#cb7-98" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.B.4</span></span>
+<span id="cb7-99"><a href="#cb7-99" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.B.5</span></span>
+<span id="cb7-100"><a href="#cb7-100" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.B.6</span></span>
+<span id="cb7-101"><a href="#cb7-101" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.B.7</span></span>
+<span id="cb7-102"><a href="#cb7-102" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.B.8.a</span></span>
+<span id="cb7-103"><a href="#cb7-103" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.B.8.b</span></span>
+<span id="cb7-104"><a href="#cb7-104" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.B.8.c</span></span>
+<span id="cb7-105"><a href="#cb7-105" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.B.8.d</span></span>
+<span id="cb7-106"><a href="#cb7-106" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.B.8.e</span></span>
+<span id="cb7-107"><a href="#cb7-107" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.B.8.f</span></span>
+<span id="cb7-108"><a href="#cb7-108" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.B.9.a</span></span>
+<span id="cb7-109"><a href="#cb7-109" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.B.9.b</span></span>
+<span id="cb7-110"><a href="#cb7-110" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.C.1</span></span>
+<span id="cb7-111"><a href="#cb7-111" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.C.2</span></span>
+<span id="cb7-112"><a href="#cb7-112" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.C.3</span></span>
+<span id="cb7-113"><a href="#cb7-113" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.C.4</span></span>
+<span id="cb7-114"><a href="#cb7-114" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.C.5</span></span>
+<span id="cb7-115"><a href="#cb7-115" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.C.6</span></span>
+<span id="cb7-116"><a href="#cb7-116" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.C.7.a</span></span>
+<span id="cb7-117"><a href="#cb7-117" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.C.7.b</span></span>
+<span id="cb7-118"><a href="#cb7-118" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.C.7.c</span></span>
+<span id="cb7-119"><a href="#cb7-119" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.C.7.d</span></span>
+<span id="cb7-120"><a href="#cb7-120" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.D.1</span></span>
+<span id="cb7-121"><a href="#cb7-121" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.D.2</span></span>
+<span id="cb7-122"><a href="#cb7-122" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.D.3.a</span></span>
+<span id="cb7-123"><a href="#cb7-123" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.D.3.b</span></span>
+<span id="cb7-124"><a href="#cb7-124" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.D.3.c</span></span>
+<span id="cb7-125"><a href="#cb7-125" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.D.3.d</span></span>
+<span id="cb7-126"><a href="#cb7-126" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.D.3.e</span></span>
+<span id="cb7-127"><a href="#cb7-127" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.D.3.f</span></span>
+<span id="cb7-128"><a href="#cb7-128" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.D.3.g</span></span>
+<span id="cb7-129"><a href="#cb7-129" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.D.3.h</span></span>
+<span id="cb7-130"><a href="#cb7-130" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.D.3.i,2.G</span></span>
+<span id="cb7-131"><a href="#cb7-131" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.E</span></span>
+<span id="cb7-132"><a href="#cb7-132" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.E.1</span></span>
+<span id="cb7-133"><a href="#cb7-133" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.E.2</span></span>
+<span id="cb7-134"><a href="#cb7-134" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.E.3</span></span>
+<span id="cb7-135"><a href="#cb7-135" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.E.4</span></span>
+<span id="cb7-136"><a href="#cb7-136" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.F.1</span></span>
+<span id="cb7-137"><a href="#cb7-137" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.F.1.a</span></span>
+<span id="cb7-138"><a href="#cb7-138" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.F.1.b</span></span>
+<span id="cb7-139"><a href="#cb7-139" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.F.2</span></span>
+<span id="cb7-140"><a href="#cb7-140" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.F.3</span></span>
+<span id="cb7-141"><a href="#cb7-141" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.F.4</span></span>
+<span id="cb7-142"><a href="#cb7-142" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.F.5</span></span>
+<span id="cb7-143"><a href="#cb7-143" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.F.6</span></span>
+<span id="cb7-144"><a href="#cb7-144" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.G</span></span>
+<span id="cb7-145"><a href="#cb7-145" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.G.1</span></span>
+<span id="cb7-146"><a href="#cb7-146" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.G.1.a</span></span>
+<span id="cb7-147"><a href="#cb7-147" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.G.1.b</span></span>
+<span id="cb7-148"><a href="#cb7-148" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.G.1.c</span></span>
+<span id="cb7-149"><a href="#cb7-149" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.G.2.a</span></span>
+<span id="cb7-150"><a href="#cb7-150" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.G.2.b</span></span>
+<span id="cb7-151"><a href="#cb7-151" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.G.3.a</span></span>
+<span id="cb7-152"><a href="#cb7-152" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.G.3.b</span></span>
+<span id="cb7-153"><a href="#cb7-153" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.G.4</span></span>
+<span id="cb7-154"><a href="#cb7-154" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.H.1</span></span>
+<span id="cb7-155"><a href="#cb7-155" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.H.2</span></span>
+<span id="cb7-156"><a href="#cb7-156" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.I</span></span>
+<span id="cb7-157"><a href="#cb7-157" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/2.K</span></span>
+<span id="cb7-158"><a href="#cb7-158" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3</span></span>
+<span id="cb7-159"><a href="#cb7-159" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.A</span></span>
+<span id="cb7-160"><a href="#cb7-160" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.A.1</span></span>
+<span id="cb7-161"><a href="#cb7-161" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.A.1.a</span></span>
+<span id="cb7-162"><a href="#cb7-162" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.A.1.a.i</span></span>
+<span id="cb7-163"><a href="#cb7-163" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.A.1.a.ii</span></span>
+<span id="cb7-164"><a href="#cb7-164" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.A.1.b</span></span>
+<span id="cb7-165"><a href="#cb7-165" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.A.1.c</span></span>
+<span id="cb7-166"><a href="#cb7-166" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.A.1.d</span></span>
+<span id="cb7-167"><a href="#cb7-167" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.A.1.e</span></span>
+<span id="cb7-168"><a href="#cb7-168" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.A.1.f</span></span>
+<span id="cb7-169"><a href="#cb7-169" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.A.1.g</span></span>
+<span id="cb7-170"><a href="#cb7-170" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.A.1.h</span></span>
+<span id="cb7-171"><a href="#cb7-171" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.A.1.j</span></span>
+<span id="cb7-172"><a href="#cb7-172" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.A.2</span></span>
+<span id="cb7-173"><a href="#cb7-173" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.A.2.a</span></span>
+<span id="cb7-174"><a href="#cb7-174" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.A.2.a.i</span></span>
+<span id="cb7-175"><a href="#cb7-175" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.A.2.a.ii</span></span>
+<span id="cb7-176"><a href="#cb7-176" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.A.2.b</span></span>
+<span id="cb7-177"><a href="#cb7-177" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.A.2.c</span></span>
+<span id="cb7-178"><a href="#cb7-178" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.A.2.d</span></span>
+<span id="cb7-179"><a href="#cb7-179" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.A.2.e</span></span>
+<span id="cb7-180"><a href="#cb7-180" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.A.2.f</span></span>
+<span id="cb7-181"><a href="#cb7-181" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.A.2.g</span></span>
+<span id="cb7-182"><a href="#cb7-182" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.A.2.h</span></span>
+<span id="cb7-183"><a href="#cb7-183" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.A.2.i</span></span>
+<span id="cb7-184"><a href="#cb7-184" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.A.2.j</span></span>
+<span id="cb7-185"><a href="#cb7-185" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B</span></span>
+<span id="cb7-186"><a href="#cb7-186" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.1</span></span>
+<span id="cb7-187"><a href="#cb7-187" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.1.a</span></span>
+<span id="cb7-188"><a href="#cb7-188" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.1.b</span></span>
+<span id="cb7-189"><a href="#cb7-189" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.1.b.i</span></span>
+<span id="cb7-190"><a href="#cb7-190" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.1.b.ii</span></span>
+<span id="cb7-191"><a href="#cb7-191" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.1.b.iii</span></span>
+<span id="cb7-192"><a href="#cb7-192" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.2</span></span>
+<span id="cb7-193"><a href="#cb7-193" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.2.a</span></span>
+<span id="cb7-194"><a href="#cb7-194" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.2.b</span></span>
+<span id="cb7-195"><a href="#cb7-195" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.2.b.i</span></span>
+<span id="cb7-196"><a href="#cb7-196" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.2.b.ii</span></span>
+<span id="cb7-197"><a href="#cb7-197" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.2.b.iii</span></span>
+<span id="cb7-198"><a href="#cb7-198" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.3</span></span>
+<span id="cb7-199"><a href="#cb7-199" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.3.a</span></span>
+<span id="cb7-200"><a href="#cb7-200" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.3.b</span></span>
+<span id="cb7-201"><a href="#cb7-201" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.3.b.i</span></span>
+<span id="cb7-202"><a href="#cb7-202" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.4</span></span>
+<span id="cb7-203"><a href="#cb7-203" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.4.a</span></span>
+<span id="cb7-204"><a href="#cb7-204" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.4.a.i</span></span>
+<span id="cb7-205"><a href="#cb7-205" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.4.a.ii</span></span>
+<span id="cb7-206"><a href="#cb7-206" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.4.a.iii</span></span>
+<span id="cb7-207"><a href="#cb7-207" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.4.b</span></span>
+<span id="cb7-208"><a href="#cb7-208" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.4.b.ii</span></span>
+<span id="cb7-209"><a href="#cb7-209" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.4.b.iii</span></span>
+<span id="cb7-210"><a href="#cb7-210" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.4.d</span></span>
+<span id="cb7-211"><a href="#cb7-211" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.4.e</span></span>
+<span id="cb7-212"><a href="#cb7-212" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.4.f</span></span>
+<span id="cb7-213"><a href="#cb7-213" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.4.g.i</span></span>
+<span id="cb7-214"><a href="#cb7-214" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.4.g.ii</span></span>
+<span id="cb7-215"><a href="#cb7-215" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.4.g.Ii</span></span>
+<span id="cb7-216"><a href="#cb7-216" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.4.g.iii</span></span>
+<span id="cb7-217"><a href="#cb7-217" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.4.g.iv</span></span>
+<span id="cb7-218"><a href="#cb7-218" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.4.h</span></span>
+<span id="cb7-219"><a href="#cb7-219" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.5</span></span>
+<span id="cb7-220"><a href="#cb7-220" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.5.a</span></span>
+<span id="cb7-221"><a href="#cb7-221" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.5.b</span></span>
+<span id="cb7-222"><a href="#cb7-222" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.5.b.i</span></span>
+<span id="cb7-223"><a href="#cb7-223" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.6.b</span></span>
+<span id="cb7-224"><a href="#cb7-224" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.B.6.b.i</span></span>
+<span id="cb7-225"><a href="#cb7-225" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.C</span></span>
+<span id="cb7-226"><a href="#cb7-226" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.C.1</span></span>
+<span id="cb7-227"><a href="#cb7-227" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.C.1.a</span></span>
+<span id="cb7-228"><a href="#cb7-228" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.C.1.b</span></span>
+<span id="cb7-229"><a href="#cb7-229" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.C.1.c</span></span>
+<span id="cb7-230"><a href="#cb7-230" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.C.10</span></span>
+<span id="cb7-231"><a href="#cb7-231" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.C.11</span></span>
+<span id="cb7-232"><a href="#cb7-232" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.C.12</span></span>
+<span id="cb7-233"><a href="#cb7-233" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.C.3</span></span>
+<span id="cb7-234"><a href="#cb7-234" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.C.4</span></span>
+<span id="cb7-235"><a href="#cb7-235" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.C.5</span></span>
+<span id="cb7-236"><a href="#cb7-236" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.C.6</span></span>
+<span id="cb7-237"><a href="#cb7-237" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.C.7</span></span>
+<span id="cb7-238"><a href="#cb7-238" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.C.8</span></span>
+<span id="cb7-239"><a href="#cb7-239" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.D.1</span></span>
+<span id="cb7-240"><a href="#cb7-240" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.D.a.1</span></span>
+<span id="cb7-241"><a href="#cb7-241" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.D.a.2</span></span>
+<span id="cb7-242"><a href="#cb7-242" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.D.a.2.a</span></span>
+<span id="cb7-243"><a href="#cb7-243" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.D.a.2.b</span></span>
+<span id="cb7-244"><a href="#cb7-244" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.D.a.2.c</span></span>
+<span id="cb7-245"><a href="#cb7-245" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.D.a.3</span></span>
+<span id="cb7-246"><a href="#cb7-246" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.D.a.3.a</span></span>
+<span id="cb7-247"><a href="#cb7-247" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.D.a.4</span></span>
+<span id="cb7-248"><a href="#cb7-248" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.D.c</span></span>
+<span id="cb7-249"><a href="#cb7-249" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/3.D.e</span></span>
+<span id="cb7-250"><a href="#cb7-250" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/4</span></span>
+<span id="cb7-251"><a href="#cb7-251" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/4.A</span></span>
+<span id="cb7-252"><a href="#cb7-252" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/4.A.1</span></span>
+<span id="cb7-253"><a href="#cb7-253" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/4.A.2</span></span>
+<span id="cb7-254"><a href="#cb7-254" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/4.B</span></span>
+<span id="cb7-255"><a href="#cb7-255" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/4.C</span></span>
+<span id="cb7-256"><a href="#cb7-256" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/4.C.1</span></span>
+<span id="cb7-257"><a href="#cb7-257" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/4.C.2</span></span>
+<span id="cb7-258"><a href="#cb7-258" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/4.D</span></span>
+<span id="cb7-259"><a href="#cb7-259" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/4.D.1</span></span>
+<span id="cb7-260"><a href="#cb7-260" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/4.D.2</span></span>
+<span id="cb7-261"><a href="#cb7-261" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/4.E</span></span>
+<span id="cb7-262"><a href="#cb7-262" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/5.B.1</span></span>
+<span id="cb7-263"><a href="#cb7-263" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/5.B.2</span></span>
+<span id="cb7-264"><a href="#cb7-264" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/5.C.1.a</span></span>
+<span id="cb7-265"><a href="#cb7-265" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/5.C.1.b.i</span></span>
+<span id="cb7-266"><a href="#cb7-266" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/5.C.1.b.iii</span></span>
+<span id="cb7-267"><a href="#cb7-267" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/5.C.1.b.iv</span></span>
+<span id="cb7-268"><a href="#cb7-268" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/5.C.1.b.v</span></span>
+<span id="cb7-269"><a href="#cb7-269" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/5.C.2</span></span>
+<span id="cb7-270"><a href="#cb7-270" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/5.D</span></span>
+<span id="cb7-271"><a href="#cb7-271" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/5.D.1</span></span>
+<span id="cb7-272"><a href="#cb7-272" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/5.D.2</span></span>
+<span id="cb7-273"><a href="#cb7-273" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/5.E</span></span>
+<span id="cb7-274"><a href="#cb7-274" tabindex="-1"></a><span class="do">## /tmp/RtmpnN6jOp/NA</span></span></code></pre></div>
 </div>
 </div>
 </div>

@@ -4,47 +4,48 @@
 #'
 #'
 #' @param path Character, default .
-#' @param ef Character, default .
 #' @param nfr String, nomenclature for ereporting, default "all"
 #' @export
 #' @examples \dontrun{
 #' # do not run
 #' }
-inventory <- function(path, ef = "emep", nfr = "all") {
+inventory <- function(path, nfr = "all") {
   if (missing(path)) {
     stop("Please, add a path to create dirs")
   }
 
-  if (!ef %in% c("emep", "ipcc")) {
-    stop("ef can be 'emep' or 'ipcc'")
-  }
+  # 1. Use a local copy to avoid modifying sysdata in place
+  efx <- data.table::as.data.table(sysdata)
 
-  if (ef == "emep") {
-    ef <- "eea"
-  }
-
-  # Ensure dataset is a data.table
-  efdb <- data.table::setDT(sysdata[[ef]])
-
-  NFR <- NULL
-  nfrs <- efdb[, unique(NFR)]
-
-  if (identical(nfr, "all")) {
-    nfr <- nfrs
-  } else {
-    if (any(!nfr %in% nfrs)) {
-      stop("Only these nfr allowed: ", paste(nfrs, collapse = ", "))
+  # 2. Filter NFR if requested
+  if (nfr != "all") {
+    available_nfrs <- efx[, unique(code)]
+    if (any(!nfr %in% available_nfrs)) {
+      stop("Only these NFR allowed: ", paste(available_nfrs, collapse = " "))
     }
+    code_arg <- nfr
+    code <- NULL
+    efx <- efx[code %in% code_arg]
   }
 
-  nfr <- nfr[order(nfr)]
+  nfr_to_create <- efx[, unique(code)]
+  nfr_to_create <- nfr_to_create[order(nfr_to_create)]
 
-  dirs <- paste0(path, "/", nfr)
-  message("Creating the following directories: \n", paste(dirs, collapse = "\n"))
+  dirs <- paste0(path, "/", nfr_to_create)
+  message(
+    "Creating the following directories: \n",
+    paste(dirs, collapse = "\n")
+  )
 
   for (i in seq_along(dirs)) {
-    if (!dir.exists(dirs[i])) dir.create(dirs[i], recursive = TRUE)
-    if (!dir.exists(paste0(dirs[i], "/scripts"))) dir.create(paste0(dirs[i], "/scripts"), recursive = TRUE)
-    if (!dir.exists(paste0(dirs[i], "/emi"))) dir.create(paste0(dirs[i], "/emi"), recursive = TRUE)
+    if (!dir.exists(dirs[i])) {
+      dir.create(dirs[i], recursive = TRUE)
+    }
+    if (!dir.exists(paste0(dirs[i], "/scripts"))) {
+      dir.create(paste0(dirs[i], "/scripts"), recursive = TRUE)
+    }
+    if (!dir.exists(paste0(dirs[i], "/emi"))) {
+      dir.create(paste0(dirs[i], "/emi"), recursive = TRUE)
+    }
   }
 }

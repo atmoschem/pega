@@ -6,23 +6,12 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
 # PEGA <img src="man/figures/logo.png" align="right" alt="" width="220" />
-
 
 - Poluentes, Emissões e Gases de Atmosfera.
 - Pollutants Emissions and Gaseous of the Atmosphere.
 
-
-
 ## Installation
-
-Using git bash/powershell
-```{bash installb, eval = F}
-git clone https://github.com/atmoschem/pega
-R CMD INSTALL pega
-```
-
 
 Using remotes R package
 ```{r install, eval = F}
@@ -35,26 +24,15 @@ library(data.table)
 utils::packageVersion("pega")
 ```
 
-
-
 ## Emission factors
 
-###  EMEP 
 ```{r read1, eval = T}
 library(pega)
-ef_emep(tier = 1, fuel = "Natural gas", pol = "PM2.5")
-```
-
-###  IPCC 
-
-```{r read2, eval = T}
-ef_ipcc(fuel = "Natural Gas", pol = "CH4")
+ef()
 ```
 
 ###  Create directories 
 
-
 ```{r read3, eval = T}
 inventory(path = tempdir())
 ```
-

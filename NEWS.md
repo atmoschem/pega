@@ -1,6 +1,10 @@
 NEWS
 ===========
 
+### pega 0.8.0 (date: 2026-02-08)
+
+- Added `ef` function to return EF unified database
+
 ### pega 0.7.0 (date: 2025-11-29)
 
 - Added `inventory` function to create directories structure
