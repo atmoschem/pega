@@ -5,9 +5,6 @@
 - Pollutants Emissions and Gaseous of the Atmosphere.
 
 
-
-
-
 ## Installation
 
 Using remotes R package
