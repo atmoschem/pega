@@ -4,12 +4,16 @@
 \alias{inventory}
 \title{start inventory structure}
 \usage{
-inventory(path, nfr = "all")
+inventory(path, nfr = "all", dict, return_dict = TRUE)
 }
 \arguments{
 \item{path}{Character, default .}
 
 \item{nfr}{String, nomenclature for ereporting, default "all"}
+
+\item{dict}{String with file name to add description notes in a csv.}
+
+\item{return_dict}{Logical, to retunr dictionary as object}
 }
 \description{
 create directories

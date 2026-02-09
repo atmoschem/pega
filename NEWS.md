@@ -1,6 +1,11 @@
 NEWS
 ===========
 
+### pega 0.8.1 (date: 2026-02-09)
+
+- Added `note` argument in `inventory` with dictionary of sources
+
+
 ### pega 0.8.0 (date: 2026-02-08)
 
 - Added `ef` function to return EF unified database

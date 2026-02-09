@@ -5,17 +5,26 @@
 #'
 #' @param path Character, default .
 #' @param nfr String, nomenclature for ereporting, default "all"
+#' @param dict String with file name to add description notes in a csv.
+#' @param return_dict Logical, to retunr dictionary as object
 #' @export
 #' @examples \dontrun{
 #' # do not run
 #' }
-inventory <- function(path, nfr = "all") {
+inventory <- function(path, nfr = "all", dict, return_dict = TRUE) {
   if (missing(path)) {
     stop("Please, add a path to create dirs")
   }
 
   # 1. Use a local copy to avoid modifying sysdata in place
   efx <- data.table::as.data.table(sysdata)
+
+  notes <- unique(efx[, c("code", "category", "source")])
+
+  if (!missing(dict)) {
+    data.table::setorderv(notes, "code")
+    data.table::fwrite(notes, dict)
+  }
 
   # 2. Filter NFR if requested
   if (nfr != "all") {
@@ -48,4 +57,6 @@ inventory <- function(path, nfr = "all") {
       dir.create(paste0(dirs[i], "/emi"), recursive = TRUE)
     }
   }
+
+  if (return_dict) return(notes)
 }
