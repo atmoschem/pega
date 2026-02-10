@@ -155,5 +155,18 @@ sysdata[, unique(tech2)]
 sysdata[grep("Natural", fuel), unique(fuel)]
 
 sysdata[grep("Natural", fuel), fuel := "Natural Gas"]
+
+sysdata[grep("il", fuel), unique(fuel)]
+sysdata[
+    fuel %in% c("Gas Oil", "Gas/Oil", "Gas Oil/Diesel", "Gas oil", "Oil/gas"),
+    unique(fuel)
+]
+
+sysdata[
+    fuel %in% c("Gas Oil", "Gas/Oil", "Gas Oil/Diesel", "Gas oil", "Oil/gas"),
+    fuel := "Oil Gas"
+]
+
+
 # units is hell, skipping!
 save(sysdata, file = "R/sysdata.rda", compress = "xz")
