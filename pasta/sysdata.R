@@ -152,60 +152,8 @@ sysdata[, unique(fuel)]
 
 sysdata[, unique(tech2)]
 
+sysdata[grep("Natural", fuel), unique(fuel)]
+
+sysdata[grep("Natural", fuel), fuel := "Natural Gas"]
 # units is hell, skipping!
 save(sysdata, file = "R/sysdata.rda", compress = "xz")
-
-
-# checking units ####
-db[, unique(unit)][1:10]
-
-db[grepl("GJ", unit), unique(unit)]
-
-# g GJ####
-db[unit == "g/GJ"]
-db[unit %in% c("g/GJ", "g CH4/GJ", "g N2O/GJ", "gC/GJ Gross"), ef2 := ef]
-db[unit %in% c("g/GJ", "g CH4/GJ", "g N2O/GJ", "gC/GJ Gross"), unit2 := "g/GJ"]
-
-# mg GJ####
-db[grepl("GJ", unit), unique(unit)]
-db[grepl("mg", unit), unique(unit)]
-grep("GJ", db[grepl("mg", unit), unique(unit)], value = T)
-db[
-    unit %in% c("mg/GJ"),
-    ef2 := ef / 1000
-]
-
-# mg GJ####
-db[grepl("GJ", unit), unique(unit)]
-db[grepl("mg", unit), unique(unit)]
-grep("GJ", db[grepl("mg", unit), unique(unit)], value = T)
-db[
-    unit %in% c("mg/GJ"),
-    ef2 := ef / 1000
-]
-
-
-# µg GJ####
-db[grepl("µ", unit), unique(unit)]
-db[
-    unit %in% c("µg/GJ"),
-    ef2 := ef / 1000000
-]
-db[
-    unit %in% c("µg/GJ"),
-    unit2 := "g/GJ"
-]
-
-# ng GJ####
-db[grepl("ng", unit), unique(unit)]
-db[
-    unit %in% c("ng I-TEQ/GJ", "ng WHO-TEG/GJ", "ng/GJ"),
-    ef2 := ef / 1000000000
-]
-
-db[
-    unit %in% c("ng I-TEQ/GJ", "ng WHO-TEG/GJ", "ng/GJ"),
-    unit2 := "g/GJ"
-]
-
-db[, unique(unit)][1:10]
