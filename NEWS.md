@@ -1,6 +1,13 @@
 NEWS
 ===========
 
+### pega 0.9.0 (date: 2026-02-10)
+
+- Added `inst/scripts` with scritps for each activity type
+- `inventory` will be used to copy these scripts in a
+determined structure
+- `estimate_emissions` is deleted
+
 ### pega 0.8.1 (date: 2026-02-09)
 
 - Added `note` argument in `inventory` with dictionary of sources

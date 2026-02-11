@@ -31,8 +31,3 @@ library(pega)
 ef()
 ```
 
-###  Create directories 
-
-```{r read3, eval = T}
-inventory(path = tempdir())
-```
