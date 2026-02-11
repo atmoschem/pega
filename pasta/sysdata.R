@@ -167,6 +167,38 @@ sysdata[
     fuel := "Oil Gas"
 ]
 
+sysdata[grepl("GJ", unit), unique(unit)]
+
+sysdata[unit %in% c("g N2O/GJ", "g CH4/GJ")]
+sysdata[
+    unit %in% c("g N2O/GJ", "g CH4/GJ"),
+    unit := "g/GJ"
+]
+
+
+sysdata[unit == "mg/GJ", unique(unit)]
+sysdata[unit == "mg/GJ", ef := ef / 1000]
+sysdata[unit == "mg/GJ", unit := "g/GJ"]
+
+sysdata[unit %in% c("ng/GJ", "ng I-TEQ/GJ", "I-Teq ng/GJ")]
+sysdata[
+    unit %in% c("ng/GJ", "ng I-TEQ/GJ", "I-Teq ng/GJ"),
+    ef := ef / 1000000000
+]
+sysdata[
+    unit %in% c("ng/GJ", "ng I-TEQ/GJ", "I-Teq ng/GJ", "ng WHO-TEG/GJ"),
+    unit := "g/GJ"
+]
+
+sysdata[unit %in% c("µg/GJ", "ug/GJ")]
+sysdata[unit %in% c("µg/GJ", "ug/GJ"), ef := ef / 1000000]
+sysdata[unit %in% c("µg/GJ", "ug/GJ"), unit := "g/GJ"]
+
+sysdata[unit %in% c("kg/GJ", "kg CO2/GJ", "CO2 kg/GJ")]
+sysdata[unit %in% c("kg/GJ", "kg CO2/GJ", "CO2 kg/GJ"), ef := ef * 1000]
+sysdata[unit %in% c("kg/GJ", "kg CO2/GJ", "CO2 kg/GJ"), unit := "g/GJ"]
+
+sysdata[grepl("GJ", unit), unique(unit)]
 
 # units is hell, skipping!
 save(sysdata, file = "R/sysdata.rda", compress = "xz")
