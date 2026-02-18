@@ -18,7 +18,7 @@ library(data.table)
 utils::packageVersion("pega")
 ```
 
-    ## [1] '0.9.0'
+    ## [1] '0.9.1'
 
 ## Emission factors
 

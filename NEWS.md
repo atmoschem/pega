@@ -1,6 +1,10 @@
 NEWS
 ===========
 
+### pega 0.9.1 (date: 2026-02-17)
+
+- Added more units conversion
+
 ### pega 0.9.0 (date: 2026-02-10)
 
 - Added `inst/scripts` with scritps for each activity type
