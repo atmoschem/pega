@@ -18,7 +18,7 @@ library(data.table)
 utils::packageVersion("pega")
 ```
 
-    ## [1] '0.9.1'
+    ## [1] '0.9.2'
 
 ## Emission factors
 
@@ -78,7 +78,7 @@ ef()
     ## 343: Municipal Wastes (biomass fraction)      <NA> 1.20e+00   g/GJ
     ## 344:         Other Primary Solid Biomass      <NA> 1.10e+00   g/GJ
     ## 345:                     Wood/Wood Waste      <NA> 8.30e-01   g/GJ
-    ## 346:                         Natural Gas      <NA> 3.09e+02  kg/TJ
+    ## 346:                         Natural Gas      <NA> 3.09e+02   g/GJ
     ##                           reference    pol  region     other
     ##                              <char> <char>  <char>    <char>
     ##   1:     US EPA (1998), chapter 1.4    SOx    <NA> US Region

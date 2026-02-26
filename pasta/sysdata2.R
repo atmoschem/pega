@@ -193,14 +193,16 @@ sysdata[unit %in% c("µg/GJ", "ug/GJ")]
 sysdata[unit %in% c("µg/GJ", "ug/GJ"), ef := ef / 1000000]
 sysdata[unit %in% c("µg/GJ", "ug/GJ"), unit := "g/GJ"]
 
-sysdata[unit %in% c("kg/GJ", "kg CO2/GJ", "CO2 kg/GJ")]
-sysdata[unit %in% c("kg/GJ", "kg CO2/GJ", "CO2 kg/GJ"), ef := ef * 1000]
-sysdata[unit %in% c("kg/GJ", "kg CO2/GJ", "CO2 kg/GJ"), unit := "g/GJ"]
+sysdata[unit %in% c("kg/GJ", "kg CO2/GJ", "CO2 kg/GJ", "Mg/TJ")]
+sysdata[
+  unit %in% c("kg/GJ", "kg CO2/GJ", "CO2 kg/GJ", "Mg/TJ"),
+  ef := ef * 1000
+]
+sysdata[unit %in% c("kg/GJ", "kg CO2/GJ", "CO2 kg/GJ", "Mg/TJ"), unit := "g/GJ"]
 
-sysdata[unit %in% c("kg/TJ"), unit := "g/GJ"]
+sysdata[unit %in% c("kg/TJ", "kG/TJ"), unit := "g/GJ"]
 
 sysdata[grepl("GJ", unit), unique(unit)]
-
 
 # units is hell, skipping!
 save(sysdata, file = "R/sysdata.rda", compress = "xz")
