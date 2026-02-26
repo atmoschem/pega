@@ -2,7 +2,7 @@
 # 1: Energy
 # 1.A Fuel Combustion Activities
 # 1.A.1.a Main Activities Electricity and Heat Production
-# 1.A.1.a.i Electricity Generation
+# category: "1.A.1.b - Petroleum Refining"
 
 library(data.table)
 library(pega)
@@ -12,33 +12,36 @@ db <- ef(returnfdb = T)
 
 # database final
 db[
-  grepl("1.A.1.a", code) &
+  grepl("1.A.1.b", code) &
     is.na(region)
 ] -> dbf
+
+# category
+dbf[, unique(category)]
 
 # fuels
 fuels <- dbf[, unique(fuel)]
 cat(fuels, sep = "\n")
 
-# Heavy Fuel Oil ####
-dbf[fuel == "Heavy Fuel Oil", unique(type)]
+# Natural Gas ####
+dbf[fuel == "Natural Gas", unique(type)]
+
+dbf[fuel == "Natural Gas", unique(tech)]
+
 dbf[
-  fuel == "Heavy Fuel Oil" &
-    type == "Tier 1 Emission Factor"
+  fuel == "Natural Gas" &
+    tech == "Process Furnaces, Heaters and Boilers"
 ] -> db_ef
 
 db_ef
 db_ef[, .N, by = pol]
-
-db_ef[, unique(tech2)]
-
 
 activity <- data.table(
   id = 1,
   lat = -23,
   lon = -46,
   alt = 10,
-  code = "1.A.1.a",
+  code = "1.A.1.b",
   activity = rnorm(n = 12, mean = 500, sd = 100),
   unit = "GJ",
   date = seq.Date(as.Date("2020-01-01"), length.out = 12, by = "month"),
@@ -61,23 +64,18 @@ rbindlist(lapply(1:nrow(activity), function(i) {
 
 
 dt[, emissions := ef * activity]
-# BC is % of PM2.5
-dt[pol == "PM2.5"]
-dt[pol == "BC"]
-dt[pol == "BC", emissions := ef / 100 * dt[pol == "PM2.5"]$emissions]
-dt[pol == "BC"]
-fwrite(dt, "estimation/1/1.A/1.A.1/emissions/heavy_fuel_oil.csv")
+dt[, emissions_units := "g"]
+#  BC is % of PM2.5
+# dt[pol == "PM2.5"]
+# dt[pol == "BC"]
+# dt[pol == "BC", emissions := ef / 100 * dt[pol == "PM2.5"]$emissions]
+# dt[pol == "BC"]
+f
+fwrite(dt, "estimation/1/1.A/1.A.1/emissions/EMEP_1A1b_natural_gas.csv")
 
-# Natural Gas ####
-# Heavy Fuel Oil ####
-# Brown Coal ####
-# Hard Coal ####
-# Biomass ####
-# Blast furnace/Basic O2 furnace gas ####
-# Biogas ####
-# Coking Coal, Steam Coal & Sub-Bituminous Coal ####
-# Oil Gas ####
-# Wood and wood waste (clean wood waste) ####
-# Brown Coal/Lignite ####
-# Residual Oil ####
-# Gaseous Fuels ####
+# Natural Gas
+# Oil Gas
+# Residual Oil
+# Refinery Gas
+# Residual Oil (Refinery Fuel Oil)
+# Residual Fuel Oil

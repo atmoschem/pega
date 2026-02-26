@@ -2,7 +2,7 @@
 # 1: Energy
 # 1.A Fuel Combustion Activities
 # 1.A.1.a Main Activities Electricity and Heat Production
-# 1.A.1.a.i Electricity Generation
+# category: 1.A.1.a Public electricity and heat production
 
 library(data.table)
 library(pega)
@@ -20,18 +20,18 @@ db[
 fuels <- dbf[, unique(fuel)]
 cat(fuels, sep = "\n")
 
-# Oil Gas ####
-dbf[fuel == "Oil Gas", unique(type)]
-
+# Natural Gas ####
+dbf[fuel == "Natural Gas", unique(type)]
 dbf[
-  fuel == "Oil Gas" &
+  fuel == "Natural Gas" &
     type == "Tier 1 Emission Factor"
 ] -> db_ef
 
 db_ef
 db_ef[, .N, by = pol]
-# db_ef[, unique(table)]
-# db_ef <- db_ef[table %in% c("Table_3-16")]
+
+db_ef[, unique(tech2)]
+db_ef <- db_ef[tech2 %in% c("", "EU Region")]
 
 activity <- data.table(
   id = 1,
@@ -59,14 +59,8 @@ rbindlist(lapply(1:nrow(activity), function(i) {
   df
 })) -> dt
 
-
 dt[, emissions := ef * activity]
-#BC is % of PM2.5
-dt[pol == "PM2.5"]
-dt[pol == "BC"]
-dt[pol == "BC", emissions := ef / 100 * dt[pol == "PM2.5"]$emissions]
-dt[pol == "BC"]
-fwrite(dt, "estimation/1/1.A/1.A.1/emissions/oil_gas.csv")
+fwrite(dt, "estimation/1/1.A/1.A.1/emissions/EMEP_1A1a_natural_gas.csv")
 
 # Natural Gas ####
 # Heavy Fuel Oil ####

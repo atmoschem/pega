@@ -2,7 +2,7 @@
 # 1: Energy
 # 1.A Fuel Combustion Activities
 # 1.A.1.a Main Activities Electricity and Heat Production
-# 1.A.1.a.i Electricity Generation
+# category: 1.A.1.a.i Electricity Generation
 
 library(data.table)
 library(pega)
@@ -11,21 +11,31 @@ library(pega)
 db <- ef(returnfdb = T)
 
 # database final
+db[,
+  grep("1.A.1.a", code, value = T),
+] |>
+  unique()
+
 db[
-  grepl("1.A.1.a", code) &
-    is.na(region)
+  code == "1.A.1.a.i"
 ] -> dbf
+
+# category
+dbf[, unique(category)]
 
 # fuels
 fuels <- dbf[, unique(fuel)]
 cat(fuels, sep = "\n")
 
-# Hard Coal ####
-dbf[fuel == "Biomass", unique(type)]
+dbf[fuel == "Residual Fuel Oil"]
+
+# Anthracite ####
+dbf[fuel == "Residual Fuel Oil", unique(tech)]
 
 dbf[
-  fuel == "Biomass" &
-    type == "Tier 1 Emission Factor"
+  fuel == "Residual Fuel Oil" &
+    tech %in%
+      c("Power Boiler with Front wall firing in the capacity of 325MW")
 ] -> db_ef
 
 db_ef
@@ -60,12 +70,13 @@ rbindlist(lapply(1:nrow(activity), function(i) {
 
 dt[, emissions := ef * activity]
 # BC is % of PM2.5
-dt[pol == "PM2.5"]
-dt[pol == "BC"]
-dt[pol == "BC", emissions := ef / 100 * dt[pol == "PM2.5"]$emissions]
-dt[pol == "BC"]
-fwrite(dt, "estimation/1/1.A/1.A.1/emissions/biomass.csv")
+# dt[pol == "PM2.5"]
+# dt[pol == "BC"]
+# dt[pol == "BC", emissions := ef / 100 * dt[pol == "PM2.5"]$emissions]
+# dt[pol == "BC"]
+fwrite(dt, "estimation/1/1.A/1.A.1/emissions/IPCC_1A1ai_residual_fuel_oil.csv")
 
+#EMEP
 # Natural Gas ####
 # Heavy Fuel Oil ####
 # Brown Coal ####
@@ -79,3 +90,12 @@ fwrite(dt, "estimation/1/1.A/1.A.1/emissions/biomass.csv")
 # Brown Coal/Lignite ####
 # Residual Oil ####
 # Gaseous Fuels ####
+
+# IPCC
+# Other Bituminous Coal
+# Other Biogas
+# Landfill Gas
+# Diesel Oil
+# Natural Gas
+# Anthracite
+# Residual Fuel Oil

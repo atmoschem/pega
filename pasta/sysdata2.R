@@ -268,6 +268,23 @@ sysdata[
   unit := "g/Mg crude oil"
 ]
 
+
 sysdata[grepl("crude", unit), unique(unit)]
+
+sysdata[unit %in% c("t CO2/TJ")]
+sysdata[
+  unit %in% c("t CO2/TJ"),
+  ef := ef * 1000
+]
+sysdata[
+  unit %in% c("t CO2/TJ"),
+  unit := "g/GJ"
+]
+sysdata[grepl("crude", unit), unique(unit)]
+
+sysdata[
+  unit %in% c("g/Mg crude oil input", "g/MG crude oil input"),
+  unit := "g/Mg crude oil"
+]
 
 save(sysdata, file = "R/sysdata.rda", compress = "xz")

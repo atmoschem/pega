@@ -2,7 +2,7 @@
 # 1: Energy
 # 1.A Fuel Combustion Activities
 # 1.A.1.a Main Activities Electricity and Heat Production
-# 1.A.1.a.i Electricity Generation
+# category: 1.A.1.a Public electricity and heat production
 
 library(data.table)
 library(pega)
@@ -12,34 +12,36 @@ db <- ef(returnfdb = T)
 
 # database final
 db[
-  grepl("1.A.1.c", code) &
+  grepl("1.A.1.a", code) &
     is.na(region)
 ] -> dbf
+
+# category
+dbf[, unique(category)]
 
 # fuels
 fuels <- dbf[, unique(fuel)]
 cat(fuels, sep = "\n")
 
-# Coal EMEP ####
-# Coking Coal IPCC ####
-dbf[fuel == "Coal", unique(type)]
+# Coking Coal, Steam Coal & Sub-Bituminous Coal ####
+dbf[fuel == "Coking Coal, Steam Coal & Sub-Bituminous Coal", unique(type)]
 
 dbf[
-  fuel == "Coal" &
-    type == "Tier 1 Emission Factor"
+  fuel == "Coking Coal, Steam Coal & Sub-Bituminous Coal" &
+    type == "Tier 2 Emission Factor"
 ] -> db_ef
 
 db_ef
 db_ef[, .N, by = pol]
-# db_ef[, unique(table)]
-# db_ef <- db_ef[table %in% c("Table_3-16")]
+db_ef[, unique(table)]
+db_ef <- db_ef[table %in% c("Table_3-16")]
 
 activity <- data.table(
   id = 1,
   lat = -23,
   lon = -46,
   alt = 10,
-  code = "1.A.1.c.i",
+  code = "1.A.1.a",
   activity = rnorm(n = 12, mean = 500, sd = 100),
   unit = "GJ",
   date = seq.Date(as.Date("2020-01-01"), length.out = 12, by = "month"),
@@ -63,8 +65,25 @@ rbindlist(lapply(1:nrow(activity), function(i) {
 
 dt[, emissions := ef * activity]
 #BC is % of PM2.5
-fwrite(dt, "estimation/1/1.A/1.A.1/emissions/1a1ci_coal.csv")
+dt[pol == "PM2.5"]
+dt[pol == "BC"]
+dt[pol == "BC", emissions := ef / 100 * dt[pol == "PM2.5"]$emissions]
+dt[pol == "BC"]
+fwrite(
+  dt,
+  "estimation/1/1.A/1.A.1/emissions/EMEP_1A1a_cooking_oil_and_coal.csv"
+)
 
-# Coal ####
-# Coking Coal ####
 # Natural Gas ####
+# Heavy Fuel Oil ####
+# Brown Coal ####
+# Hard Coal ####
+# Biomass ####
+# Blast furnace/Basic O2 furnace gas ####
+# Biogas ####
+# Coking Coal, Steam Coal & Sub-Bituminous Coal ####
+# Oil Gas ####
+# Wood and wood waste (clean wood waste) ####
+# Brown Coal/Lignite ####
+# Residual Oil ####
+# Gaseous Fuels ####

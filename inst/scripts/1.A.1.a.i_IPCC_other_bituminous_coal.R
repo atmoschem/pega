@@ -2,7 +2,7 @@
 # 1: Energy
 # 1.A Fuel Combustion Activities
 # 1.A.1.a Main Activities Electricity and Heat Production
-# 1.A.1.a.i Electricity Generation
+# category: 1.A.1.a.i Electricity Generation
 
 library(data.table)
 library(pega)
@@ -11,34 +11,45 @@ library(pega)
 db <- ef(returnfdb = T)
 
 # database final
+db[,
+  grep("1.A.1.a", code, value = T),
+] |>
+  unique()
+
 db[
-  grepl("1.A.1.a", code) &
-    is.na(region)
+  code == "1.A.1.a.i"
 ] -> dbf
+
+# category
+dbf[, unique(category)]
 
 # fuels
 fuels <- dbf[, unique(fuel)]
 cat(fuels, sep = "\n")
 
-# Coking Coal, Steam Coal & Sub-Bituminous Coal ####
-dbf[fuel == "Coking Coal, Steam Coal & Sub-Bituminous Coal", unique(type)]
+dbf[fuel == "Other Bituminous Coal"]
+
+# Other Bituminous Coal ####
+dbf[fuel == "Other Bituminous Coal", unique(tech)]
 
 dbf[
-  fuel == "Coking Coal, Steam Coal & Sub-Bituminous Coal" &
-    type == "Tier 2 Emission Factor"
+  fuel == "Other Bituminous Coal" &
+    tech %in%
+      c(
+        "Power Boiler with tangential firing in the capacity of 500MW to 560MW",
+        "Combustion at thermal power plants"
+      )
 ] -> db_ef
 
 db_ef
 db_ef[, .N, by = pol]
-db_ef[, unique(table)]
-db_ef <- db_ef[table %in% c("Table_3-16")]
 
 activity <- data.table(
   id = 1,
   lat = -23,
   lon = -46,
   alt = 10,
-  code = "1.A.1.a",
+  code = "1.A.1.a.i",
   activity = rnorm(n = 12, mean = 500, sd = 100),
   unit = "GJ",
   date = seq.Date(as.Date("2020-01-01"), length.out = 12, by = "month"),
@@ -61,13 +72,17 @@ rbindlist(lapply(1:nrow(activity), function(i) {
 
 
 dt[, emissions := ef * activity]
-#BC is % of PM2.5
-dt[pol == "PM2.5"]
-dt[pol == "BC"]
-dt[pol == "BC", emissions := ef / 100 * dt[pol == "PM2.5"]$emissions]
-dt[pol == "BC"]
-fwrite(dt, "estimation/1/1.A/1.A.1/emissions/cooking_oil.csv")
+# BC is % of PM2.5
+# dt[pol == "PM2.5"]
+# dt[pol == "BC"]
+# dt[pol == "BC", emissions := ef / 100 * dt[pol == "PM2.5"]$emissions]
+# dt[pol == "BC"]
+fwrite(
+  dt,
+  "estimation/1/1.A/1.A.1/emissions/IPCC_1A1ai_other_bituminous_coal.csv"
+)
 
+#EMEP
 # Natural Gas ####
 # Heavy Fuel Oil ####
 # Brown Coal ####
@@ -81,3 +96,12 @@ fwrite(dt, "estimation/1/1.A/1.A.1/emissions/cooking_oil.csv")
 # Brown Coal/Lignite ####
 # Residual Oil ####
 # Gaseous Fuels ####
+
+# IPCC
+# Other Bituminous Coal
+# Other Biogas
+# Landfill Gas
+# Diesel Oil
+# Natural Gas
+# Anthracite
+# Residual Fuel Oil

@@ -2,46 +2,33 @@
 # 1: Energy
 # 1.A Fuel Combustion Activities
 # 1.A.1.a Main Activities Electricity and Heat Production
-# 1.A.1.a.i Electricity Generation
+# category: 1.A.1.a Public electricity and heat production
 
 library(data.table)
 library(pega)
 
-# database
+# databaseSMSP
 db <- ef(returnfdb = T)
 
 # database final
 db[
-  grepl("1.A.1.c", code) &
+  grepl("1.A.1.a", code) &
     is.na(region)
 ] -> dbf
+
+# category
+dbf[, unique(category)]
 
 # fuels
 fuels <- dbf[, unique(fuel)]
 cat(fuels, sep = "\n")
 
-# Coking Coal EMEP ####
-# Coking Coal IPCC ####
-dbf[fuel == "Coking Coal", unique(type)]
-
-d
-# IPCC ####
-db[
-  grepl("1.A.1.c.i", code) &
-    is.na(region)
-] -> dbf
-
-
-# fuels
-fuels <- dbf[, unique(fuel)]
-cat(fuels, sep = "\n")
-
-# Coal ####
-dbf[fuel == "Coking Coal", unique(type)]
+# Hard Coal ####
+dbf[fuel == "Biomass", unique(type)]
 
 dbf[
-  fuel == "Coking Coal" &
-    type == "2006 IPCC default"
+  fuel == "Biomass" &
+    type == "Tier 1 Emission Factor"
 ] -> db_ef
 
 db_ef
@@ -52,9 +39,9 @@ activity <- data.table(
   lat = -23,
   lon = -46,
   alt = 10,
-  code = "1.A.1.c.i",
+  code = "1.A.1.a",
   activity = rnorm(n = 12, mean = 500, sd = 100),
-  unit = "tonne coke produces",
+  unit = "GJ",
   date = seq.Date(as.Date("2020-01-01"), length.out = 12, by = "month"),
   region = "HERE"
 )
@@ -75,11 +62,23 @@ rbindlist(lapply(1:nrow(activity), function(i) {
 
 
 dt[, emissions := ef * activity]
-dt[, emissions_units := "g"]
-dt[pol == "CO2", emissions := emissions * 1000000]
+# BC is % of PM2.5
+dt[pol == "PM2.5"]
+dt[pol == "BC"]
+dt[pol == "BC", emissions := ef / 100 * dt[pol == "PM2.5"]$emissions]
+dt[pol == "BC"]
+fwrite(dt, "estimation/1/1.A/1.A.1/emissions/EMEP_1A1a_biomass.csv")
 
-fwrite(dt, "estimation/1/1.A/1.A.1/emissions/1a1ci_coal.csv")
-
-# Coal ####
-# Coking Coal ####
 # Natural Gas ####
+# Heavy Fuel Oil ####
+# Brown Coal ####
+# Hard Coal ####
+# Biomass ####
+# Blast furnace/Basic O2 furnace gas ####
+# Biogas ####
+# Coking Coal, Steam Coal & Sub-Bituminous Coal ####
+# Oil Gas ####
+# Wood and wood waste (clean wood waste) ####
+# Brown Coal/Lignite ####
+# Residual Oil ####
+# Gaseous Fuels ####

@@ -2,7 +2,7 @@
 # 1: Energy
 # 1.A Fuel Combustion Activities
 # 1.A.1.a Main Activities Electricity and Heat Production
-# 1.A.1.a.i Electricity Generation
+# category: 1.A.1.a Public electricity and heat production
 
 library(data.table)
 library(pega)
@@ -16,15 +16,18 @@ db[
     is.na(region)
 ] -> dbf
 
+# category
+dbf[, unique(category)]
+
 # fuels
 fuels <- dbf[, unique(fuel)]
 cat(fuels, sep = "\n")
 
-# Biogas ####
-dbf[fuel == "Biogas", unique(type)]
+# Blast furnace/Basic O2 furnace gas ####
+dbf[fuel == "Blast furnace/Basic O2 furnace gas", unique(type)]
 
 dbf[
-  fuel == "Biogas" &
+  fuel == "Blast furnace/Basic O2 furnace gas" &
     type == "Tier 1 Emission Factor"
 ] -> db_ef
 
@@ -59,12 +62,7 @@ rbindlist(lapply(1:nrow(activity), function(i) {
 
 
 dt[, emissions := ef * activity]
-# BC is % of PM2.5
-# dt[pol == "PM2.5"]
-# dt[pol == "BC"]
-# dt[pol == "BC", emissions := ef / 100 * dt[pol == "PM2.5"]$emissions]
-# dt[pol == "BC"]
-fwrite(dt, "estimation/1/1.A/1.A.1/emissions/biogas.csv")
+fwrite(dt, "estimation/1/1.A/1.A.1/emissions/EMEP_1A1a_blast_furnace.csv")
 
 # Natural Gas ####
 # Heavy Fuel Oil ####

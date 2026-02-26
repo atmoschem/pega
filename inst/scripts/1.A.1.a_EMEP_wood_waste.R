@@ -2,7 +2,7 @@
 # 1: Energy
 # 1.A Fuel Combustion Activities
 # 1.A.1.a Main Activities Electricity and Heat Production
-# 1.A.1.a.i Electricity Generation
+# category: 1.A.1.a Public electricity and heat production
 
 library(data.table)
 library(pega)
@@ -16,20 +16,25 @@ db[
     is.na(region)
 ] -> dbf
 
+# category
+dbf[, unique(category)]
+
 # fuels
 fuels <- dbf[, unique(fuel)]
 cat(fuels, sep = "\n")
 
-# Blast furnace/Basic O2 furnace gas ####
-dbf[fuel == "Blast furnace/Basic O2 furnace gas", unique(type)]
+# Wood and wood waste (clean wood waste) ####
+dbf[fuel == "Wood and wood waste (clean wood waste)", unique(type)]
 
 dbf[
-  fuel == "Blast furnace/Basic O2 furnace gas" &
-    type == "Tier 1 Emission Factor"
+  fuel == "Wood and wood waste (clean wood waste)" &
+    type == "Tier 2 Emission Factor"
 ] -> db_ef
 
 db_ef
 db_ef[, .N, by = pol]
+# db_ef[, unique(table)]
+# db_ef <- db_ef[table %in% c("Table_3-16")]
 
 activity <- data.table(
   id = 1,
@@ -59,7 +64,12 @@ rbindlist(lapply(1:nrow(activity), function(i) {
 
 
 dt[, emissions := ef * activity]
-fwrite(dt, "estimation/1/1.A/1.A.1/emissions/blast_furnace.csv")
+#BC is % of PM2.5
+dt[pol == "PM2.5"]
+dt[pol == "BC"]
+dt[pol == "BC", emissions := ef / 100 * dt[pol == "PM2.5"]$emissions]
+dt[pol == "BC"]
+fwrite(dt, "estimation/1/1.A/1.A.1/emissions/EMEP_1A1a_wood_waste.csv")
 
 # Natural Gas ####
 # Heavy Fuel Oil ####
