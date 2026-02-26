@@ -200,7 +200,7 @@ sysdata[
 ]
 sysdata[unit %in% c("kg/GJ", "kg CO2/GJ", "CO2 kg/GJ", "Mg/TJ"), unit := "g/GJ"]
 
-sysdata[unit %in% c("kg/TJ", "kG/TJ"), unit := "g/GJ"]
+sysdata[unit %in% c("kg/TJ", "KG/TJ"), unit := "g/GJ"]
 
 sysdata[grepl("GJ", unit), unique(unit)]
 
