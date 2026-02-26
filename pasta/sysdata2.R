@@ -204,5 +204,70 @@ sysdata[unit %in% c("kg/TJ", "KG/TJ"), unit := "g/GJ"]
 
 sysdata[grepl("GJ", unit), unique(unit)]
 
-# units is hell, skipping!
+# crude
+sysdata[grepl("crude", unit), unique(unit)]
+sysdata[
+  unit %in%
+    c(
+      "kg/Mg crude oil input",
+      "kg/Mg crude oil throughput",
+      "kg/Mg crude oil throughput",
+      "kg/Mg crude oil"
+    )
+]
+
+sysdata[
+  unit %in%
+    c(
+      "kg/Mg crude oil input",
+      "kg/Mg crude oil throughput",
+      "kg/Mg crude oil throughput",
+      "kg/Mg crude oil"
+    ),
+  ef := ef * 1000
+]
+
+sysdata[
+  unit %in%
+    c(
+      "kg/Mg crude oil input",
+      "kg/Mg crude oil throughput",
+      "kg/Mg crude oil throughput",
+      "kg/Mg crude oil"
+    ),
+  unit := "g/Mg crude oil"
+]
+
+sysdata[grepl("crude", unit), unique(unit)]
+
+sysdata[unit %in% c("mg/Mg crude oil input")]
+sysdata[
+  unit %in% c("mg/Mg crude oil input"),
+  ef := ef / 1000
+]
+sysdata[
+  unit %in% c("mg/Mg crude oil input"),
+  unit := "g/Mg crude oil"
+]
+
+sysdata[grepl("crude", unit), unique(unit)]
+
+sysdata[unit %in% c("µg/Mg crude oil input", "μg/Mg crude oil input")]
+sysdata[
+  unit %in% c("µg/Mg crude oil input", "μg/Mg crude oil input"),
+  ef := ef / 1000000
+]
+sysdata[
+  unit %in% c("µg/Mg crude oil input", "μg/Mg crude oil input"),
+  unit := "g/Mg crude oil"
+]
+sysdata[grepl("crude", unit), unique(unit)]
+
+sysdata[
+  unit %in% c("g/Mg crude oil input", "g/MG crude oil input"),
+  unit := "g/Mg crude oil"
+]
+
+sysdata[grepl("crude", unit), unique(unit)]
+
 save(sysdata, file = "R/sysdata.rda", compress = "xz")
