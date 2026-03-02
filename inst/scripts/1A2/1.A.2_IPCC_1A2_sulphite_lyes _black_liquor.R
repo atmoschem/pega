@@ -38,10 +38,10 @@ fuels <- dbf[, unique(fuel)]
 cat(fuels, sep = "\n")
 
 # fuel ####
-dbf[fuel == "Oil Shale and Tar Sands", unique(tech), by = pol]
+dbf[fuel == "Sulphite Lyes (Black Liquor)", unique(tech), by = pol]
 
 dbf[
-  fuel == "Oil Shale and Tar Sands" &
+  fuel == "Sulphite Lyes (Black Liquor)" &
     is.na(tech)
 ] -> db_ef
 
@@ -85,7 +85,7 @@ dt[, emissions := ef * activity]
 # dt[pol == "BC"]
 fwrite(
   dt,
-  "estimation/1/1.A/1.A.2/emissions/IPCC_1A2_oil_shale__tar_sands.csv"
+  "estimation/1/1.A/1.A.2/emissions/IPCC_1A2_sulphite_lyes_black_liquor.csv"
 )
 
 # Crude Oil

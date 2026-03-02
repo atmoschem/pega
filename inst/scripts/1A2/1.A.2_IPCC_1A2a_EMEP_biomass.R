@@ -15,7 +15,7 @@ db[,
   unique()
 # database final
 db[
-  code == "1.A.2" &
+  code == "1.A.2.a" &
     is.na(region)
 ] -> dbf
 
@@ -28,9 +28,9 @@ dbf[, unique(type)]
 # [1] "1996 IPCC default" "2006 IPCC default"
 
 db[
-  code == "1.A.2" &
+  code == "1.A.2.a" &
     is.na(region) &
-    type == "2006 IPCC default"
+    type == "Tier 1 Emission Factor"
 ] -> dbf
 
 # fuels
@@ -38,10 +38,10 @@ fuels <- dbf[, unique(fuel)]
 cat(fuels, sep = "\n")
 
 # fuel ####
-dbf[fuel == "Oil Shale and Tar Sands", unique(tech), by = pol]
+dbf[fuel == "Biomass", unique(tech)]
 
 dbf[
-  fuel == "Oil Shale and Tar Sands" &
+  fuel == "Biomass" &
     is.na(tech)
 ] -> db_ef
 
@@ -79,13 +79,13 @@ rbindlist(lapply(1:nrow(activity), function(i) {
 
 dt[, emissions := ef * activity]
 # BC is % of PM2.5
-# dt[pol == "PM2.5"]
-# dt[pol == "BC"]
-# dt[pol == "BC", emissions := ef / 100 * dt[pol == "PM2.5"]$emissions]
-# dt[pol == "BC"]
+dt[pol == "PM2.5"]
+dt[pol == "BC"]
+dt[pol == "BC", emissions := ef / 100 * dt[pol == "PM2.5"]$emissions]
+dt[pol == "BC"]
 fwrite(
   dt,
-  "estimation/1/1.A/1.A.2/emissions/IPCC_1A2_oil_shale__tar_sands.csv"
+  "estimation/1/1.A/1.A.2/emissions/EMEP_1A2a_biomass.csv"
 )
 
 # Crude Oil
@@ -141,3 +141,9 @@ fwrite(
 # Sludge Gas
 # Other Biogas
 # Municipal Wastes (biomass fraction)
+
+# EMEP
+# Biomass
+# 'Other' Liquid Fuels
+# Solid Fuels
+# Gaseous Fuels
