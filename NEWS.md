@@ -1,6 +1,11 @@
 NEWS
 ===========
 
+### pega 0.9.3 (date: 2026-03-04)
+
+- Added more units conversion.
+- 1.A.2.g.vii and going
+
 ### pega 0.9.2 (date: 2026-02-26)
 
 - Added more units conversion

@@ -309,5 +309,24 @@ sysdata[
 
 sysdata[grepl("tonnes fuel", unit), unique(unit)]
 
+# fuel
+sysdata[grepl("kg fuel", unit), unique(unit)]
+
+sysdata[unit %in% "kg/kg fuel"]
+sysdata[unit %in% "kg/kg fuel", ef := ef * 1000]
+sysdata[unit %in% "kg/kg fuel", unit := "g/kg fuel"]
+
+sysdata[unit %in% c("mg/kg fuel", "mg/ kg fuel")]
+sysdata[unit %in% c("mg/kg fuel", "mg/ kg fuel"), ef := ef / 1000]
+sysdata[unit %in% c("mg/kg fuel", "mg/ kg fuel"), unit := "g/kg fuel"]
+
+sysdata[unit %in% "µg/kg fuel"]
+sysdata[unit %in% "µg/kg fuel", ef := ef / 1000000]
+sysdata[unit %in% "µg/kg fuel", unit := "g/kg fuel"]
+
+sysdata[grepl("kg fuel", unit), unique(unit)]
+"mg/ kg fuel"
+"mg/kg fuel"
+"µg/kg fuel"
 
 save(sysdata, file = "R/sysdata.rda", compress = "xz")
