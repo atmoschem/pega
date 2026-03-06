@@ -350,4 +350,49 @@ sysdata[,
   unit := gsub(pattern = "te clinker", replacement = "Mg clinker", x = unit)
 ]
 
+# clink
+sysdata[grepl("J", unit), unique(unit)]
+# g/MJ
+# "tC/TJ"
+# "gC/GJ Gross"
+# "gC/MJ"
+sysdata[unit %in% c("g/MJ", "tC/TJ", "gC/GJ Gross", "gC/MJ")]
+sysdata[unit %in% c("g/MJ", "tC/TJ", "gC/GJ Gross", "gC/MJ"), ef := ef * 1e-3]
+sysdata[unit %in% c("g/MJ", "tC/TJ", "gC/GJ Gross", "gC/MJ"), unit := "g/GJ"]
+
+# "kg CH4/TJ"
+# "kgN2O/TJ"
+sysdata[unit %in% c("kg CH4/TJ", "kgN2O/TJ")]
+sysdata[unit %in% c("kg CH4/TJ", "kgN2O/TJ"), unit := "g/GJ"]
+
+# "tonne C / GJ feedstock"
+# "tonnes N2O / GJ BFG flared"
+# "tonnes N2O / GJ LDG flared"
+sysdata[
+  unit %in%
+    c(
+      "tonne C / GJ feedstock",
+      "tonnes N2O / GJ BFG flared",
+      "tonnes N2O / GJ LDG flared"
+    )
+]
+sysdata[
+  unit %in%
+    c(
+      "tonne C / GJ feedstock",
+      "tonnes N2O / GJ BFG flared",
+      "tonnes N2O / GJ LDG flared"
+    ),
+  ef := ef * 1e6
+]
+sysdata[
+  unit %in%
+    c(
+      "tonne C / GJ feedstock",
+      "tonnes N2O / GJ BFG flared",
+      "tonnes N2O / GJ LDG flared"
+    ),
+  unit := "g/GJ"
+]
+
 save(sysdata, file = "R/sysdata.rda", compress = "xz")
