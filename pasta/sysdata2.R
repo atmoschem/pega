@@ -395,4 +395,165 @@ sysdata[
   unit := "g/GJ"
 ]
 
+# tonne
+sysdata[grepl("/tonne", unit), unique(unit)]
+sysdata[
+  unit %in%
+    c(
+      "g/tonne sinter",
+      "g/tonne sinter",
+      "g/tonne pig iron",
+      "g/tonne pellet",
+      "g/tonnes fuel",
+      "g N2O /tonne waste",
+      "g CH4/tonne coke produced",
+      "gCH4/tonne waste",
+      "gCH4/tonne",
+      "g/tonne RE metal",
+      "g CH4/tonne waste",
+      "g N2O /tonne wet waste",
+      "g/tonnes steel produced",
+      "g/tonne fuel"
+    ),
+  unit := "g/tonne"
+]
+
+sysdata[grepl("/tonne", unit), unique(unit)]
+
+sysdata[
+  unit %in%
+    c(
+      "kg/tonne fuel",
+      "kg/tonne",
+      "kg/tonne carbon black",
+      "kg/tonne Al",
+      "kg CF4 /tonne Al",
+      "kg CH4/tonne of coke produced",
+      "kg CH4/tonne of sinter produced",
+      "kg/tonne ore",
+      "kg CO2-eq./tonne wet waste",
+      "kg CO2-eq./tonne ww",
+      "kg CH4/tonne sinter produced",
+      "kg CH4/tonne ferroalloy produced",
+      "kg C2F6 /tonne Al",
+      "kg SF6/tonne magnesium casting",
+      "kg CH4/tonne of ethylene oxide produced",
+      "kg CH4/tonne of acrylonitrile produced",
+      "kg acetonitrile/tonne acrylonitrile",
+      "kg hydrogen cyanide/tonne acrylonitrile",
+      "kg CH4/tonne of carbon black produced",
+      "[kg CF4/tonne Al] / [AE-Mins/cell-day]",
+      "kg CH4/tonne of ethylene produced",
+      "kg CH4/tonne of methanol produced",
+      "kg CO2/tonnes steel produced",
+      "kg/tonne adipic acid produced",
+      "kg/tonnes metal",
+      "kg/tonnes product",
+      "kg C2F6/tonne Al",
+      "kg SF6/tonnes magnesium produced or smelted",
+      "kg N2O/tonne adipic acid production",
+      "kg N2O/tonne nitric acid produced",
+      "kg SO2/tonne cement produced",
+      "kg CO2/tonne limestone",
+      "kg CO2/tonne dolomite",
+      "kg CO2/tonne of soda ash used",
+      "kg NMVOC/tonne of asphalt roofing produced",
+      "kg CO/tonne of asphalt roofing produced",
+      "kg CO/tonne of asphalt",
+      "kg SO2/tonne of asphalt",
+      "kg NO2/tonne of asphalt",
+      "kg NMVOC/tonne of asphalt",
+      "kg NMVOC/tonne of glass produced",
+      "kg SO2/tonne of concrete pumice stone produced",
+      "kg SO2/tonne NH3 produced",
+      "kg CO/tonne NH3 produced",
+      "kg NOx/tonne nitric acid produced",
+      "kg NOx/tonne adipic acid produced",
+      "kg CO/tonne adipic acid produced",
+      "kg NMVOC/tonne adipic acid produced",
+      "kg CH4/tonne petrol coke consumed",
+      "kg CH4/tonne silicon carbide produced",
+      "kg/tonne Sulphur",
+      "kg CH4/tonne of vinyl chloride monomer produced",
+      "kg N2O/tonne caprolactam produced"
+    ),
+  unit := "kg/tonne"
+]
+sysdata[unit %in% c("kg/tonne"), ef := ef * 1e3]
+sysdata[unit %in% c("kg/tonne"), unit := "g/tonne"]
+
+sysdata[grepl("/tonne", unit), unique(unit)] |> cat(sep = "\n")
+
+sysdata[grepl("/tonne", unit), unique(unit)]
+
+sysdata[
+  unit %in%
+    c(
+      "tonnes CO2/tonnes quicklime produced",
+      "tonnes CO2/tonnes dolomitic lime",
+      "Tonne CO2/tonne NH3 produced",
+      "tonne CO2/tonne carbide produced",
+      "tonne CO2/tonne carbide used",
+      "tonne CO2/tonne Al",
+      "tonne CO2/tonne high calcium lime produced",
+      "tonne CO2/tonne lime produced",
+      "tonne CO2/tonne cement produced",
+      "tonnes CO2/tonne of trona",
+      "tonne CO2/tonne petrol coke consumed",
+      "tonne CO2/tonne carbonate",
+      "tonne CO2/tonne glass",
+      "tonne CO2/tonne titanium dioxide produced",
+      "tonne CO2/tonne of soda ash produced",
+      "tonne CO2/tonne of methanol produced",
+      "tonne CO2/tonne of ethylene produced",
+      "tonne CO2/tonne of ethylene dichloride produced",
+      "tonne CO2/tonne of vinyl chloride monomer produced",
+      "tonne ethylene/tonne of ethylene dichloride produced",
+      "tonne ethylene/tonne of vinyl chloride monomer produced",
+      "tonne CO2/tonne of ethylene oxide produced",
+      "tonne CO2/tonne coke produced",
+      "tonne CO2/tonne sinter produced",
+      "tonne CO2/tonne pig iron produced",
+      "tonne CO2/tonne DRI produced",
+      "tonne CO2/tonne pellet produced",
+      "tonne CO2/tonne steel produced",
+      "tonne CO2/tonne primary Mg produced",
+      "tonne CO2/tonne lead produced",
+      "tonne CO2/tonne zinc produced",
+      "tonnes C/tonne dry matter",
+      "tonne root d.m./tonne shoot d.m.",
+      "tonnes C/tonne air-dry peat",
+      "tonne/tonne waste",
+      "tonnes biomass/tonne stem biomass",
+      "t CH4/tonne of material processed",
+      "t N2O/tonne of material processed",
+      "tonne/tonne",
+      "tonne of CO2/tonne of sinter",
+      "tonne CO2/tonne of hot metal",
+      "tonne CO2/tonne of steel produced",
+      "tonnes C/tonne",
+      "tonnes CO2/tonne RE metal",
+      "tonne CO2/tonne of acrylonitrile produced",
+      "tonne CO2/tonne of carbon black produced",
+      "tonne CO2/tonne ferroalloy produced"
+    ),
+  unit := "Mg/tonne"
+]
+sysdata[unit %in% c("Mg/tonne"), ef := ef * 1e6]
+sysdata[unit %in% c("Mg/tonne"), unit := "g/tonne"]
+
+
+sysdata[unit %in% "mg/tonne fuel", ef := ef * 1e-3]
+sysdata[unit %in% "mg/tonne fuel", unit := "g/tonne"]
+
+
+sysdata[
+  unit %in% c("ug I-TEQ/tonne", "ug I-TEQ/tonne fuel"),
+  unit := "ug/tonne"
+]
+sysdata[unit %in% "ug/tonne", ef := ef * 1e-6]
+sysdata[unit %in% "ug/tonne", unit := "g/tonne"]
+
+sysdata[grepl("/tonne", unit), unique(unit)]
+
 save(sysdata, file = "R/sysdata.rda", compress = "xz")
