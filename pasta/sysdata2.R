@@ -329,4 +329,25 @@ sysdata[grepl("kg fuel", unit), unique(unit)]
 "mg/kg fuel"
 "µg/kg fuel"
 
+
+# clink
+sysdata[grepl("clinker", unit), unique(unit)]
+
+sysdata[unit %in% "µg/te clinker"]
+sysdata[unit %in% "µg/te clinker", ef := ef * 1e-6]
+sysdata[unit %in% "µg/te clinker", unit := "g/te clinker"]
+
+sysdata[unit %in% c("ng I-TEQ/te clinker")]
+sysdata[unit %in% c("ng I-TEQ/te clinker"), ef := ef * 1e-9]
+sysdata[unit %in% c("ng I-TEQ/te clinker"), unit := "g I-TEQ/te clinker"]
+
+
+sysdata[unit %in% "tonne CO2/tonne clinker produced"]
+sysdata[unit %in% "tonne CO2/tonne clinker produced", ef := ef * 1e6]
+sysdata[unit %in% "tonne CO2/tonne clinker produced", unit := "g/te clinker"]
+
+sysdata[,
+  unit := gsub(pattern = "te clinker", replacement = "Mg clinker", x = unit)
+]
+
 save(sysdata, file = "R/sysdata.rda", compress = "xz")
