@@ -559,6 +559,11 @@ sysdata[grepl("/tonne", unit), unique(unit)]
 # fuel
 sysdata[, unit := gsub(" fuel", "", unit)]
 
+# LTO
+sysdata[grepl("LTO", unit), unique(unit)]
+sysdata[unit %in% "kg/LTO"]
+sysdata[unit %in% "kg/LTO", ef := ef * 1000]
+sysdata[unit %in% "kg/LTO", unit := "g/LTO"]
 save(sysdata, file = "R/sysdata.rda", compress = "xz")
 rm(list = ls())
 gc()
