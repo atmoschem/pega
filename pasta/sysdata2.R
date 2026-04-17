@@ -118,6 +118,8 @@ sysdata[pol == "SULPHUR DIOXIDE (SO2+SO3) ", pol := "SOx"]
 
 sysdata[pol == "SULPHUR DIOXIDE (SO2+SO3)", pol := "SOx"]
 
+sysdata[pol == "NMVOC ", pol := "NMVOC"]
+
 sysdata[, pol := gsub("Nitrogen Trifluoride ", "NF3", pol)]
 
 sysdata[, pol := gsub("NF3", "NF3", pol)]
