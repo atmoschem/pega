@@ -1,6 +1,10 @@
 NEWS
 ===========
 
+### pega 0.9.5 (date: 2026-04-16)
+
+- units conversion.
+
 ### pega 0.9.4 (date: 2026-03-06)
 
 - clinker units conversion.
