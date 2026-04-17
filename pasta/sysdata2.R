@@ -103,6 +103,13 @@ sysdata[, pol := gsub("NITROGEN OXIDES (NO+NO2) ", "NOx", pol)]
 
 sysdata[, pol := gsub("NITROGEN OXIDES (NO+NO2)", "NOx", pol)]
 
+sysdata[grepl("NITROGEN OXIDES", pol), unique(pol)]
+
+sysdata[pol == "NITROGEN OXIDES (NO+NO2) ", pol := "NOx"]
+
+
+sysdata[pol == "NITROGEN OXIDES (NO+NO2)", pol := "NOx"]
+
 sysdata[, pol := gsub("SULPHUR DIOXIDE (SO2+SO3) ", "SOx", pol)]
 
 sysdata[, pol := gsub("SULPHUR DIOXIDE (SO2+SO3)", "SOx", pol)]
