@@ -646,6 +646,15 @@ sysdata[unit %in% "Gg/m3", unit := "g/m3"]
 (sysdata[grepl("g/m3", unit), unique(unit)] -> mgg)
 sysdata[unit %in% mgg, unit := "g/m3"]
 
+# µg/Mg
+(sysdata[grepl("µg/Mg", unit), unique(unit)] -> mgg)
+sysdata[unit %in% mgg, ef := ef * 1e-6]
+sysdata[unit %in% mgg, unit := "g/Mg"]
+
+
+# g/Mg
+(sysdata[grepl("g/Mg", unit), unique(unit)] -> mgg)
+sysdata[unit %in% mgg, unit := "g/Mg"]
 
 save(sysdata, file = "R/sysdata.rda", compress = "xz")
 rm(list = ls())
