@@ -1,6 +1,10 @@
 NEWS
 ===========
 
+### pega 0.9.6 (date: 2026-04-18)
+
+- units conversion.
+
 ### pega 0.9.5 (date: 2026-04-16)
 
 - units conversion.

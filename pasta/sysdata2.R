@@ -577,6 +577,76 @@ sysdata[grepl("LTO", unit), unique(unit)]
 sysdata[unit %in% "kg/LTO"]
 sysdata[unit %in% "kg/LTO", ef := ef * 1000]
 sysdata[unit %in% "kg/LTO", unit := "g/LTO"]
+sysdata[grepl("NMVOC", pol), unique(pol)]
+
+
+# g/Mg
+
+sysdata[grepl("ng", unit), unique(unit)]
+sysdata[unit %in% c("ng/Mg", "ng I-TEQ/Mg Coal"), ef := ef * 1e-9]
+sysdata[unit %in% c("ng/Mg", "ng I-TEQ/Mg Coal"), unit := "g/Mg"]
+
+sysdata[grepl("μ", unit), unique(unit)]
+sysdata[grepl("μg/Mg", unit), unique(unit)]
+sysdata[grepl("μg", unit), unique(unit)]
+sysdata[unit %in% "μg I-TEQ/Mg coke"]
+sysdata[unit %in% "μg I-TEQ/Mg coke", ef := ef / 1000000]
+sysdata[unit %in% "μg I-TEQ/Mg coke", unit := "g/Mg"]
+
+sysdata[unit %in% "μg/m3 fresh feed"]
+sysdata[unit %in% "μg/m3 fresh feed", ef := ef / 1000000]
+sysdata[unit %in% "μg/m3 fresh feed", unit := "g/m3"]
+
+(sysdata[grepl("mg/Mg", unit), unique(unit)] -> mgg)
+sysdata[unit %in% mgg, ef := ef / 1000]
+sysdata[unit %in% mgg, unit := "g/Mg"]
+
+(sysdata[grepl("mg/", unit), unique(unit)] -> mgg)
+
+for (i in seq_along(mgg)) {
+  print(gsub("mg/", "g/", mgg[i]))
+}
+
+for (i in seq_along(mgg)) {
+  sysdata[unit %in% mgg[i], ef := ef / 1000]
+  sysdata[unit %in% mgg[i], unit := gsub("mg/", "g/", mgg[i])]
+}
+
+# kg only converting numerator, denomitator kept as is
+(sysdata[grepl("kg/", unit), unique(unit)] -> mgg)
+
+for (i in seq_along(mgg)) {
+  print(gsub("kg", "g", mgg[i]))
+}
+
+for (i in seq_along(mgg)) {
+  sysdata[unit %in% mgg[i], ef := ef * 1000]
+  sysdata[unit %in% mgg[i], unit := gsub("kg/", "g/", mgg[i])]
+}
+
+
+# Mg/ only converting numerator, denomitator kept as is
+(sysdata[grepl("Mg/", unit), unique(unit)] -> mgg)
+
+for (i in seq_along(mgg)) {
+  print(gsub("Mg", "g", mgg[i]))
+}
+
+for (i in seq_along(mgg)) {
+  sysdata[unit %in% mgg[i], ef := ef * 1000000]
+  sysdata[unit %in% mgg[i], unit := gsub("Mg/", "g/", mgg[i])]
+}
+
+# now denominators
+# /m3
+(sysdata[grepl("g/m3", unit), unique(unit)] -> mgg)
+sysdata[unit %in% "Gg/m3", ef := ef * 1e+9]
+sysdata[unit %in% "Gg/m3", unit := "g/m3"]
+
+(sysdata[grepl("g/m3", unit), unique(unit)] -> mgg)
+sysdata[unit %in% mgg, unit := "g/m3"]
+
+
 save(sysdata, file = "R/sysdata.rda", compress = "xz")
 rm(list = ls())
 gc()
