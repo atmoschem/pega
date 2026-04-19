@@ -676,6 +676,9 @@ for (i in seq_along(mgg)) {
   sysdata[unit %in% mgg[i], unit := gsub("Gg/", "g/", mgg[i])]
 }
 
+sysdata[unit %in% "g/tonne", unit := "g/Mg"]
+
+
 save(sysdata, file = "R/sysdata.rda", compress = "xz")
 rm(list = ls())
 gc()
