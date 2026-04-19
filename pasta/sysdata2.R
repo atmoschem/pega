@@ -680,7 +680,7 @@ sysdata[unit %in% "g/tonne", unit := "g/Mg"]
 
 # NH3
 (sysdata[grepl("NH3", unit), unique(unit)] -> mgg)
-sysdata[unit %in% c("g/ton NH3", "g/t NH3"), unit := "g/t NH3"]
+sysdata[unit %in% c("g/ton NH3", "g/t NH3"), unit := "g/Mg"]
 
 save(sysdata, file = "R/sysdata.rda", compress = "xz")
 rm(list = ls())
