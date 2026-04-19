@@ -677,6 +677,7 @@ for (i in seq_along(mgg)) {
 }
 
 sysdata[unit %in% "g/tonne", unit := "g/Mg"]
+sysdata[unit %in% "g/ton", unit := "g/Mg"]
 
 # NH3
 (sysdata[grepl("NH3", unit), unique(unit)] -> mgg)
