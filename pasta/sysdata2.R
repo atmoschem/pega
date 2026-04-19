@@ -639,12 +639,16 @@ for (i in seq_along(mgg)) {
 
 # now denominators
 # /m3
-(sysdata[grepl("g/m3", unit), unique(unit)] -> mgg)
-sysdata[unit %in% "Gg/m3", ef := ef * 1e+9]
-sysdata[unit %in% "Gg/m3", unit := "g/m3"]
+(sysdata[grepl("g/kg", unit), unique(unit)] -> mgg)
+sysdata[unit %in% mgg, unit := "g/kg"]
 
-(sysdata[grepl("g/m3", unit), unique(unit)] -> mgg)
-sysdata[unit %in% mgg, unit := "g/m3"]
+(sysdata[grepl("Gg", unit), unique(unit)] -> mgg)
+sysdata[unit %in% mgg[1:4], ef := ef * 1000]
+sysdata[unit %in% mgg[1:4], unit := "g/Gg"]
+
+
+(sysdata[grepl("Gg", unit), unique(unit)] -> mgg)
+sysdata[unit %in% "g/Gg waste wet weight", unit := "g/Gg"]
 
 # µg/Mg
 (sysdata[grepl("µg/Mg", unit), unique(unit)] -> mgg)
@@ -655,6 +659,22 @@ sysdata[unit %in% mgg, unit := "g/Mg"]
 # g/Mg
 (sysdata[grepl("g/Mg", unit), unique(unit)] -> mgg)
 sysdata[unit %in% mgg, unit := "g/Mg"]
+
+#kg
+(sysdata[grepl("kg", unit), unique(unit)] -> mgg)
+sysdata[unit %in% "Gg/m3", ef := ef * 1e+9]
+sysdata[unit %in% "Gg/m3", unit := "g/m3"]
+
+#Gg/
+(sysdata[grepl("Gg/", unit), unique(unit)] -> mgg)
+for (i in seq_along(mgg)) {
+  print(gsub("Gg", "g", mgg[i]))
+}
+
+for (i in seq_along(mgg)) {
+  sysdata[unit %in% mgg[i], ef := ef * 1000000000]
+  sysdata[unit %in% mgg[i], unit := gsub("Gg/", "g/", mgg[i])]
+}
 
 save(sysdata, file = "R/sysdata.rda", compress = "xz")
 rm(list = ls())
