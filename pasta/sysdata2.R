@@ -701,6 +701,21 @@ sysdata[
 (sysdata[grepl("ton", unit), unique(unit)] -> mgg)
 sysdata[unit %in% c("g/ton produced", "g/ton water"), unit := "g/Mg"]
 
+# TEQ
+(sysdata[grepl("TEQ", unit), unique(unit)] -> mgg)
+(ug <- grep(pattern = "µ", x = mgg, value = T))
+sysdata[unit %in% ug, ef := ef * 1e-6]
+sysdata[unit %in% ug, unit := "g/Mg"]
+
+
+(sysdata[grepl("TEQ", unit), unique(unit)] -> mgg)
+(mg <- grep(pattern = "mg", x = mgg, value = T))
+sysdata[unit %in% mg, ef := ef * 1e-3]
+sysdata[unit %in% mg, unit := "g/Mg"]
+
+(sysdata[grepl("TEQ", unit), unique(unit)] -> mgg)
+sysdata[unit %in% mgg, unit := "g/Mg"]
+
 save(sysdata, file = "R/sysdata.rda", compress = "xz")
 rm(list = ls())
 gc()
