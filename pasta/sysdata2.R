@@ -683,6 +683,13 @@ sysdata[unit %in% "g/ton", unit := "g/Mg"]
 (sysdata[grepl("NH3", unit), unique(unit)] -> mgg)
 sysdata[unit %in% c("g/ton NH3", "g/t NH3", "g/ton"), unit := "g/Mg"]
 
+# % CHANGE % TO FRACTIONS
+(sysdata[grepl("%", unit), unique(unit)] -> mgg)
+sysdata[unit %in% mgg, ef := ef / 100]
+sysdata[unit %in% mgg, unit := gsub("%", "fraction", unit)]
+
+
+
 save(sysdata, file = "R/sysdata.rda", compress = "xz")
 rm(list = ls())
 gc()
