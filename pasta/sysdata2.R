@@ -688,7 +688,13 @@ sysdata[unit %in% c("g/ton NH3", "g/t NH3", "g/ton"), unit := "g/Mg"]
 sysdata[unit %in% mgg, ef := ef / 100]
 sysdata[unit %in% mgg, unit := gsub("%", "fraction", unit)]
 
-
+# HFC
+(sysdata[grepl("HFC", unit), unique(unit)] -> mgg)
+sysdata[unit %in% "kg HFC-23/kg HCFC-22 manufactured", ef := ef * 1000]
+sysdata[
+  unit %in% "kg HFC-23/kg HCFC-22 manufactured",
+  unit := "g HFC-23/kg HCFC-22 manufactured"
+]
 
 save(sysdata, file = "R/sysdata.rda", compress = "xz")
 rm(list = ls())
