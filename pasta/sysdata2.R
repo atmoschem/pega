@@ -696,6 +696,11 @@ sysdata[
   unit := "g HFC-23/kg HCFC-22 manufactured"
 ]
 
+
+# ton
+(sysdata[grepl("ton", unit), unique(unit)] -> mgg)
+sysdata[unit %in% c("g/ton produced", "g/ton water"), unit := "g/Mg"]
+
 save(sysdata, file = "R/sysdata.rda", compress = "xz")
 rm(list = ls())
 gc()
