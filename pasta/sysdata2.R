@@ -716,6 +716,20 @@ sysdata[unit %in% mg, unit := "g/Mg"]
 (sysdata[grepl("TEQ", unit), unique(unit)] -> mgg)
 sysdata[unit %in% mgg, unit := "g/Mg"]
 
+
+#Kg
+(sysdata[grepl("Kg N2O-N/", unit), unique(unit)] -> mgg)
+
+for (i in seq_along(mgg)) {
+  print(gsub("Kg N2O-N/", "g N2O-N/", mgg[i]))
+}
+
+for (i in seq_along(mgg)) {
+  sysdata[unit %in% mgg[i], ef := ef * 1000]
+  sysdata[unit %in% mgg[i], unit := gsub("Kg N2O-N/", "g N2O-N/", mgg[i])]
+}
+
+
 save(sysdata, file = "R/sysdata.rda", compress = "xz")
 rm(list = ls())
 gc()
