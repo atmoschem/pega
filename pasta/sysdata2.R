@@ -806,6 +806,25 @@ sysdata[
   unit := "g N2O-N (kg TAN entering store)–1"
 ]
 
+# kg
+
+mgg <- c(
+  "kg a–1 AAP–1 NH3",
+  "kg a–1 AAP–1 NO2",
+  "kg AAP–1 a–1",
+  "kg NH3-N (AAP d)–1",
+  "kg NMVOC g/MJ feed intake"
+)
+
+for (i in seq_along(mgg)) {
+  print(gsub("kg", "g", mgg[i]))
+}
+
+for (i in seq_along(mgg)) {
+  sysdata[unit %in% mgg[i], ef := ef * 1000]
+  sysdata[unit %in% mgg[i], unit := gsub("kg", "g", mgg[i])]
+}
+
 
 save(sysdata, file = "R/sysdata.rda", compress = "xz")
 rm(list = ls())
