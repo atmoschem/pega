@@ -756,7 +756,9 @@ mgg <- c(
   "tonne/1000m3",
   "tonne CO2eq/d",
   "tonne C/km of hedgerows",
-  "tonne CO2-C/ha/yr"
+  "tonne CO2-C/ha/yr",
+  "tonne dm/m3 fresh volume",
+  "tonne root d.m. / tonne shoot d.m."
 )
 
 for (i in seq_along(mgg)) {
@@ -765,9 +767,12 @@ for (i in seq_along(mgg)) {
 
 
 for (i in seq_along(mgg)) {
-  sysdata[unit %in% mgg[i], ef := ef * 1000000]
-  sysdata[unit %in% mgg[i], unit := gsub("tonne", "g", mgg[i])]
+  sysdata[unit %in% "tonne C / tonne d.m.", ef := ef * 1000000]
+  sysdata[unit %in% "tonne C / tonne d.m.", unit := "g/tonne d.m."]
 }
+
+sysdata[unit %in% mg, ef := ef * 1e-3]
+sysdata[unit %in% mg, unit := "g/Mg"]
 
 
 save(sysdata, file = "R/sysdata.rda", compress = "xz")
