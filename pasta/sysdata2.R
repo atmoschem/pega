@@ -776,6 +776,12 @@ for (i in seq_along(mgg)) {
 sysdata[unit %in% "tonne C / tonne d.m.", ef := ef * 1000000]
 sysdata[unit %in% "tonne C / tonne d.m.", unit := "g/tonne d.m."]
 
+sysdata[unit %in% "tonne root d.m. / tonne shoot d.m.", ef := ef * 1000000]
+sysdata[
+  unit %in% "tonne root d.m. / tonne shoot d.m.",
+  unit := "g root d.m. / tonne shoot d.m."
+]
+
 
 save(sysdata, file = "R/sysdata.rda", compress = "xz")
 rm(list = ls())
