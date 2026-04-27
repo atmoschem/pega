@@ -741,6 +741,35 @@ for (i in seq_along(mgg)) {
   sysdata[unit %in% mgg[i], unit := gsub("kg CH4/", "g CH4/", mgg[i])]
 }
 
+# tonne
+# (sysdata[grepl("tonne", unit), unique(unit)] -> mgg)
+sysdata[, unit := gsub("tonnes", "tonne", unit)]
+mgg <- c(
+  "tonne dm/ha/year",
+  "tonne C/ha",
+  "tonne-C/Terajoule",
+  "tonne C/ha/yr",
+  "tonne C/year",
+  "tonne/cap/yr",
+  "tonne dry matter/ha",
+  "tonne C/ha crown cover/yr",
+  "tonne/1000m3",
+  "tonne CO2eq/d",
+  "tonne C/km of hedgerows",
+  "tonne CO2-C/ha/yr"
+)
+
+for (i in seq_along(mgg)) {
+  print(gsub("tonne", "g", mgg[i]))
+}
+
+
+for (i in seq_along(mgg)) {
+  sysdata[unit %in% mgg[i], ef := ef * 1000000]
+  sysdata[unit %in% mgg[i], unit := gsub("tonne", "g", mgg[i])]
+}
+
+
 save(sysdata, file = "R/sysdata.rda", compress = "xz")
 rm(list = ls())
 gc()
