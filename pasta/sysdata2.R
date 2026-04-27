@@ -773,6 +773,24 @@ for (i in seq_along(mgg)) {
   sysdata[unit %in% mgg[i], unit := gsub("tonne", "g", mgg[i])]
 }
 
+
+mgg <- c(
+  "t C ha-1",
+  "t dm/ha",
+  "Mg.ha-1"
+)
+
+for (i in seq_along(mgg)) {
+  print(gsub("t", "g", mgg[i]))
+}
+
+for (i in seq_along(mgg)) {
+  sysdata[unit %in% mgg[i], ef := ef * 1000000]
+  sysdata[unit %in% mgg[i], unit := gsub("t", "g", mgg[i])]
+  sysdata[unit %in% mgg[i], unit := gsub("Mg.ha-1", "g/ha", mgg[i])]
+}
+
+
 sysdata[unit %in% "tonne C / tonne d.m.", ef := ef * 1000000]
 sysdata[unit %in% "tonne C / tonne d.m.", unit := "g/tonne d.m."]
 
