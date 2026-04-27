@@ -741,6 +741,9 @@ for (i in seq_along(mgg)) {
   sysdata[unit %in% mgg[i], unit := gsub("kg CH4/", "g CH4/", mgg[i])]
 }
 
+# sysdata[unit %in% mg, ef := ef * 1e-3]
+# sysdata[unit %in% mg, unit := "g/Mg"]
+
 # tonne
 # (sysdata[grepl("tonne", unit), unique(unit)] -> mgg)
 sysdata[, unit := gsub("tonnes", "tonne", unit)]
@@ -765,14 +768,13 @@ for (i in seq_along(mgg)) {
   print(gsub("tonne", "g", mgg[i]))
 }
 
-
 for (i in seq_along(mgg)) {
-  sysdata[unit %in% "tonne C / tonne d.m.", ef := ef * 1000000]
-  sysdata[unit %in% "tonne C / tonne d.m.", unit := "g/tonne d.m."]
+  sysdata[unit %in% mgg[i], ef := ef * 1000000]
+  sysdata[unit %in% mgg[i], unit := gsub("tonne", "g", mgg[i])]
 }
 
-sysdata[unit %in% mg, ef := ef * 1e-3]
-sysdata[unit %in% mg, unit := "g/Mg"]
+sysdata[unit %in% "tonne C / tonne d.m.", ef := ef * 1000000]
+sysdata[unit %in% "tonne C / tonne d.m.", unit := "g/tonne d.m."]
 
 
 save(sysdata, file = "R/sysdata.rda", compress = "xz")
