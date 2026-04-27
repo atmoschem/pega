@@ -758,7 +758,7 @@ mgg <- c(
   "tonne C/km of hedgerows",
   "tonne CO2-C/ha/yr",
   "tonne dm/m3 fresh volume",
-  "tonne root d.m. / tonne shoot d.m."
+  "tonne C/ha/yr"
 )
 
 for (i in seq_along(mgg)) {
