@@ -782,6 +782,12 @@ sysdata[
   unit := "g root d.m. / tonne shoot d.m."
 ]
 
+sysdata[unit %in% "kg N2O-N (kg TAN entering store)–1", ef := ef * 1000]
+sysdata[
+  unit %in% "kg N2O-N (kg TAN entering store)–1",
+  unit := "g N2O-N (kg TAN entering store)–1"
+]
+
 
 save(sysdata, file = "R/sysdata.rda", compress = "xz")
 rm(list = ls())
