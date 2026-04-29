@@ -825,6 +825,24 @@ for (i in seq_along(mgg)) {
   sysdata[unit %in% mgg[i], unit := gsub("kg", "g", mgg[i])]
 }
 
+(sysdata[grepl("kg", unit), unique(unit)] -> mgg)
+
+(catkg1 <- mgg[c(6, 9, 11)])
+(catkg2 <- mgg[c(14:15)])
+(catkg3 <- mgg[c(17:18)])
+(catkg4 <- mgg[c(20)])
+(catkg5 <- mgg[c(34:40)])
+(catkg6 <- mgg[c(70:75)])
+
+cats <- c(catkg1, catkg2, catkg3, catkg4, catkg5, catkg6)
+for (i in seq_along(cats)) {
+  print(gsub("kg", "g", cats[i]))
+}
+
+for (i in seq_along(cats)) {
+  sysdata[unit %in% cats[i], ef := ef * 1000]
+  sysdata[unit %in% cats[i], unit := gsub("kg", "g", cats[i])]
+}
 
 save(sysdata, file = "R/sysdata.rda", compress = "xz")
 rm(list = ls())
