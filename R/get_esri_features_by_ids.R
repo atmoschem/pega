@@ -1,6 +1,6 @@
 #' get features
 #'
-#'@description get features.
+#' @description get features.
 #'
 #'
 #' @param ids Integer.
@@ -22,27 +22,27 @@
 #' feat <- get_esri_features_by_ids(ids = ids)
 #' }
 get_esri_features_by_ids <- function(
-  ids,
-  url = paste0(
-    "http://portal1.snirh.gov.br/ana/",
-    "rest/services/Esta%C3%A7%C3%B5es_da_",
-    "Rede_Hidrometeorol%C3%B3gica_Nacional",
-    "_em_Opera%C3%A7%C3%A3o/MapServer/1"
-  ),
-  query_url = paste(url, "query", sep = "/"),
-  fields = c("*"),
-  token = '',
-  ssl = FALSE,
-  simplifyDataFrame = FALSE,
-  simplifyVector = FALSE,
-  full = FALSE
+                                     ids,
+                                     url = paste0(
+                                       "http://portal1.snirh.gov.br/ana/",
+                                       "rest/services/Esta%C3%A7%C3%B5es_da_",
+                                       "Rede_Hidrometeorol%C3%B3gica_Nacional",
+                                       "_em_Opera%C3%A7%C3%A3o/MapServer/1"
+                                     ),
+                                     query_url = paste(url, "query", sep = "/"),
+                                     fields = c("*"),
+                                     token = "",
+                                     ssl = FALSE,
+                                     simplifyDataFrame = FALSE,
+                                     simplifyVector = FALSE,
+                                     full = FALSE
 ) {
   # create Simple Features from ArcGIS servers json response
   query <- list(
     objectIds = paste(ids, collapse = ","),
     outFields = paste(fields, collapse = ","),
     token = token,
-    outSR = '4326',
+    outSR = "4326",
     f = "json"
   )
   response_raw <- httr::content(

@@ -1,6 +1,6 @@
 #' get layer info
 #'
-#'@description get layer info.
+#' @description get layer info.
 #'
 #'
 #' @param url Character .
@@ -22,17 +22,17 @@
 #' a$objectIds
 #' }
 get_object_ids <- function(
-  url = paste0(
-    "http://portal1.snirh.gov.br/ana/",
-    "rest/services/Esta%C3%A7%C3%B5es_da_",
-    "Rede_Hidrometeorol%C3%B3gica_Nacional",
-    "_em_Opera%C3%A7%C3%A3o/MapServer/1"
-  ),
-  query_url = paste(url, "query", sep = "/"),
-  where = "1=1",
-  token = '',
-  ssl = FALSE,
-  full = FALSE
+                           url = paste0(
+                             "http://portal1.snirh.gov.br/ana/",
+                             "rest/services/Esta%C3%A7%C3%B5es_da_",
+                             "Rede_Hidrometeorol%C3%B3gica_Nacional",
+                             "_em_Opera%C3%A7%C3%A3o/MapServer/1"
+                           ),
+                           query_url = paste(url, "query", sep = "/"),
+                           where = "1=1",
+                           token = "",
+                           ssl = FALSE,
+                           full = FALSE
 ) {
   query <- list(
     where = where,

@@ -1,6 +1,6 @@
 #' get features
 #'
-#'@description get features.
+#' @description get features.
 #'
 #'
 #' @param url Character, default .
@@ -27,16 +27,16 @@
 #' simple_features <- esri_to_sf_geom(esri_features, geom_type = geom_type)
 #' }
 get_esri_features <- function(
-  url = paste0(
-    "http://portal1.snirh.gov.br/ana/",
-    "rest/services/Esta%C3%A7%C3%B5es_da_",
-    "Rede_Hidrometeorol%C3%B3gica_Nacional",
-    "_em_Opera%C3%A7%C3%A3o/MapServer/1"
-  ),
-  query_url = paste(url, "query", sep = "/"),
-  fields = c("*"),
-  where = "1=1",
-  token = ''
+                              url = paste0(
+                                "http://portal1.snirh.gov.br/ana/",
+                                "rest/services/Esta%C3%A7%C3%B5es_da_",
+                                "Rede_Hidrometeorol%C3%B3gica_Nacional",
+                                "_em_Opera%C3%A7%C3%A3o/MapServer/1"
+                              ),
+                              query_url = paste(url, "query", sep = "/"),
+                              fields = c("*"),
+                              where = "1=1",
+                              token = ""
 ) {
   ids <- get_object_ids(url = url, query_url, where, token)
   if (is.null(ids)) {

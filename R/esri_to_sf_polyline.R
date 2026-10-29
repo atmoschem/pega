@@ -1,6 +1,6 @@
 #' get features
 #'
-#'@description get features.
+#' @description get features.
 #'
 #'
 #' @param features Character

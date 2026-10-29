@@ -1,6 +1,6 @@
 #' get features
 #'
-#'@description get features.
+#' @description get features.
 #'
 #'
 #' @param json_feats Character
@@ -16,17 +16,17 @@
 #' }
 esri_to_sf_geom <- function(json_feats, geom_type, crs = 4326) {
   # convert esri json to simple feature
-  if (geom_type == 'esriGeometryPolygon') {
+  if (geom_type == "esriGeometryPolygon") {
     geoms <- esri_to_sf_polygon(json_feats)
   }
-  if (geom_type == 'esriGeometryPoint') {
+  if (geom_type == "esriGeometryPoint") {
     geoms <- esri_to_sf_point(json_feats)
   }
-  if (geom_type == 'esriGeometryPolyline') {
+  if (geom_type == "esriGeometryPolyline") {
     geoms <- esri_to_sf_polyline(json_feats)
   }
   # attributes
-  atts <- lapply(json_feats, '[[', 1) %>%
+  atts <- lapply(json_feats, "[[", 1) %>%
     lapply(function(att) {
       lapply(att, function(x) return(ifelse(is.null(x), NA, x)))
     })
